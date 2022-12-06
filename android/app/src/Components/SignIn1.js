@@ -1,5 +1,6 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
 import {
   SafeAreaView,
   ScrollView,
@@ -11,9 +12,58 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
+import { API_URL } from '../../../../Config';
+import {useDispatch, } from "react-redux";
+import {setIsLoggedIn, setLoggedInUser} from '../Redux/Slice/LoginSlice';
 
 const SignIn1 = () => {
-  const [text, onChangeText] = React.useState(null);
+ 
+   const navigation = useNavigation();
+   const onNextPressed5 = () => {
+     navigation.navigate('SignUp');
+   };
+   const onNext3Pressed = () => {
+     navigation.navigate('ForgetPassword ');
+   };
+   const onNextPressed8 = () => {
+     navigation.navigate('HomeScreens');
+   };
+   const dispatch = useDispatch();
+  const [username , setUsername] = useState("");
+  const [passoword,setPassword] = useState(""); 
+  // const [signinData, setSigninData] = useState({
+  //   email:"",
+  //   password:"",
+  // })
+
+ const submitHandler = async () => {
+  console.log({
+    username,
+    passoword,
+  });
+
+   try{
+    const signinData = await axios({
+      url: API_URL + '/auth/signin',
+      method:'POST',
+      data:{
+        username,
+        passoword,
+      },
+    });
+    if(signinData){
+      console.log('signinData',signinData);
+      if(signinData?.data?.success){
+        console.log('signinData?.data',signinData?.data);
+        dispatch(setIsLoggedIn(true));
+        dispatch(setLoggedInUser(signinData?.data));
+        navigation.navigate('HomeScreens');
+      }
+    }
+   }catch(error){
+    console.log('ERROR',error)
+   }
+ }
   return (
     <SafeAreaView>
       <ScrollView>
@@ -52,6 +102,10 @@ const SignIn1 = () => {
                 placeholder="Email"
                 editable
                 maxLength={40}
+                onChangeText={txt => {
+                  setUsername(txt);
+                }}
+                value={username}
               />
             </View>
 
@@ -63,6 +117,10 @@ const SignIn1 = () => {
                 placeholder="password"
                 editable
                 maxLength={40}
+                onChangeText={txt => {
+                  setPassword(txt);
+                }}
+                value={passoword}
               />
             </View>
           </View>
@@ -75,29 +133,38 @@ const SignIn1 = () => {
               Remember me
             </Text>
           </View>
-          <View
-            style={{
-              backgroundColor: '#D56AAC',
-              height: 50,
-              margin: 20,
-              borderRadius: 30,
-            }}>
-            <Text
+          <TouchableOpacity>
+            <View
               style={{
-                textAlign: 'center',
-                // height: 40,
-                // width: 100,
-                marginTop: 12,
-                color: 'white',
+                backgroundColor: '#D56AAC',
+                height: 50,
+                margin: 20,
+                borderRadius: 30,
               }}>
-              Sign Up
-            </Text>
-          </View>
-          <View>
-            <Text style={{textAlign: 'center', color: '#D56AAC'}}>
-              Forget The Password?
-            </Text>
-          </View>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  marginTop: 12,
+                  color: 'white',
+                  fontSize: 18,
+                }}
+                onPress={() => {
+                  submitHandler();
+                }}
+                >
+                Sign In
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View>
+              <Text
+                style={{textAlign: 'center', color: '#D56AAC'}}
+                onPress={onNext3Pressed}>
+                Forget The Password?
+              </Text>
+            </View>
+          </TouchableOpacity>
           <View>
             <Text style={{textAlign: 'center', color: 'black', marginTop: 20}}>
               Or continue with
@@ -123,15 +190,22 @@ const SignIn1 = () => {
           <View style={styles.footer}>
             <View>
               <Text style={{textAlign: 'center', marginTop: 20}}>
-                Already have an account?
+                Don't have an account?
               </Text>
             </View>
-            <View>
-              <Text
-                style={{textAlign: 'center', marginTop: 20, color: '#D56AAC'}}>
-                Sign In
-              </Text>
-            </View>
+            <TouchableOpacity>
+              <View>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    marginTop: 20,
+                    color: '#D56AAC',
+                  }}
+                  onPress={onNextPressed5}>
+                  Sign Up
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

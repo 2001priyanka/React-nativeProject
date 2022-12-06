@@ -12,9 +12,13 @@ import {
   Button,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Home1 = () => {
-  // const [text, onChangeText] = React.useState(null);
+  const navigation = useNavigation();
+  const onNextPressed1 = () => {
+    navigation.navigate('SignIn');
+  };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -86,23 +90,26 @@ const Home1 = () => {
               Skip
             </Text>
           </View>
-          <View
-            style={{
-              backgroundColor: '#D56AAC',
-              height: 50,
-              margin: 20,
-              borderRadius: 30,
-            }}>
-            <Text
+          <TouchableOpacity>
+            <View
               style={{
-                textAlign: 'center',
-                fontSize: 20,
-                marginTop: 12,
-                color: 'white',
+                backgroundColor: '#D56AAC',
+                height: 50,
+                margin: 20,
+                borderRadius: 30,
               }}>
-              Next
-            </Text>
-          </View>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 20,
+                  marginTop: 12,
+                  color: 'white',
+                }}
+                onPress={onNextPressed1}>
+                Next
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

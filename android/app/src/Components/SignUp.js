@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {useNavigation} from '@react-navigation/native';
 import {
   SafeAreaView,
   ScrollView,
@@ -10,9 +10,19 @@ import {
   View,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SignUp = () => {
-  const [text, onChangeText] = React.useState(null);
+ const navigation = useNavigation();
+ const onNextPressed3 = () => {
+   navigation.navigate('SetUp2');
+ };
+ const onNext2Pressed = () => {
+   navigation.navigate('SignIn1');
+ };
+//  const onNext1Pressed = () => {
+//    navigation.navigate('SignIn1');
+//  };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -84,7 +94,8 @@ const SignUp = () => {
                 // width: 100,
                 marginTop: 12,
                 color: 'white',
-              }}>
+              }}
+              onPress={onNextPressed3}>
               Sign Up
             </Text>
           </View>
@@ -112,12 +123,15 @@ const SignUp = () => {
                 Already have an account?
               </Text>
             </View>
-            <View>
-              <Text
-                style={{textAlign: 'center', marginTop: 20, color: '#D56AAC'}}>
-                Sign In
-              </Text>
-            </View>
+            <TouchableOpacity>
+              <View>
+                <Text
+                  style={{textAlign: 'center', marginTop: 20, color: '#D56AAC'}}
+                  onPress={onNext2Pressed}>
+                  Sign In
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

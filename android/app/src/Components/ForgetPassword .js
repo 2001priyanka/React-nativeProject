@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {useNavigation} from '@react-navigation/native';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,6 +13,10 @@ import {
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ForgetPassword = () => {
+  const navigation = useNavigation();
+  const onNextPressed6 = () => {
+    navigation.navigate('ResetPassword');
+  };
   const [text, onChangeText] = React.useState(null);
   return (
     <SafeAreaView>
@@ -96,24 +100,26 @@ const ForgetPassword = () => {
               <Text style={{color: 'black'}}>ex***ample@domain.com</Text>
             </View>
           </View>
-          <View
-            style={{
-              backgroundColor: '#D56AAC',
-              height: 50,
-              margin: 20,
-              borderRadius: 30,
-            }}>
-            <Text
+          <TouchableOpacity>
+            <View
               style={{
-                textAlign: 'center',
-                // height: 40,
-                // width: 100,
-                marginTop: 12,
-                color: 'white',
+                backgroundColor: '#D56AAC',
+                height: 50,
+                margin: 20,
+                borderRadius: 30,
               }}>
-              continue
-            </Text>
-          </View>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  // height: 40,
+                  // width: 100,
+                  marginTop: 12,
+                  color: 'white',
+                }} onPress={onNextPressed6}>
+                continue
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
