@@ -11,16 +11,16 @@ import {
   Button,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const SignIn = () => {
-   const navigation = useNavigation();
-   const onNextPressed2 = () => {
-     navigation.navigate('SignUp');
-   };
-   const onNext1Pressed = () => {
-     navigation.navigate('SignIn1');
-   };
+  const navigation = useNavigation();
+  const onNextPressed2 = () => {
+    navigation.navigate('SignUp');
+  };
+  const onNext1Pressed = () => {
+    navigation.navigate('SignIn1');
+  };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -32,7 +32,7 @@ const SignIn = () => {
                 fontSize: 25,
                 marginTop: 40,
                 marginLeft: 30,
-                color: '#D56AAC',
+                color: '#fe5e75',
               }}
             />
           </View>
@@ -41,63 +41,67 @@ const SignIn = () => {
           </View>
 
           <View style={styles.body}>
+            <IconFa name="facebook" style={{fontSize: 30, color: '#3b5998'}} />
             <Text
               style={{
                 textAlign: 'center',
                 fontSize: 18,
-                marginTop: 12,
+                // marginTop: 12,
                 color: 'black',
+                marginLeft: 10,
               }}>
-              <IconFa
-                name="facebook"
-                style={{fontSize: 30, color: '#3b5998'}}
-              />
               Facebook
             </Text>
           </View>
           <View style={styles.body}>
+            <IconFa name="google" color={'black'} style={{fontSize: 30}} />
             <Text
               style={{
                 textAlign: 'center',
                 fontSize: 18,
-                marginTop: 12,
                 color: 'black',
+                marginLeft: 10,
               }}>
-              <IconFa name="google" style={{fontSize: 30}} />
               Google
             </Text>
           </View>
           <View style={styles.body}>
+            <IconFa name="apple" color={'black'} style={{fontSize: 30}} />
             <Text
               style={{
                 textAlign: 'center',
                 fontSize: 18,
-                marginTop: 10,
+
                 color: 'black',
+                marginLeft: 10,
               }}>
-              <IconFa name="apple" style={{fontSize: 30}} />
               Apple
             </Text>
           </View>
           <View>
-            <Text style={{textAlign: 'center', color: 'black', fontSize: 18}}>
+            <Text
+              style={{
+                textAlign: 'center',
+                color: 'black',
+                fontSize: 18,
+                marginTop: 20,
+              }}>
               Or
             </Text>
             <TouchableOpacity>
               <View
                 style={{
-                  backgroundColor: '#D56AAC',
+                  backgroundColor: '#fe5e75',
                   height: 50,
                   margin: 20,
                   borderRadius: 30,
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}>
                 <Text
                   style={{
-                    textAlign: 'center',
-                    // height: 40,
-                    // width: 100,
-                    marginTop: 12,
                     color: 'white',
+                    fontWeight: '500',
                   }}
                   onPress={onNext1Pressed}>
                   Sign in with password
@@ -105,17 +109,29 @@ const SignIn = () => {
               </View>
             </TouchableOpacity>
           </View>
-          <View style={styles.footer}>
+          {/* <View style={styles.footer}> */}
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
             <View>
               <Text
-                style={{textAlign: 'center', marginTop: 20, color: 'black'}}>
+                style={{
+                  fontWeight: '500',
+                }}>
                 Don't have an account?
               </Text>
             </View>
             <View>
               <TouchableOpacity>
                 <Text
-                  style={{textAlign: 'center', marginTop: 20, color: '#D56AAC'}}
+                  style={{
+                    color: '#fe5e75',
+                    marginLeft: 10,
+                    fontWeight: '500',
+                  }}
                   onPress={onNextPressed2}>
                   Sign Up
                 </Text>
@@ -123,6 +139,7 @@ const SignIn = () => {
             </View>
           </View>
         </View>
+        {/* </View> */}
       </ScrollView>
     </SafeAreaView>
   );
@@ -133,14 +150,19 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 30,
     marginTop: 70,
+    fontWeight: '600',
   },
   body: {
     // backgroundColor: '#D56AAC',
-    borderWidth: 0.5,
+    borderWidth: 1,
     height: 50,
     margin: 10,
     borderRadius: 10,
     height: 60,
+    borderColor: '#B3B0B0',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   footer: {
     flexDirection: 'row',

@@ -23,7 +23,7 @@ const SecurityPage = () => {
             <Text style={styles.uppersection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{color: 'black', fontSize: 30}}>Security</Text>
             </Text>
@@ -35,7 +35,7 @@ const SecurityPage = () => {
             <View>
               <IconFa
                 name="toggle-switch"
-                style={{fontSize: 50, color: '#D56AAC'}}
+                style={{fontSize: 50, color: '#fe5e75'}}
               />
             </View>
           </View>
@@ -46,7 +46,7 @@ const SecurityPage = () => {
             <View>
               <IconFa
                 name="toggle-switch"
-                style={{fontSize: 50, color: '#D56AAC'}}
+                style={{fontSize: 50, color: '#fe5e75'}}
               />
             </View>
           </View>
@@ -60,9 +60,9 @@ const SecurityPage = () => {
           </View>
           <View
             style={{
-              // backgroundColor: '#D56AAC',
+              // backgroundColor: '#fe5e75',
               borderWidth: 2,
-              borderColor: '#D56AAC',
+              borderColor: '#fe5e75',
               height: 50,
               margin: 20,
               borderRadius: 30,
@@ -73,7 +73,7 @@ const SecurityPage = () => {
                 // height: 40,
                 // width: 100,
                 marginTop: 12,
-                color: '#D56AAC',
+                color: '#fe5e75',
                 fontSize: 18,
               }}>
               Change Password

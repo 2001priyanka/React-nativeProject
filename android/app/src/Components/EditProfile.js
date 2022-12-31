@@ -23,7 +23,7 @@ const EditProfile = () => {
             <Text style={styles.uppersection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{color: 'black', fontSize: 25}}>Edit Profile</Text>
             </Text>
@@ -129,9 +129,9 @@ const EditProfile = () => {
           </View>
           <View
             style={{
-              backgroundColor: '#EE2773',
+              backgroundColor: '#fe5e75',
               // borderWidth: 2,
-              // borderColor: '#D56AAC',
+              // borderColor: '#fe5e75',
               height: 50,
               margin: 20,
               borderRadius: 30,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1.4,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     padding: 10,
     borderRadius: 20,
   },
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1.5,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     padding: 10,
     borderRadius: 20,
     width: 150,

@@ -100,7 +100,8 @@ const ResetPassword = () => {
                   marginTop: 12,
                   color: 'white',
                   fontSize: 20,
-                }} onPress={onNextPressed7}>
+                }}
+                onPress={onNextPressed7}>
                 Save
               </Text>
             </View>

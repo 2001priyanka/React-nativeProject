@@ -21,68 +21,84 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const AccountSetUp = () => {
-    const navigation = useNavigation();
-    const onNextPressed11 = () => {
-   navigation.navigate('AccountSetUp1');
- };
+  const navigation = useNavigation();
+  const onNextPressed11 = () => {
+    navigation.navigate('AccountSetUp1');
+  };
   const [msgs, setMsgs] = useState([
     {
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
-      name: 'India',
-      msg:'IN',
+      name: 'Afghanisthan',
+      msg: 'IN',
       new: 1,
     },
     {
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
       name: 'India',
-      msg:'IN',
+      msg: 'IN',
       new: 1,
     },
     {
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
       name: 'India',
-      msg:'IN',
+      msg: 'IN',
       new: 1,
     },
     {
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
       name: 'India',
-      msg:'IN',
+      msg: 'IN',
       new: 1,
     },
     {
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
       name: 'India',
-      msg:'IN',
+      msg: 'IN',
       new: 1,
     },
-  
   ]);
   const [text, onChangeText] = React.useState(null);
   const _renderItem = ({item, index}) => {
     return (
       <View style={styles.uppersection1}>
-        <View>
-          <Image
-            source={{
-              uri: item.img,
-            }}
-            style={{
-              height: 70,
-              width: 70,
-              borderRadius: 40,
-            }}
-          />
+        <View style={{}}>
+          <View>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+              <Image
+                source={{
+                  uri: item.img,
+                }}
+                style={{
+                  height: 70,
+                  width: 70,
+                  borderRadius: 40,
+                }}
+              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  alignItems: 'center',
+                }}>
+                <Text style={{fontSize: 15, width: vw(15)}}>{item.msg}</Text>
+                <Text style={{fontSize: 18, color: 'black'}}>{item.name}</Text>
+              </View>
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <IconFa name="circle-outline" style={{fontSize: 20}} />
+              </View>
+            </View>
+          </View>
         </View>
-        <View>
-          <Text style={{fontSize: 15, marginTop:20}}>{item.msg}</Text>
+        {/* <View>
+          <Text style={{fontSize: 15, marginTop: 20}}>{item.msg}</Text>
         </View>
         <View>
           <Text style={{fontSize: 18, color: 'black', marginTop: 20}}>
             {item.name}
           </Text>
-        </View>
-        <View>
+        </View> */}
+        {/* <View>
           {item.new && (
             <View
               style={{
@@ -97,7 +113,7 @@ const AccountSetUp = () => {
                 style={{
                   textAlign: 'center',
                   alignSelf: 'center',
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   marginTop: 10,
                 }}>
                 <IconFa name="circle-outline" style={{fontSize: 20}} />
@@ -105,7 +121,7 @@ const AccountSetUp = () => {
             </View>
           )}
           <Text style={{marginTop: 10, fontSize: 18}}>{item.time}</Text>
-        </View>
+        </View> */}
       </View>
     );
   };
@@ -117,7 +133,7 @@ const AccountSetUp = () => {
             <Text style={styles.upperSection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{paddingLeft: 10, color: 'black'}}>
                 Select Your Country
@@ -149,7 +165,7 @@ const AccountSetUp = () => {
           <FlatList data={msgs} renderItem={_renderItem} />
           <View
             style={{
-              backgroundColor: '#D56AAC',
+              backgroundColor: '#fe5e75',
               height: 50,
               margin: 20,
               borderRadius: 30,
@@ -176,8 +192,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   uppersection1: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
     marginTop: 10,
     padding: 5,
     borderWidth: 0.25,

@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Button, StatusBar, StyleSheet, Text, View, Image} from 'react-native';
@@ -9,25 +8,25 @@ import {
   responsiveFontSize as vf,
 } from 'react-native-responsive-dimensions';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 function ModalTester() {
-   const navigation = useNavigation();
- const onNextPressed15 = () => {
-   navigation.navigate('SignIn1');
- };
- const onNextPressed16 = () => {
-   navigation.navigate('EditProfile');
- };
- const onNextPressed17 = () => {
-   navigation.navigate('NotificationPage');
- };
- const onNextPressed18 = () => {
-   navigation.navigate('SecurityPage');
- };
- const onNextPressed19 = () => {
-   navigation.navigate('InvitePage');
- };
+  const navigation = useNavigation();
+  const onNextPressed15 = () => {
+    navigation.navigate('SignIn1');
+  };
+  const onNextPressed16 = () => {
+    navigation.navigate('EditProfile');
+  };
+  const onNextPressed17 = () => {
+    navigation.navigate('NotificationPage');
+  };
+  const onNextPressed18 = () => {
+    navigation.navigate('SecurityPage');
+  };
+  const onNextPressed19 = () => {
+    navigation.navigate('InvitePage');
+  };
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -43,7 +42,7 @@ function ModalTester() {
             <View>
               <IconFa
                 name="heart-multiple"
-                style={{fontSize: 30, color: '#D56AAC'}}
+                style={{fontSize: 30, color: '#fe5e75'}}
               />
             </View>
             <View>
@@ -65,7 +64,7 @@ function ModalTester() {
                 name="playlist-edit"
                 style={{
                   fontSize: 30,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                 }}
               />
             </View>
@@ -81,7 +80,7 @@ function ModalTester() {
                 style={{
                   fontSize: 25,
                   // paddingLeft: 10,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   paddingLeft: 25,
                 }}
               />
@@ -118,21 +117,23 @@ function ModalTester() {
               name="account"
               style={{
                 fontSize: 20,
-                color: '#D56AAC',
+                color: '#fe5e75',
                 marginLeft: 10,
                 marginTop: 5,
               }}
             />
           </View>
           <View>
-            <Text style={{paddingRight: 200, fontSize: 18, color: 'black'}} onPress={onNextPressed16}>
+            <Text
+              style={{paddingRight: 200, fontSize: 18, color: 'black'}}
+              onPress={onNextPressed16}>
               Edit Profile
             </Text>
           </View>
           <View>
             <IconFa
               name="chevron-right"
-              style={{fontSize: 20, color: '#D56AAC'}}
+              style={{fontSize: 20, color: '#fe5e75'}}
             />
           </View>
         </View>
@@ -148,21 +149,23 @@ function ModalTester() {
               name="bell"
               style={{
                 fontSize: 20,
-                color: '#D56AAC',
+                color: '#fe5e75',
                 marginLeft: 10,
                 marginTop: 5,
               }}
             />
           </View>
           <View>
-            <Text style={{paddingRight: 200, fontSize: 18, color: 'black'}}onPress={onNextPressed17}>
+            <Text
+              style={{paddingRight: 200, fontSize: 18, color: 'black'}}
+              onPress={onNextPressed17}>
               Notification
             </Text>
           </View>
           <View>
             <IconFa
               name="chevron-right"
-              style={{fontSize: 20, color: '#D56AAC'}}
+              style={{fontSize: 20, color: '#fe5e75'}}
             />
           </View>
         </View>
@@ -178,21 +181,23 @@ function ModalTester() {
               name="lock"
               style={{
                 fontSize: 20,
-                color: '#D56AAC',
+                color: '#fe5e75',
                 marginLeft: 10,
                 marginTop: 5,
               }}
             />
           </View>
           <View>
-            <Text style={{paddingRight: 200, fontSize: 18, color: 'black'}} onPress={onNextPressed18}>
+            <Text
+              style={{paddingRight: 200, fontSize: 18, color: 'black'}}
+              onPress={onNextPressed18}>
               Security
             </Text>
           </View>
           <View>
             <IconFa
               name="chevron-right"
-              style={{fontSize: 20, color: '#D56AAC'}}
+              style={{fontSize: 20, color: '#fe5e75'}}
             />
           </View>
         </View>
@@ -208,7 +213,7 @@ function ModalTester() {
               name="eye"
               style={{
                 fontSize: 20,
-                color: '#D56AAC',
+                color: '#fe5e75',
                 marginLeft: 10,
                 marginTop: 5,
               }}
@@ -238,21 +243,23 @@ function ModalTester() {
               name="account-multiple"
               style={{
                 fontSize: 20,
-                color: '#D56AAC',
+                color: '#fe5e75',
                 marginLeft: 10,
                 marginTop: 5,
               }}
             />
           </View>
           <View>
-            <Text style={{paddingRight: 150, fontSize: 18, color: 'black'}} onPress={onNextPressed19}>
+            <Text
+              style={{paddingRight: 150, fontSize: 18, color: 'black'}}
+              onPress={onNextPressed19}>
               Invite Friends
             </Text>
           </View>
           <View>
             <IconFa
               name="chevron-right"
-              style={{fontSize: 20, color: '#D56AAC'}}
+              style={{fontSize: 20, color: '#fe5e75'}}
             />
           </View>
         </View>
@@ -268,7 +275,7 @@ function ModalTester() {
               name="logout"
               style={{
                 fontSize: 20,
-                color: '#D56AAC',
+                color: '#fe5e75',
                 marginLeft: 10,
                 marginTop: 5,
               }}
@@ -284,22 +291,22 @@ function ModalTester() {
         </View>
         <View style={styles.uppersection}>
           <View>
-            <IconFa name="home" style={{fontSize: 25, color: '#D56AAC'}} />
+            <IconFa name="home" style={{fontSize: 25, color: '#fe5e75'}} />
           </View>
           <View>
-            <IconFa name="map" style={{fontSize: 25, color: '#D56AAC'}} />
+            <IconFa name="map" style={{fontSize: 25, color: '#fe5e75'}} />
           </View>
           <View>
-            <IconFa name="heart" style={{fontSize: 25, color: '#D56AAC'}} />
+            <IconFa name="heart" style={{fontSize: 25, color: '#fe5e75'}} />
           </View>
           <View>
             <IconFa
               name="message-bulleted"
-              style={{fontSize: 25, color: '#D56AAC'}}
+              style={{fontSize: 25, color: '#fe5e75'}}
             />
           </View>
           <View>
-            <IconFa name="account" style={{fontSize: 25, color: '#D56AAC'}} />
+            <IconFa name="account" style={{fontSize: 25, color: '#fe5e75'}} />
           </View>
         </View>
       </View>
@@ -323,7 +330,7 @@ function ModalTester() {
             <View>
               <IconFa
                 name="logout"
-                style={{fontSize: 40, marginTop: 30, color: '#D56AAC'}}
+                style={{fontSize: 40, marginTop: 30, color: '#fe5e75'}}
               />
             </View>
             <Text style={styles.text}>Are you sure want to logout</Text>
@@ -333,7 +340,7 @@ function ModalTester() {
                 <Text
                   style={{
                     textAlign: 'center',
-                    color: '#D56AAC',
+                    color: '#fe5e75',
                   }}>
                   Cancel
                 </Text>
@@ -406,9 +413,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     height: 50,
     width: vh(15),
-    backgroundColor: '#D56AAC',
+    backgroundColor: '#fe5e75',
     borderRadius: 30,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -420,7 +427,7 @@ const styles = StyleSheet.create({
     width: vh(15),
     borderWidth: 2,
     borderRadius: 30,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',

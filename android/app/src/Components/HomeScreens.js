@@ -1,4 +1,4 @@
-import React, { useState,useRef } from 'react';
+import React, {useState, useRef} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Swiper from 'react-native-deck-swiper';
 
@@ -27,86 +27,83 @@ const HomeScreens = () => {
   const onNextPressed14 = () => {
     navigation.navigate('ProfilePage');
   };
-    const swiperRef = useRef();
-    const [cards, setCards] = useState([
-      {
-        name: 'elena Gilbert',
-        img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
-        age: 21,
-      },
-      {
-        name: ' Carollin Gilbert',
-        img: 'https://media.istockphoto.com/id/1133213198/photo/beautiful-woman-soft-make-up-and-perfect-skin.jpg?s=612x612&w=0&k=20&c=mxphjQ0Viklr4EkVdKclu3WQ4ys4nEHLNJHKHAUHqAo=',
-        age: 21,
-      },
-      {
-        name: 'Bonnie Gilbert',
-        img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
-        age: 20,
-      },
-      {
-        name: 'Bonnie Gilbert',
-        img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
-        age: 20,
-      },
-      {
-        name: 'Bonnie Gilbert',
-        img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
-        age: 20,
-      },
-      {
-        name: 'Bonnie Gilbert',
-        img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
-        age: 20,
-      },
-    ]);
-   
-  const [text, onChangeText] = React.useState(null);
-  const _renderUsers = (item,index) => {
+  const swiperRef = useRef();
+  const [cards, setCards] = useState([
+    {
+      name: 'elena Gilbert',
+      img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
+      age: 21,
+    },
+    {
+      name: ' Carollin Gilbert',
+      img: 'https://media.istockphoto.com/id/1133213198/photo/beautiful-woman-soft-make-up-and-perfect-skin.jpg?s=612x612&w=0&k=20&c=mxphjQ0Viklr4EkVdKclu3WQ4ys4nEHLNJHKHAUHqAo=',
+      age: 21,
+    },
+    {
+      name: 'Bonnie Gilbert',
+      img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
+      age: 20,
+    },
+    {
+      name: 'Bonnie Gilbert',
+      img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
+      age: 20,
+    },
+    {
+      name: 'Bonnie Gilbert',
+      img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
+      age: 20,
+    },
+    {
+      name: 'Bonnie Gilbert',
+      img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
+      age: 20,
+    },
+  ]);
 
-  
-   return (
-     <View
-       style={{
-        //  position: 'relative',
-         backgroundColor: 'white',
-         borderRadius: 20, 
-        //  marginBottom:20,
-       }}>
-       <Image
-         source={{
-           uri: item.img,
-         }}
-         style={{
-           height: vh(60),
-           width: vh(40),
-           borderRadius: 20,
-           padding: 10,
-           marginTop: 50,
-           alignSelf: 'center',
-         }}
-       />
-       <View style={{}}>
-         <Text
-           style={{
-             textAlign: 'center',
-             position: 'relative',
-             fontSize: 20,
-             color: 'black',
-           }}>
-           {item.name}
-         </Text>
-         <Text style={{textAlign: 'center', fontSize: 20, color: 'black'}}>
-           {item.age}
-         </Text>
-       </View>
-     </View>
-   );
-   
-   }
+  const [text, onChangeText] = React.useState(null);
+  const _renderUsers = (item, index) => {
+    return (
+      <View
+        style={{
+          //  position: 'relative',
+          backgroundColor: 'white',
+          borderRadius: 20,
+          //  marginBottom:20,
+        }}>
+        <Image
+          source={{
+            uri: item.img,
+          }}
+          style={{
+            height: vh(60),
+            width: vh(40),
+            borderRadius: 20,
+            padding: 10,
+            marginTop: 50,
+            alignSelf: 'center',
+          }}
+        />
+        <View style={{}}>
+          <Text
+            style={{
+              textAlign: 'center',
+              position: 'relative',
+              fontSize: 20,
+              color: 'black',
+            }}>
+            {item.name}
+          </Text>
+          <Text style={{textAlign: 'center', fontSize: 20, color: 'black'}}>
+            {item.age}
+          </Text>
+        </View>
+      </View>
+    );
+  };
   return (
-    <SafeAreaView>
-      <View style={{flex: 1}}>
+    <SafeAreaView style={{backgroundColor: 'white'}}>
+      <View style={{flex: 1, backgroundColor: 'white'}}>
         <Swiper
           ref={swiperRef}
           cards={cards}
@@ -116,10 +113,11 @@ const HomeScreens = () => {
               title: 'BLEAH',
               style: {
                 label: {
-                  backgroundColor: '#D56AAC',
-                  borderColor: '#D56AAC',
-                  color: 'white',
+                  backgroundColor: '#fe5e75',
+                  borderColor: '#fe5e75',
+                  // color: 'white',
                   borderWidth: 1,
+                  elevation: 20,
                 },
                 wrapper: {
                   flexDirection: 'column',
@@ -132,8 +130,8 @@ const HomeScreens = () => {
               title: 'NOPE',
               style: {
                 label: {
-                  backgroundColor: '#D56AAC',
-                  borderColor: '#D56AAC',
+                  backgroundColor: '#fe5e75',
+                  borderColor: '#fe5e75',
                   color: 'white',
                   borderWidth: 1,
                 },
@@ -150,8 +148,8 @@ const HomeScreens = () => {
               title: 'LIKE',
               style: {
                 label: {
-                  backgroundColor: '#D56AAC',
-                  borderColor: '#D56AAC',
+                  backgroundColor: '#fe5e75',
+                  borderColor: '#fe5e75',
                   color: 'white',
                   borderWidth: 1,
                 },
@@ -168,8 +166,8 @@ const HomeScreens = () => {
               title: 'SUPER LIKE',
               style: {
                 label: {
-                  backgroundColor: '#D56AAC',
-                  borderColor: '#D56AAC',
+                  backgroundColor: '#fe5e75',
+                  borderColor: '#fe5e75',
                   color: 'white',
                   borderWidth: 1,
                 },
@@ -204,7 +202,7 @@ const HomeScreens = () => {
           <View>
             <IconFa
               name="heart-multiple"
-              style={{fontSize: 30, color: '#D56AAC'}}
+              style={{fontSize: 30, color: '#fe5e75'}}
             />
           </View>
           <View>
@@ -226,7 +224,7 @@ const HomeScreens = () => {
               name="playlist-edit"
               style={{
                 fontSize: 30,
-                color: '#D56AAC',
+                color: '#fe5e75',
               }}
             />
           </View>
@@ -242,7 +240,7 @@ const HomeScreens = () => {
               style={{
                 fontSize: 25,
                 // paddingLeft: 10,
-                color: '#D56AAC',
+                color: '#fe5e75',
                 paddingLeft: 25,
               }}
             />
@@ -254,7 +252,7 @@ const HomeScreens = () => {
           <Text>
             <IconFa
               name="close"
-              style={{fontSize: 50, color: '#D56AAC'}}
+              style={{fontSize: 50, color: '#fe5e75'}}
               onPress={() => {
                 swiperRef.current.swipeLeft();
               }}
@@ -266,7 +264,7 @@ const HomeScreens = () => {
           <Text>
             <IconFa
               name="star-outline"
-              style={{fontSize: 50, color: '#D56AAC'}}
+              style={{fontSize: 50, color: '#fe5e75'}}
             />
           </Text>
         </View>
@@ -274,7 +272,7 @@ const HomeScreens = () => {
           <Text>
             <IconFa
               name="heart-outline"
-              style={{fontSize: 50, color: '#D56AAC'}}
+              style={{fontSize: 50, color: '#fe5e75'}}
               onPress={() => {
                 // swiperRef.swipeRight();
                 swiperRef.current.swipeRight();
@@ -287,25 +285,25 @@ const HomeScreens = () => {
       {/* <FlatList data={cards} renderItem={_renderUsers} /> */}
       <View style={styles.uppersection}>
         <View>
-          <IconFa name="home" style={{fontSize: 25, color: '#D56AAC'}} />
+          <IconFa name="home" style={{fontSize: 25, color: '#fe5e75'}} />
         </View>
         <View>
-          <IconFa name="map" style={{fontSize: 25, color: '#D56AAC'}} />
+          <IconFa name="map" style={{fontSize: 25, color: '#fe5e75'}} />
         </View>
         <View>
-          <IconFa name="heart" style={{fontSize: 25, color: '#D56AAC'}} />
+          <IconFa name="heart" style={{fontSize: 25, color: '#fe5e75'}} />
         </View>
         <View>
           <IconFa
             name="message-bulleted"
-            style={{fontSize: 25, color: '#D56AAC'}}
+            style={{fontSize: 25, color: '#fe5e75'}}
           />
         </View>
         <TouchableOpacity>
           <View>
             <IconFa
               name="account"
-              style={{fontSize: 25, color: '#D56AAC'}}
+              style={{fontSize: 25, color: '#fe5e75'}}
               onPress={onNextPressed14}
             />
           </View>
@@ -322,8 +320,8 @@ const styles = StyleSheet.create({
     height: vh(85),
     // width: vh(60),
     // display:'none',
-    padding:15,
-    
+    padding: 15,
+    // backgroundColor: 'white',
   },
 
   card: {

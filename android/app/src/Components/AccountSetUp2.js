@@ -19,10 +19,10 @@ import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const AccountSetUp2 = () => {
-    const navigation = useNavigation();
-    const onNextPressed13 = () => {
-      navigation.navigate('AccountSetUp3');
-    };
+  const navigation = useNavigation();
+  const onNextPressed13 = () => {
+    navigation.navigate('AccountSetUp3');
+  };
   // const [text, onChangeText] = React.useState(null);
   return (
     <SafeAreaView>
@@ -32,7 +32,7 @@ const AccountSetUp2 = () => {
             <Text style={styles.uppersection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{color: 'black', fontSize: 25}}>
                 Select Your Interest
@@ -52,7 +52,7 @@ const AccountSetUp2 = () => {
                 <Text
                   style={{
                     textAlign: 'center',
-                    color: '#D56AAC',
+                    color: '#fe5e75',
                     fontSize: 18,
                   }}>
                   <IconFa
@@ -66,7 +66,7 @@ const AccountSetUp2 = () => {
                 <Text
                   style={{
                     textAlign: 'center',
-                    color: '#D56AAC',
+                    color: '#fe5e75',
                     fontSize: 18,
                   }}>
                   <IconFa
@@ -84,7 +84,7 @@ const AccountSetUp2 = () => {
                 <Text
                   style={{
                     textAlign: 'center',
-                    color: '#D56AAC',
+                    color: '#fe5e75',
                     fontSize: 18,
                   }}>
                   <IconFa name="head" style={{fontSize: 20, color: 'black'}} />
@@ -106,7 +106,7 @@ const AccountSetUp2 = () => {
                 <Text
                   style={{
                     textAlign: 'center',
-                    color: '#D56AAC',
+                    color: '#fe5e75',
                     fontSize: 18,
                     // paddingLeft:10,
                   }}>
@@ -124,9 +124,12 @@ const AccountSetUp2 = () => {
                 <Text
                   style={{
                     textAlign: 'center',
-                    color: '#D56AAC',
+                    color: '#fe5e75',
                   }}>
-                  <IconFa name="picture-in-picture-bottom-right" style={{color:'black',fontSize:15}}/>
+                  <IconFa
+                    name="picture-in-picture-bottom-right"
+                    style={{color: 'black', fontSize: 15}}
+                  />
                   Photography
                 </Text>
               </View>
@@ -165,7 +168,7 @@ const AccountSetUp2 = () => {
                 <Text
                   style={{
                     textAlign: 'center',
-                    color: '#D56AAC',
+                    color: '#fe5e75',
                     fontSize: 15,
                   }}>
                   <IconFa
@@ -193,7 +196,7 @@ const AccountSetUp2 = () => {
           </View>
           <View
             style={{
-              backgroundColor: '#D56AAC',
+              backgroundColor: '#fe5e75',
               height: 50,
               margin: 20,
               borderRadius: 30,
@@ -204,7 +207,8 @@ const AccountSetUp2 = () => {
                 marginTop: 12,
                 color: 'white',
                 fontSize: 20,
-              }} onPress={onNextPressed13}>
+              }}
+              onPress={onNextPressed13}>
               Next
             </Text>
           </View>
@@ -225,7 +229,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1.4,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     padding: 10,
     borderRadius: 20,
   },
@@ -233,7 +237,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1.5,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     padding: 10,
     borderRadius: 20,
     width: 150,
@@ -243,9 +247,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     height: 50,
     width: vh(15),
-    backgroundColor: '#D56AAC',
+    backgroundColor: '#fe5e75',
     borderRadius: 30,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -255,9 +259,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     height: 50,
     width: vh(15),
-    borderWidth:1,
+    borderWidth: 1,
     borderRadius: 30,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',

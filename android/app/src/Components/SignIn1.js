@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 import {
@@ -12,58 +12,62 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
-import { API_URL } from '../../../../Config';
-import {useDispatch, } from "react-redux";
+import {API_URL} from '../../../../Config';
+import {useDispatch} from 'react-redux';
+import {
+  responsiveHeight as vh,
+  responsiveWidth as vw,
+  responsiveFontSize as vf,
+} from 'react-native-responsive-dimensions';
 import {setIsLoggedIn, setLoggedInUser} from '../Redux/Slice/LoginSlice';
 
 const SignIn1 = () => {
- 
-   const navigation = useNavigation();
-   const onNextPressed5 = () => {
-     navigation.navigate('SignUp');
-   };
-   const onNext3Pressed = () => {
-     navigation.navigate('ForgetPassword ');
-   };
-   const onNextPressed8 = () => {
-     navigation.navigate('HomeScreens');
-   };
-   const dispatch = useDispatch();
-  const [username , setUsername] = useState("");
-  const [passoword,setPassword] = useState(""); 
+  const navigation = useNavigation();
+  const onNextPressed5 = () => {
+    navigation.navigate('SignUp');
+  };
+  const onNext3Pressed = () => {
+    navigation.navigate('ForgetPassword ');
+  };
+  const onNextPressed8 = () => {
+    navigation.navigate('HomeScreens');
+  };
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState('');
+  const [passoword, setPassword] = useState('');
   // const [signinData, setSigninData] = useState({
   //   email:"",
   //   password:"",
   // })
 
- const submitHandler = async () => {
-  console.log({
-    username,
-    passoword,
-  });
-
-   try{
-    const signinData = await axios({
-      url: API_URL + '/auth/signin',
-      method:'POST',
-      data:{
-        username,
-        passoword,
-      },
+  const submitHandler = async () => {
+    console.log({
+      username,
+      passoword,
     });
-    if(signinData){
-      console.log('signinData',signinData);
-      if(signinData?.data?.success){
-        console.log('signinData?.data',signinData?.data);
-        dispatch(setIsLoggedIn(true));
-        dispatch(setLoggedInUser(signinData?.data));
-        navigation.navigate('HomeScreens');
+
+    try {
+      const signinData = await axios({
+        url: API_URL + '/auth/signin',
+        method: 'POST',
+        data: {
+          username,
+          passoword,
+        },
+      });
+      if (signinData) {
+        console.log('signinData', signinData);
+        if (signinData?.data?.success) {
+          console.log('signinData?.data', signinData?.data);
+          dispatch(setIsLoggedIn(true));
+          dispatch(setLoggedInUser(signinData?.data));
+          navigation.navigate('HomeScreens');
+        }
       }
+    } catch (error) {
+      console.log('ERROR', error);
     }
-   }catch(error){
-    console.log('ERROR',error)
-   }
- }
+  };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -96,7 +100,16 @@ const SignIn1 = () => {
           </View>
           <View style={styles.input}>
             <View>
-              <Text style={{color: 'black', fontSize: 15}}>Email:</Text>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                  marginTop: 5,
+                }}>
+                Email:
+              </Text>
               <TextInput
                 style={styles.input2}
                 placeholder="Email"
@@ -110,7 +123,15 @@ const SignIn1 = () => {
             </View>
 
             <View>
-              <Text style={{color: 'black', fontSize: 15}}>password:</Text>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                }}>
+                Password:
+              </Text>
 
               <TextInput
                 style={styles.input2}
@@ -124,19 +145,30 @@ const SignIn1 = () => {
               />
             </View>
           </View>
-          <View style={{}}>
-            <Text style={{color: 'black', fontSize: 15, textAlign: 'center'}}>
-              <IconFa
-                name="checkbox-marked"
-                style={{fontSize: 20, color: '#D56AAC'}}
-              />
+          <View
+            style={{
+              alignSelf: 'flex-start',
+              marginLeft: 50,
+              flexDirection: 'row',
+            }}>
+            <IconFa
+              name="checkbox-marked"
+              style={{fontSize: 20, color: '#fe5e75'}}
+            />
+            <Text
+              style={{
+                color: 'black',
+                fontSize: 15,
+                textAlign: 'center',
+                marginLeft: 10,
+              }}>
               Remember me
             </Text>
           </View>
           <TouchableOpacity>
             <View
               style={{
-                backgroundColor: '#D56AAC',
+                backgroundColor: '#fe5e75',
                 height: 50,
                 margin: 20,
                 borderRadius: 30,
@@ -150,8 +182,7 @@ const SignIn1 = () => {
                 }}
                 onPress={() => {
                   submitHandler();
-                }}
-                >
+                }}>
                 Sign In
               </Text>
             </View>
@@ -159,37 +190,68 @@ const SignIn1 = () => {
           <TouchableOpacity>
             <View>
               <Text
-                style={{textAlign: 'center', color: '#D56AAC'}}
+                style={{
+                  textAlign: 'center',
+                  color: '#fe5e75',
+                  fontWeight: '500',
+                }}
                 onPress={onNext3Pressed}>
-                Forget The Password?
+                Forgot The Password?
               </Text>
             </View>
           </TouchableOpacity>
           <View>
-            <Text style={{textAlign: 'center', color: 'black', marginTop: 20}}>
+            <Text
+              style={{
+                textAlign: 'center',
+                color: 'black',
+                marginTop: 20,
+                fontWeight: '500',
+              }}>
               Or continue with
             </Text>
           </View>
           <View style={styles.socialIcon}>
-            <View>
-              <Text style={{fontSize: 20, color: 'black'}}>
-                <IconFa
-                  name="facebook"
-                  style={{fontSize: 30, color: '#3b5998'}}
-                />
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderWidth: 1,
+                borderColor: '#B3B0B0',
+                paddingHorizontal: 10,
+                height: vh(7),
+                borderRadius: 10,
+              }}>
+              <IconFa
+                name="facebook"
+                style={{fontSize: 30, color: '#3b5998'}}
+              />
+              <Text style={{fontSize: 20, color: 'black', marginLeft: 10}}>
                 Facebook
               </Text>
             </View>
-            <View>
-              <Text style={{color: 'black', fontSize: 20}}>
-                <IconFa name="google" style={{fontSize: 30}} />
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderWidth: 1,
+                borderColor: '#B3B0B0',
+                paddingHorizontal: 20,
+                height: vh(7),
+                borderRadius: 10,
+              }}>
+              <IconFa name="google" style={{fontSize: 30}} />
+              <Text style={{color: 'black', fontSize: 20, marginLeft: 10}}>
                 Google
               </Text>
             </View>
           </View>
           <View style={styles.footer}>
             <View>
-              <Text style={{textAlign: 'center', marginTop: 20}}>
+              <Text
+                style={{textAlign: 'center', marginTop: 20, fontWeight: '500'}}>
                 Don't have an account?
               </Text>
             </View>
@@ -199,7 +261,9 @@ const SignIn1 = () => {
                   style={{
                     textAlign: 'center',
                     marginTop: 20,
-                    color: '#D56AAC',
+                    color: '#fe5e75',
+                    fontWeight: '500',
+                    marginLeft: 10,
                   }}
                   onPress={onNextPressed5}>
                   Sign Up
@@ -216,8 +280,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    // justifyContent: 'space-around',
     padding: 100,
+    backgroundColor: 'red',
   },
   input: {
     display: 'flex',
@@ -225,11 +290,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   input2: {
-    height: 40,
+    height: 50,
     margin: 12,
-    borderWidth: 0.5,
-    padding: 10,
-    borderRadius: 20,
+    borderWidth: 1,
+    paddingLeft: 30,
+    borderRadius: 30,
+    borderColor: '#B3B0B0',
   },
   socialIcon: {
     flexDirection: 'row',

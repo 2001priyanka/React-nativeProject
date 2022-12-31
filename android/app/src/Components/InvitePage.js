@@ -23,7 +23,7 @@ const InvitePage = () => {
             <Text style={styles.uppersection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{color: 'black', fontSize: 25}}>Invite Friends</Text>
             </Text>
@@ -52,10 +52,10 @@ const InvitePage = () => {
                 style={{
                   textAlign: 'center',
                   marginTop: 30,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                   borderWidth: 1.5,
-                  borderColor: '#D56AAC',
+                  borderColor: '#fe5e75',
                   height: 30,
                   width: 70,
                   borderRadius: 15,
@@ -86,13 +86,13 @@ const InvitePage = () => {
             <View>
               <Text
                 style={{
-                  backgroundColor: '#D56AAC',
+                  backgroundColor: '#fe5e75',
                   textAlign: 'center',
                   marginTop: 30,
                   color: 'white',
                   fontSize: 18,
                   // borderWidth: 1.5,
-                  // borderColor: '#D56AAC',
+                  // borderColor: '#fe5e75',
                   height: 30,
                   width: 70,
                   borderRadius: 15,
@@ -123,13 +123,13 @@ const InvitePage = () => {
             <View>
               <Text
                 style={{
-                  backgroundColor: '#D56AAC',
+                  backgroundColor: '#fe5e75',
                   textAlign: 'center',
                   marginTop: 30,
                   color: 'white',
                   fontSize: 18,
                   // borderWidth: 1.5,
-                  // borderColor: '#D56AAC',
+                  // borderColor: '#fe5e75',
                   height: 30,
                   width: 70,
                   borderRadius: 15,
@@ -162,10 +162,10 @@ const InvitePage = () => {
                 style={{
                   textAlign: 'center',
                   marginTop: 30,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                   borderWidth: 1.5,
-                  borderColor: '#D56AAC',
+                  borderColor: '#fe5e75',
                   height: 30,
                   width: 70,
                   borderRadius: 15,
@@ -196,13 +196,13 @@ const InvitePage = () => {
             <View>
               <Text
                 style={{
-                  backgroundColor: '#D56AAC',
+                  backgroundColor: '#fe5e75',
                   textAlign: 'center',
                   marginTop: 30,
                   color: 'white',
                   fontSize: 18,
                   // borderWidth: 1.5,
-                  // borderColor: '#D56AAC',
+                  // borderColor: '#fe5e75',
                   height: 30,
                   width: 70,
                   borderRadius: 15,
@@ -235,10 +235,10 @@ const InvitePage = () => {
                 style={{
                   textAlign: 'center',
                   marginTop: 30,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                   borderWidth: 1.5,
-                  borderColor: '#D56AAC',
+                  borderColor: '#fe5e75',
                   height: 30,
                   width: 70,
                   borderRadius: 15,
@@ -271,10 +271,10 @@ const InvitePage = () => {
                 style={{
                   textAlign: 'center',
                   marginTop: 30,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                   borderWidth: 1.5,
-                  borderColor: '#D56AAC',
+                  borderColor: '#fe5e75',
                   height: 30,
                   width: 70,
                   borderRadius: 15,
@@ -307,10 +307,10 @@ const InvitePage = () => {
                 style={{
                   textAlign: 'center',
                   marginTop: 30,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                   borderWidth: 1.5,
-                  borderColor: '#D56AAC',
+                  borderColor: '#fe5e75',
                   height: 30,
                   width: 70,
                   borderRadius: 15,
@@ -343,10 +343,10 @@ const InvitePage = () => {
                 style={{
                   textAlign: 'center',
                   marginTop: 30,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                   borderWidth: 1.5,
-                  borderColor: '#D56AAC',
+                  borderColor: '#fe5e75',
                   height: 30,
                   width: 70,
                   borderRadius: 15,

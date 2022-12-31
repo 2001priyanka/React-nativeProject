@@ -12,7 +12,7 @@ import {
   Button,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Home1 = () => {
   const navigation = useNavigation();
@@ -70,30 +70,66 @@ const Home1 = () => {
               />
             </View>
           </ScrollView>
-          <View>
+          <View
+            style={{
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+              }}>
+              <Text
+                style={{
+                  fontSize: 25,
+                  fontWeight: '600',
+                  textAlign: 'center',
+                  color: 'black',
+                  marginTop: 30,
+                }}>
+                Find People who
+              </Text>
+              <Text
+                style={{
+                  color: '#fe5e75',
+                  fontSize: 25,
+
+                  marginLeft: 10,
+                  fontWeight: '600',
+                  color: '#fe5e75',
+                  marginTop: 30,
+                }}>
+                match
+              </Text>
+            </View>
+
             <Text
               style={{
                 fontSize: 25,
-                padding: 40,
-                margin: 20,
+                fontWeight: '600',
                 textAlign: 'center',
                 color: 'black',
-                marginTop: 30,
               }}>
-              Find People who <Text style={{color: '#D56AAC'}}>match</Text> with
-              you
+              with you
             </Text>
           </View>
           <View>
             <Text
-              style={{textAlign: 'center', marginTop: 100, color: '#D56AAC'}}>
+              style={{
+                textAlign: 'center',
+                marginTop: 100,
+                color: '#fe5e75',
+                fontWeight: '600',
+              }}>
               Skip
             </Text>
           </View>
           <TouchableOpacity>
             <View
               style={{
-                backgroundColor: '#D56AAC',
+                backgroundColor: '#fe5e75',
                 height: 50,
                 margin: 20,
                 borderRadius: 30,

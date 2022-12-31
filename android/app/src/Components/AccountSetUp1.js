@@ -25,10 +25,7 @@ const AccountSetUp1 = () => {
   const onNextPressed12 = () => {
     navigation.navigate('AccountSetUp2');
   };
-  const [msgs, setMsgs] = useState([
-   
-    
-  ]);
+  const [msgs, setMsgs] = useState([]);
   const [text, onChangeText] = React.useState(null);
   const _renderItem = ({item, index}) => {
     return (
@@ -68,7 +65,7 @@ const AccountSetUp1 = () => {
                 style={{
                   textAlign: 'center',
                   alignSelf: 'center',
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   marginTop: 10,
                 }}>
                 <IconFa name="circle-outline" style={{fontSize: 20}} />
@@ -88,7 +85,7 @@ const AccountSetUp1 = () => {
             <Text style={styles.upperSection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{paddingLeft: 10, color: 'black'}}>
                 Fill Your Profile
@@ -115,7 +112,16 @@ const AccountSetUp1 = () => {
           </View>
           <View style={styles.input}>
             <View>
-              <Text style={{color: 'black', fontSize: 15}}>Email:</Text>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                  marginTop: 5,
+                }}>
+                Email:
+              </Text>
               <TextInput
                 style={styles.input2}
                 placeholder="Email"
@@ -125,17 +131,35 @@ const AccountSetUp1 = () => {
             </View>
 
             <View>
-              <Text style={{color: 'black', fontSize: 15}}>password:</Text>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                  marginTop: 5,
+                }}>
+                Password:
+              </Text>
 
               <TextInput
                 style={styles.input2}
-                placeholder="password"
+                placeholder="Password"
                 editable
                 maxLength={40}
               />
             </View>
             <View>
-              <Text style={{color: 'black', fontSize: 15}}>Phone Number:</Text>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                  marginTop: 5,
+                }}>
+                Phone Number:
+              </Text>
 
               <TextInput
                 style={styles.input2}
@@ -145,7 +169,16 @@ const AccountSetUp1 = () => {
               />
             </View>
             <View>
-              <Text style={{color: 'black', fontSize: 15}}>Gender:</Text>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                  marginTop: 5,
+                }}>
+                Gender:
+              </Text>
 
               <TextInput
                 style={styles.input2}
@@ -155,7 +188,16 @@ const AccountSetUp1 = () => {
               />
             </View>
             <View>
-              <Text style={{color: 'black', fontSize: 15}}>Location:</Text>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                  marginTop: 5,
+                }}>
+                Location:
+              </Text>
 
               <TextInput
                 style={styles.input2}
@@ -165,12 +207,11 @@ const AccountSetUp1 = () => {
               />
             </View>
           </View>
-          
 
           <FlatList data={msgs} renderItem={_renderItem} />
           <View
             style={{
-              backgroundColor: '#D56AAC',
+              backgroundColor: '#fe5e75',
               height: 50,
               margin: 20,
               borderRadius: 30,
@@ -181,7 +222,8 @@ const AccountSetUp1 = () => {
                 marginTop: 10,
                 color: 'white',
                 fontSize: 20,
-              }} onPress={onNextPressed12}>
+              }}
+              onPress={onNextPressed12}>
               Next
             </Text>
           </View>
@@ -200,7 +242,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
     padding: 5,
-    borderWidth: 0.25,
+    borderWidth: 1,
+    borderColor: '#B3B0B0',
+
     borderRadius: 10,
     margin: 15,
   },

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import {
   ScrollView,
@@ -59,10 +59,60 @@ const InboxPage = () => {
     },
   ]);
   const [text, onChangeText] = React.useState(null);
-  const _renderItem = ({item,index}) => {
+  const _renderItem = ({item, index}) => {
     return (
       <View style={styles.uppersection1}>
-        <View>
+        <View
+          className="andar wala container row rahega"
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}>
+          <View className="image ayega">
+            <Image
+              source={{
+                uri: item.img,
+              }}
+              style={{
+                height: 70,
+                width: 70,
+                borderRadius: 35,
+              }}
+            />
+          </View>
+          <View
+            className="name and msg column"
+            style={{alignSelf: 'flex-start', alignContent: 'flex-start'}}>
+            <Text style={{fontSize: 18, color: 'black', marginTop: 10}}>
+              {item.name}
+            </Text>
+            <Text style={{fontSize: 15}}>{item.msg}</Text>
+          </View>
+          <View className="messages and rate, ye bhi col rahega" style={{}}>
+            <View
+              style={{
+                backgroundColor: '#fe5e75',
+                borderWidth: 1.5,
+                borderColor: '#fe5e75',
+                height: 30,
+                width: 30,
+                borderRadius: 15,
+              }}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  alignSelf: 'center',
+
+                  color: 'white',
+                }}>
+                {item.new}
+              </Text>
+            </View>
+            <Text style={{fontSize: vf(1.8), marginTop: 5}}>{item.time}</Text>
+          </View>
+        </View>
+        {/* <View>
           <Image
             source={{
               uri: item.img,
@@ -70,23 +120,23 @@ const InboxPage = () => {
             style={{
               height: 70,
               width: 70,
-              borderRadius: 40,
+              borderRadius: 35,
             }}
           />
-        </View>
-        <View>
+        </View> */}
+        {/* <View>
           <Text style={{fontSize: 18, color: 'black', marginTop: 20}}>
             {item.name}
           </Text>
           <Text style={{fontSize: 15}}>{item.msg}</Text>
-        </View>
+        </View> */}
         <View>
-          {item.new && 
+          {/* {item.new && (
             <View
               style={{
-                backgroundColor: '#D56AAC',
+                backgroundColor: '#fe5e75',
                 borderWidth: 1.5,
-                borderColor: '#D56AAC',
+                borderColor: '#fe5e75',
                 height: 30,
                 width: 30,
                 borderRadius: 40,
@@ -104,8 +154,8 @@ const InboxPage = () => {
                 {item.new}
               </Text>
             </View>
-          }
-          <Text style={{marginTop: 10, fontSize: 18}}>{item.time}</Text>
+          )} */}
+          {/* <Text style={{marginTop: 10, fontSize: 18}}>{item.time}</Text> */}
         </View>
       </View>
     );
@@ -116,15 +166,14 @@ const InboxPage = () => {
         <View>
           <View style={styles.uppersection}>
             <View style={styles.uppersection}>
-              <View>
-                <IconFa
-                  name="heart-multiple"
-                  style={{fontSize: 30, color: '#D56AAC'}}
-                />
-              </View>
+              <IconFa
+                name="heart-multiple"
+                style={{fontSize: 30, color: '#fe5e75'}}
+              />
+              <View></View>
               <View>
                 <Text style={{fontSize: 20, paddingLeft: 10, color: 'black'}}>
-                  Profile
+                  Inbox
                 </Text>
               </View>
             </View>
@@ -141,7 +190,7 @@ const InboxPage = () => {
                   name="playlist-edit"
                   style={{
                     fontSize: 30,
-                    color: '#D56AAC',
+                    color: '#fe5e75',
                   }}
                 />
               </View>
@@ -157,7 +206,7 @@ const InboxPage = () => {
                   style={{
                     fontSize: 25,
                     // paddingLeft: 10,
-                    color: '#D56AAC',
+                    color: '#fe5e75',
                     paddingLeft: 25,
                   }}
                 />
@@ -183,20 +232,20 @@ const InboxPage = () => {
               }}
             />
           </View>
-          <FlatList data={msgs} renderItem={_renderItem}/>
+          <FlatList data={msgs} renderItem={_renderItem} />
           <View style={styles.uppersection3}>
             <View>
-              <IconFa name="home" style={{fontSize: 25, color: '#D56AAC'}} />
+              <IconFa name="home" style={{fontSize: 25, color: '#fe5e75'}} />
             </View>
             <View>
-              <IconFa name="map" style={{fontSize: 25, color: '#D56AAC'}} />
+              <IconFa name="map" style={{fontSize: 25, color: '#fe5e75'}} />
             </View>
             <View>
-              <IconFa name="heart" style={{fontSize: 25, color: '#D56AAC'}} />
+              <IconFa name="heart" style={{fontSize: 25, color: '#fe5e75'}} />
             </View>
             <View
               style={{
-                backgroundColor: '#D56AAC',
+                backgroundColor: '#fe5e75',
                 justifyContent: 'center',
                 borderRadius: 20,
                 height: 35,
@@ -208,7 +257,7 @@ const InboxPage = () => {
               />
             </View>
             <View>
-              <IconFa name="account" style={{fontSize: 25, color: '#D56AAC'}} />
+              <IconFa name="account" style={{fontSize: 25, color: '#fe5e75'}} />
             </View>
           </View>
         </View>
@@ -223,13 +272,16 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   uppersection1: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
     marginTop: 10,
     padding: 5,
-    borderWidth: 0.25,
-    borderRadius: 10,
+    borderWidth: 1,
+    borderRadius: 20,
     margin: 15,
+    borderColor: '#B3B0B0',
+
+    height: vh(10),
   },
   uppersection3: {
     flexDirection: 'row',

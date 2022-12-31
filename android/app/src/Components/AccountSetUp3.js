@@ -19,10 +19,10 @@ import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const AccountSetUp3 = () => {
- const navigation = useNavigation();
- const onNextPressed14 = () => {
-   navigation.navigate('ProfilePage');
- };
+  const navigation = useNavigation();
+  const onNextPressed14 = () => {
+    navigation.navigate('ProfilePage');
+  };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -31,13 +31,13 @@ const AccountSetUp3 = () => {
             <Text style={styles.uppersection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{color: 'black', fontSize: 25}}>Ideal Match</Text>
             </Text>
           </View>
           <View>
-            <Text style={{fontSize: 18, color: 'black',marginTop:20}}>
+            <Text style={{fontSize: 18, color: 'black', marginTop: 20}}>
               What are you hoping to find on the DatingApp?
             </Text>
           </View>
@@ -46,7 +46,7 @@ const AccountSetUp3 = () => {
               <Text
                 style={{
                   textAlign: 'center',
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                 }}>
                 <View
@@ -61,7 +61,7 @@ const AccountSetUp3 = () => {
                     style={{
                       fontSize: 30,
                       marginTop: 15,
-                      color: '#D56AAC',
+                      color: '#fe5e75',
                       marginLeft: 15,
                     }}
                   />
@@ -75,7 +75,7 @@ const AccountSetUp3 = () => {
               <Text
                 style={{
                   textAlign: 'center',
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                 }}>
                 <View
@@ -90,7 +90,7 @@ const AccountSetUp3 = () => {
                     style={{
                       fontSize: 30,
                       marginTop: 15,
-                      color: '#D56AAC',
+                      color: '#fe5e75',
                       marginLeft: 15,
                     }}
                   />
@@ -106,7 +106,7 @@ const AccountSetUp3 = () => {
               <Text
                 style={{
                   textAlign: 'center',
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                 }}>
                 <View
@@ -121,7 +121,7 @@ const AccountSetUp3 = () => {
                     style={{
                       fontSize: 30,
                       marginTop: 15,
-                      color: '#D56AAC',
+                      color: '#fe5e75',
                       marginLeft: 15,
                     }}
                   />
@@ -135,7 +135,7 @@ const AccountSetUp3 = () => {
               <Text
                 style={{
                   textAlign: 'center',
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   fontSize: 18,
                 }}>
                 <View
@@ -150,7 +150,7 @@ const AccountSetUp3 = () => {
                     style={{
                       fontSize: 30,
                       marginTop: 15,
-                      color: '#D56AAC',
+                      color: '#fe5e75',
                       marginLeft: 15,
                     }}
                   />
@@ -163,11 +163,11 @@ const AccountSetUp3 = () => {
           </View>
           <View
             style={{
-              backgroundColor: '#D56AAC',
+              backgroundColor: '#fe5e75',
               height: 50,
               margin: 20,
               borderRadius: 30,
-              marginTop:150,
+              marginTop: 150,
             }}>
             <Text
               style={{
@@ -175,7 +175,8 @@ const AccountSetUp3 = () => {
                 marginTop: 12,
                 color: 'white',
                 fontSize: 20,
-              }} onPress={onNextPressed14}>
+              }}
+              onPress={onNextPressed14}>
               Next
             </Text>
           </View>
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1.4,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     padding: 10,
     borderRadius: 20,
   },
@@ -204,7 +205,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1.5,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     padding: 10,
     borderRadius: 20,
     width: 150,
@@ -215,7 +216,7 @@ const styles = StyleSheet.create({
     width: vw(40),
     borderWidth: 2,
     borderRadius: 20,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -235,8 +236,6 @@ const styles = StyleSheet.create({
   },
 });
 export default AccountSetUp3;
-
-
 
 // import React, {useState} from 'react';
 // import {Button, StatusBar, StyleSheet, Text, View, Image} from 'react-native';
@@ -270,7 +269,7 @@ export default AccountSetUp3;
 //             <View>
 //               <IconFa
 //                 name="heart-multiple"
-//                 style={{fontSize: 30, color: '#D56AAC'}}
+//                 style={{fontSize: 30, color: '#fe5e75'}}
 //               />
 //             </View>
 //             <View>
@@ -292,7 +291,7 @@ export default AccountSetUp3;
 //                 name="playlist-edit"
 //                 style={{
 //                   fontSize: 30,
-//                   color: '#D56AAC',
+//                   color: '#fe5e75',
 //                 }}
 //               />
 //             </View>
@@ -308,7 +307,7 @@ export default AccountSetUp3;
 //                 style={{
 //                   fontSize: 25,
 //                   // paddingLeft: 10,
-//                   color: '#D56AAC',
+//                   color: '#fe5e75',
 //                   paddingLeft: 25,
 //                 }}
 //               />
@@ -345,7 +344,7 @@ export default AccountSetUp3;
 //               name="account"
 //               style={{
 //                 fontSize: 20,
-//                 color: '#D56AAC',
+//                 color: '#fe5e75',
 //                 marginLeft: 10,
 //                 marginTop: 5,
 //               }}
@@ -359,7 +358,7 @@ export default AccountSetUp3;
 //           <View>
 //             <IconFa
 //               name="chevron-right"
-//               style={{fontSize: 20, color: '#D56AAC'}}
+//               style={{fontSize: 20, color: '#fe5e75'}}
 //             />
 //           </View>
 //         </View>
@@ -375,7 +374,7 @@ export default AccountSetUp3;
 //               name="bell"
 //               style={{
 //                 fontSize: 20,
-//                 color: '#D56AAC',
+//                 color: '#fe5e75',
 //                 marginLeft: 10,
 //                 marginTop: 5,
 //               }}
@@ -389,7 +388,7 @@ export default AccountSetUp3;
 //           <View>
 //             <IconFa
 //               name="chevron-right"
-//               style={{fontSize: 20, color: '#D56AAC'}}
+//               style={{fontSize: 20, color: '#fe5e75'}}
 //             />
 //           </View>
 //         </View>
@@ -405,7 +404,7 @@ export default AccountSetUp3;
 //               name="lock"
 //               style={{
 //                 fontSize: 20,
-//                 color: '#D56AAC',
+//                 color: '#fe5e75',
 //                 marginLeft: 10,
 //                 marginTop: 5,
 //               }}
@@ -419,7 +418,7 @@ export default AccountSetUp3;
 //           <View>
 //             <IconFa
 //               name="chevron-right"
-//               style={{fontSize: 20, color: '#D56AAC'}}
+//               style={{fontSize: 20, color: '#fe5e75'}}
 //             />
 //           </View>
 //         </View>
@@ -435,7 +434,7 @@ export default AccountSetUp3;
 //               name="eye"
 //               style={{
 //                 fontSize: 20,
-//                 color: '#D56AAC',
+//                 color: '#fe5e75',
 //                 marginLeft: 10,
 //                 marginTop: 5,
 //               }}
@@ -465,7 +464,7 @@ export default AccountSetUp3;
 //               name="account-multiple"
 //               style={{
 //                 fontSize: 20,
-//                 color: '#D56AAC',
+//                 color: '#fe5e75',
 //                 marginLeft: 10,
 //                 marginTop: 5,
 //               }}
@@ -479,7 +478,7 @@ export default AccountSetUp3;
 //           <View>
 //             <IconFa
 //               name="chevron-right"
-//               style={{fontSize: 20, color: '#D56AAC'}}
+//               style={{fontSize: 20, color: '#fe5e75'}}
 //             />
 //           </View>
 //         </View>
@@ -495,7 +494,7 @@ export default AccountSetUp3;
 //               name="logout"
 //               style={{
 //                 fontSize: 20,
-//                 color: '#D56AAC',
+//                 color: '#fe5e75',
 //                 marginLeft: 10,
 //                 marginTop: 5,
 //               }}
@@ -511,22 +510,22 @@ export default AccountSetUp3;
 //         </View>
 //         <View style={styles.uppersection}>
 //           <View>
-//             <IconFa name="home" style={{fontSize: 25, color: '#D56AAC'}} />
+//             <IconFa name="home" style={{fontSize: 25, color: '#fe5e75'}} />
 //           </View>
 //           <View>
-//             <IconFa name="map" style={{fontSize: 25, color: '#D56AAC'}} />
+//             <IconFa name="map" style={{fontSize: 25, color: '#fe5e75'}} />
 //           </View>
 //           <View>
-//             <IconFa name="heart" style={{fontSize: 25, color: '#D56AAC'}} />
+//             <IconFa name="heart" style={{fontSize: 25, color: '#fe5e75'}} />
 //           </View>
 //           <View>
 //             <IconFa
 //               name="message-bulleted"
-//               style={{fontSize: 25, color: '#D56AAC'}}
+//               style={{fontSize: 25, color: '#fe5e75'}}
 //             />
 //           </View>
 //           <View>
-//             <IconFa name="account" style={{fontSize: 25, color: '#D56AAC'}} />
+//             <IconFa name="account" style={{fontSize: 25, color: '#fe5e75'}} />
 //           </View>
 //         </View>
 //       </View>
@@ -550,7 +549,7 @@ export default AccountSetUp3;
 //             <View>
 //               <IconFa
 //                 name="logout"
-//                 style={{fontSize: 40, marginTop: 30, color: '#D56AAC'}}
+//                 style={{fontSize: 40, marginTop: 30, color: '#fe5e75'}}
 //               />
 //             </View>
 //             <Text style={styles.text}>Are you sure want to logout</Text>
@@ -560,7 +559,7 @@ export default AccountSetUp3;
 //                 <Text
 //                   style={{
 //                     textAlign: 'center',
-//                     color: '#D56AAC',
+//                     color: '#fe5e75',
 //                   }}>
 //                   Cancel
 //                 </Text>
@@ -633,9 +632,9 @@ export default AccountSetUp3;
 //     fontSize: 15,
 //     height: 50,
 //     width: vh(15),
-//     backgroundColor: '#D56AAC',
+//     backgroundColor: '#fe5e75',
 //     borderRadius: 30,
-//     borderColor: '#D56AAC',
+//     borderColor: '#fe5e75',
 //     flexDirection: 'column',
 //     justifyContent: 'center',
 //     alignItems: 'center',
@@ -647,7 +646,7 @@ export default AccountSetUp3;
 //     width: vh(15),
 //     borderWidth: 2,
 //     borderRadius: 30,
-//     borderColor: '#D56AAC',
+//     borderColor: '#fe5e75',
 //     flexDirection: 'column',
 //     justifyContent: 'center',
 //     alignItems: 'center',

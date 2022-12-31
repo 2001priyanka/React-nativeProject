@@ -23,7 +23,7 @@ const NotificationPage = () => {
             <Text style={styles.uppersection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{color: 'black', fontSize: 30}}>Notification</Text>
             </Text>
@@ -35,7 +35,7 @@ const NotificationPage = () => {
             <View>
               <IconFa
                 name="toggle-switch"
-                style={{fontSize: 50, color: '#D56AAC'}}
+                style={{fontSize: 50, color: '#fe5e75'}}
               />
             </View>
           </View>
@@ -46,7 +46,7 @@ const NotificationPage = () => {
             <View>
               <IconFa
                 name="toggle-switch"
-                style={{fontSize: 50, color: '#D56AAC'}}
+                style={{fontSize: 50, color: '#fe5e75'}}
               />
             </View>
           </View>
