@@ -63,13 +63,12 @@ const InboxPage = () => {
     return (
       <View style={styles.uppersection1}>
         <View
-          className="andar wala container row rahega"
           style={{
             flexDirection: 'row',
             justifyContent: 'space-around',
             alignItems: 'center',
           }}>
-          <View className="image ayega">
+          <View>
             <Image
               source={{
                 uri: item.img,
@@ -81,15 +80,13 @@ const InboxPage = () => {
               }}
             />
           </View>
-          <View
-            className="name and msg column"
-            style={{alignSelf: 'flex-start', alignContent: 'flex-start'}}>
+          <View style={{alignSelf: 'flex-start', alignContent: 'flex-start'}}>
             <Text style={{fontSize: 18, color: 'black', marginTop: 10}}>
               {item.name}
             </Text>
             <Text style={{fontSize: 15}}>{item.msg}</Text>
           </View>
-          <View className="messages and rate, ye bhi col rahega" style={{}}>
+          <View>
             <View
               style={{
                 backgroundColor: '#fe5e75',
