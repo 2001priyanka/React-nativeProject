@@ -23,9 +23,11 @@ const SecurityPage = () => {
             <Text style={styles.uppersection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#fe5e75'}}
+                style={{fontSize: 25, color: '#fe5e75', paddingLeft: 30}}
               />
-              <Text style={{color: 'black', fontSize: 30}}>Security</Text>
+              <Text style={{color: 'black', fontSize: 30, paddingLeft: 30}}>
+                Security
+              </Text>
             </Text>
           </View>
           <View style={styles.uppersection}>
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,
-    paddingLeft: 30,
+    paddingLeft: 40,
     padding: 20,
   },
 });

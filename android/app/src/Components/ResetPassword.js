@@ -26,7 +26,7 @@ const ResetPassword = () => {
             <Text style={styles.upperSection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{paddingLeft: 10, color: 'black'}}>
                 Reset Password
@@ -79,7 +79,7 @@ const ResetPassword = () => {
             </View>
           </View>
           <View style={{}}>
-            <Text style={{color: 'black', fontSize: 15, textAlign: 'center'}}>
+            <Text style={{color: 'black', fontSize: 15,marginLeft:40}}>
               <IconFa name="checkbox-blank-outline" style={{fontSize: 20}} />
               Remember me
             </Text>
@@ -87,7 +87,7 @@ const ResetPassword = () => {
           <TouchableOpacity>
             <View
               style={{
-                backgroundColor: '#D56AAC',
+                backgroundColor: '#fe5e75',
                 height: 50,
                 margin: 20,
                 borderRadius: 30,

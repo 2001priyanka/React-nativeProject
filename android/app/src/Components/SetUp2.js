@@ -11,6 +11,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
+import {
+  responsiveHeight as vh,
+  responsiveWidth as vw,
+  responsiveFontSize as vf,
+} from 'react-native-responsive-dimensions';
 
 const SetUp2 = () => {
   const navigation = useNavigation();
@@ -30,18 +35,16 @@ const SetUp2 = () => {
                 uri: 'https://i.dlpng.com/static/png/6509551_preview.png',
               }}
               style={{
-                height: 450,
-                width: 450,
+                height: vh(60),
+                width: vw(80),
                 borderRadius: 10,
-                // marginLeft: 100,
-                // marginRight: 40,
-                marginTop: 100,
                 alignSelf: 'center',
               }}
             />
           </View>
           <View>
-            <Text style={{textAlign: 'center', fontSize: 25, color: '#D56AAC'}}>
+            <Text
+              style={{textAlign: 'center', fontSize: vf(4), color: '#fe5e75'}}>
               Congratulations!
             </Text>
           </View>
@@ -49,7 +52,7 @@ const SetUp2 = () => {
             <Text
               style={{
                 textAlign: 'center',
-                fontSize: 20,
+                fontSize: vf(3),
                 marginTop: 20,
                 color: 'black',
               }}>
@@ -58,7 +61,7 @@ const SetUp2 = () => {
           </View>
           <View
             style={{
-              backgroundColor: '#D56AAC',
+              backgroundColor: '#fe5e75',
               height: 50,
               margin: 20,
               borderRadius: 30,
@@ -68,11 +71,12 @@ const SetUp2 = () => {
                 textAlign: 'center',
                 // height: 40,
                 // width: 100,
-                marginTop: 12,
+                marginTop: vf(1),
                 color: 'white',
                 fontSize: 20,
-              }} onPress={onNextPressed9}>
-             Go to HomePage
+              }}
+              onPress={onNextPressed9}>
+              Go to HomePage
             </Text>
           </View>
         </View>

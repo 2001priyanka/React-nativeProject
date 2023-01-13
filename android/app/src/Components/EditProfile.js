@@ -1,4 +1,4 @@
-// import React from 'react';
+import React , {useState, useEffect}from 'react';
 
 import {
   SafeAreaView,
@@ -12,9 +12,72 @@ import {
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
+import {useSelector} from 'react-redux';
+import { API_URL } from '../../../../Config';
+import axios from 'axios';
 
 const EditProfile = () => {
-  // const [text, onChangeText] = React.useState(null);
+  const [userData, setUsersData] = useState({
+    name: '',
+    email: '',
+    address1: '',
+    mobile: '',
+    gender: '',
+    age: '',
+    intrest: '',
+    about: '',
+  });
+  const token = useSelector(reduxState => reduxState?.login?.user?.accessToken
+  );
+  console.log('token',token);
+
+  const getUsersData = async () => {
+    if (token) {
+      console.log('token',token)
+      try {
+        const res = await axios({
+          url: API_URL + 'user/user/getProfile',
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (res) {
+          console.log('users data in edit profile', res?.data?.user);
+          setUsersData(res?.data?.user);
+         
+        }
+      } catch (error) {
+        console.log('profile data error', error);
+      }
+    }
+  };
+  const updateProfile = async()=>{
+    if(token){
+       console.log('token',token)
+      try {
+        const res = await axios({
+          url: API_URL + '/user/user/',
+          method:'PUT',
+          data:{
+            ...userData,
+          }, 
+         headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if(res){
+          console.log('update users res', res);
+        }
+      } catch (error) {
+        console.log('edit profile error' ,error)
+      }
+    }
+  }
+  useEffect(()=>{
+    getUsersData();
+  },[token]);
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -37,6 +100,14 @@ const EditProfile = () => {
                 placeholder="Full Name"
                 editable
                 maxLength={40}
+                onChangeText={e => {
+                  console.log(e);
+                  setUsersData({
+                    ...userData,
+                    name: e,
+                  });
+                }}
+                value={userData?.name}
               />
             </View>
           </View>
@@ -49,6 +120,14 @@ const EditProfile = () => {
                 placeholder="Email"
                 editable
                 maxLength={40}
+                onChangeText={e => {
+                  console.log(e);
+                  setUsersData({
+                    ...userData,
+                    email: e,
+                  });
+                }}
+                value={userData?.email}
               />
             </View>
           </View>
@@ -61,6 +140,14 @@ const EditProfile = () => {
                 placeholder="Phone Number"
                 editable
                 maxLength={40}
+                onChangeText={e => {
+                  console.log(e);
+                  setUsersData({
+                    ...userData,
+                    mobile: e,
+                  });
+                }}
+                value={userData?.mobile}
               />
             </View>
           </View>
@@ -75,17 +162,32 @@ const EditProfile = () => {
                   placeholder="Gender"
                   editable
                   maxLength={40}
+                  onChangeText={e => {
+                    console.log(e);
+                    setUsersData({
+                      ...userData,
+                      gender: e,
+                    });
+                  }}
+                  value={userData?.gender}
                 />
               </View>
               <View>
                 <View>
                   <Text style={{color: 'black', fontSize: 15}}>Age:</Text>
-
                   <TextInput
                     style={styles.input1}
                     placeholder="Age"
                     editable
                     maxLength={40}
+                    onChangeText={e => {
+                      console.log(e);
+                      setUsersData({
+                        ...userData,
+                        age: e,
+                      });
+                    }}
+                    value={userData?.age}
                   />
                 </View>
               </View>
@@ -99,6 +201,14 @@ const EditProfile = () => {
                   placeholder="About"
                   editable
                   maxLength={40}
+                  onChangeText={e => {
+                    console.log(e);
+                    setUsersData({
+                      ...userData,
+                      about: e,
+                    });
+                  }}
+                  value={userData?.about}
                 />
               </View>
             </View>
@@ -111,6 +221,14 @@ const EditProfile = () => {
                   placeholder="Intrest"
                   editable
                   maxLength={40}
+                  onChangeText={e => {
+                    console.log(e);
+                    setUsersData({
+                      ...userData,
+                      intrest: e,
+                    });
+                  }}
+                  value={userData?.intrest}
                 />
               </View>
             </View>
@@ -123,33 +241,38 @@ const EditProfile = () => {
                   placeholder="Address"
                   editable
                   maxLength={40}
+                  onChangeText={e => {
+                    console.log(e);
+                    setUsersData({
+                      ...userData,
+                      address1: e,
+                    });
+                  }}
+                  value={userData?.address1}
                 />
               </View>
             </View>
           </View>
-          <View
-            style={{
-              backgroundColor: '#fe5e75',
-              // borderWidth: 2,
-              // borderColor: '#fe5e75',
-              height: 50,
-              margin: 20,
-              borderRadius: 30,
-              // backgroundColor: '',
-              opacity: 0.7,
-            }}>
-            <Text
+          <TouchableOpacity>
+            <View
               style={{
-                textAlign: 'center',
-                // height: 40,
-                // width: 100,
-                marginTop: 12,
-                color: 'white',
-                fontSize: 18,
+                backgroundColor: '#fe5e75',
+                height: 50,
+                margin: 20,
+                borderRadius: 30,
               }}>
-              Save Change
-            </Text>
-          </View>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  marginTop: 12,
+                  color: 'white',
+                  fontSize: 18,
+                }}
+                onPress={updateProfile}>
+                Save Change
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

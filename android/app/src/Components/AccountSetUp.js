@@ -34,7 +34,7 @@ const AccountSetUp = () => {
     },
     {
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
-      name: 'India',
+      name: 'America',
       msg: 'IN',
       new: 1,
     },
@@ -85,43 +85,14 @@ const AccountSetUp = () => {
                 <Text style={{fontSize: 18, color: 'black'}}>{item.name}</Text>
               </View>
               <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                <IconFa name="circle-outline" style={{fontSize: 20}} />
+                <IconFa
+                  name="circle-outline"
+                  style={{fontSize: 20, color: '#fe5e75'}}
+                />
               </View>
             </View>
           </View>
         </View>
-        {/* <View>
-          <Text style={{fontSize: 15, marginTop: 20}}>{item.msg}</Text>
-        </View>
-        <View>
-          <Text style={{fontSize: 18, color: 'black', marginTop: 20}}>
-            {item.name}
-          </Text>
-        </View> */}
-        {/* <View>
-          {item.new && (
-            <View
-              style={{
-                height: 30,
-                width: 30,
-                borderRadius: 40,
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  alignSelf: 'center',
-                  color: '#fe5e75',
-                  marginTop: 10,
-                }}>
-                <IconFa name="circle-outline" style={{fontSize: 20}} />
-              </Text>
-            </View>
-          )}
-          <Text style={{marginTop: 10, fontSize: 18}}>{item.time}</Text>
-        </View> */}
       </View>
     );
   };

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
   ScrollView,
@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import {
   responsiveHeight as vh,
   responsiveWidth as vw,
@@ -18,15 +19,63 @@ import {
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SearchBar} from 'react-native-elements';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {Icon, Input} from 'react-native-elements'; 
+import { API_URL } from '../../../../Config';
+import axios from 'axios';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const AccountSetUp1 = () => {
+  const token = useSelector(reduxState => reduxState?.signin?.user?.accessToken)
+  console.log(token)
   const navigation = useNavigation();
   const onNextPressed12 = () => {
-    navigation.navigate('AccountSetUp2');
+    navigation.navigate('PhotoScreen');
   };
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  const [email,setEmail] = useState('');
+  const [gender, setGender] = useState('');
+  const [location, setLocation] = useState('');
   const [msgs, setMsgs] = useState([]);
   const [text, onChangeText] = React.useState(null);
+
+  // const submitHandler = async() =>{
+  //   console.log({
+  //     name,
+  //     email,
+  //     number,
+  //     gender,
+  //     location,
+  //   });
+  //   try {
+  //     const usersData = await axios({
+  //       url: API_URL + 'user/user/getProfile',
+  //       method: 'POST',
+  //       data: {
+  //         name,
+  //         email,
+  //         number,
+  //         gender,
+  //         location,
+  //         role: 'user',
+  //       },
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     if(usersData){
+  //       console.log('usersData', usersData);
+  //       if(usersData?.data?.success){
+  //         console.log('usersData?.data',usersData?.data)
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.log('ERROR' ,error)
+  //   }
+  // }
+  // useEffect(()=>{
+    
+  // },[token]);
   const _renderItem = ({item, index}) => {
     return (
       <View style={styles.uppersection1}>
@@ -36,14 +85,14 @@ const AccountSetUp1 = () => {
               uri: item.img,
             }}
             style={{
-              height: 70,
+              height: vh(20),
               width: 70,
               borderRadius: 40,
             }}
           />
         </View>
         <View>
-          <Text style={{fontSize: 15, marginTop: 20}}>{item.msg}</Text>
+          <Text style={{fontSize: 15, marginTop:10}}>{item.msg}</Text>
         </View>
         <View>
           <Text style={{fontSize: 18, color: 'black', marginTop: 20}}>
@@ -92,119 +141,261 @@ const AccountSetUp1 = () => {
               </Text>
             </Text>
           </View>
-          <View>
-            <Image
-              source={{
-                uri: 'https://i.pinimg.com/236x/47/5a/86/475a86177aeedacf8dc7f5e2b4eff61f.jpg',
-              }}
-              style={{
-                height: 100,
-                width: 100,
-                borderRadius: 100,
-                marginTop: 20,
-                alignSelf: 'center',
-              }}
-            />
 
-            <Text style={{textAlign: 'center', fontSize: 20, color: 'black'}}>
-              Adam Smith
-            </Text>
+          <View style={{alignSelf: 'center'}}>
+            <View>
+              <Image
+                source={{
+                  uri: 'https://i.pinimg.com/236x/47/5a/86/475a86177aeedacf8dc7f5e2b4eff61f.jpg',
+                }}
+                style={{
+                  height: vh(15),
+                  width: vw(30),
+                  borderRadius: 100,
+                  // marginTop: 20,
+                  alignSelf: 'center',
+                }}
+              />
+            </View>
+            <View
+              style={{
+                backgroundColor: '#fe5e75',
+                position: 'absolute',
+                justifyContent: 'center',
+                alignSelf: 'center',
+                bottom: 0,
+                right: 0,
+                width: vw(6.5),
+                height: vh(3.5),
+                borderRadius: 10,
+                color: 'white',
+                paddingLeft: 3,
+              }}>
+              <IconFa
+                name="square-edit-outline"
+                style={{fontSize: vf(2.5), color: 'white'}}
+              />
+            </View>
           </View>
+          <Text style={{textAlign: 'center', fontSize: 20, color: 'black'}}>
+            Adam Smith
+          </Text>
           <View style={styles.input}>
             <View>
-              <Text
-                style={{
-                  alignSelf: 'flex-start',
-                  marginLeft: 25,
-                  flexDirection: 'row',
-                  fontWeight: '500',
-                  marginTop: 5,
-                }}>
-                Email:
-              </Text>
-              <TextInput
-                style={styles.input2}
-                placeholder="Email"
-                editable
-                maxLength={40}
-              />
-            </View>
+              <View>
+                <Text
+                  style={{
+                    alignSelf: 'flex-start',
+                    marginLeft: 25,
+                    flexDirection: 'row',
+                    fontWeight: '500',
+                    marginTop: 5,
+                  }}>
+                  Full Name:
+                </Text>
+              </View>
 
-            <View>
-              <Text
+              <View
                 style={{
-                  alignSelf: 'flex-start',
-                  marginLeft: 25,
+                  flex: 1,
                   flexDirection: 'row',
-                  fontWeight: '500',
-                  marginTop: 5,
+                  justifyContent: 'space-around',
+                  margin: 12,
+                  borderWidth: 0.5,
+                  height: vh(5),
+                  // padding: 10,
+                  borderRadius: 20,
                 }}>
-                Password:
-              </Text>
-
-              <TextInput
-                style={styles.input2}
-                placeholder="Password"
-                editable
-                maxLength={40}
-              />
-            </View>
-            <View>
-              <Text
-                style={{
-                  alignSelf: 'flex-start',
-                  marginLeft: 25,
-                  flexDirection: 'row',
-                  fontWeight: '500',
-                  marginTop: 5,
-                }}>
-                Phone Number:
-              </Text>
-
-              <TextInput
-                style={styles.input2}
-                placeholder="Phone Number"
-                editable
-                maxLength={40}
-              />
+                <View>
+                  <TextInput
+                    // style={{margi}}
+                    placeholder="Full Name"
+                    editable
+                    maxLength={40}
+                    onChangeText={txt => {
+                      setName(txt);
+                    }}
+                  />
+                </View>
+                <View>
+                  <IconFa style={{marginTop: 15, paddingLeft: 200}} />
+                </View>
+              </View>
             </View>
             <View>
-              <Text
-                style={{
-                  alignSelf: 'flex-start',
-                  marginLeft: 25,
-                  flexDirection: 'row',
-                  fontWeight: '500',
-                  marginTop: 5,
-                }}>
-                Gender:
-              </Text>
+              <View>
+                <Text
+                  style={{
+                    alignSelf: 'flex-start',
+                    marginLeft: 25,
+                    flexDirection: 'row',
+                    fontWeight: '500',
+                    marginTop: 5,
+                  }}>
+                  Email:
+                </Text>
+              </View>
 
-              <TextInput
-                style={styles.input2}
-                placeholder="Gender"
-                editable
-                maxLength={40}
-              />
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  margin: 12,
+                  borderWidth: 0.5,
+                  height: vh(5),
+                  // padding: 10,
+                  borderRadius: 20,
+                }}>
+                <View>
+                  <TextInput
+                    // style={{margi}}
+                    placeholder="Email"
+                    editable
+                    maxLength={40}
+                    onChangeText={txt => {
+                      setEmail(txt);
+                    }}
+                  />
+                </View>
+                <View>
+                  <IconFa
+                    name="email"
+                    style={{marginTop: 9, paddingLeft: 200, fontSize: vf(2.5)}}
+                  />
+                </View>
+              </View>
             </View>
             <View>
-              <Text
-                style={{
-                  alignSelf: 'flex-start',
-                  marginLeft: 25,
-                  flexDirection: 'row',
-                  fontWeight: '500',
-                  marginTop: 5,
-                }}>
-                Location:
-              </Text>
+              <View>
+                <Text
+                  style={{
+                    alignSelf: 'flex-start',
+                    marginLeft: 25,
+                    flexDirection: 'row',
+                    fontWeight: '500',
+                    marginTop: 5,
+                  }}>
+                  Phone Number:
+                </Text>
+              </View>
 
-              <TextInput
-                style={styles.input2}
-                placeholder="Location"
-                editable
-                maxLength={40}
-              />
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  margin: 12,
+                  borderWidth: 0.5,
+                  height: vh(5),
+                  // padding: 10,
+                  borderRadius: 20,
+                }}>
+                <View>
+                  <TextInput
+                    // style={{margi}}
+                    placeholder="Phone Number"
+                    editable
+                    maxLength={40}
+                    onChangeText={txt => {
+                      setNumber(txt);
+                    }}
+                  />
+                </View>
+                <View>
+                  <IconFa
+                    name="phone"
+                    style={{marginTop: 9, paddingLeft: 150, fontSize: vf(2.5)}}
+                  />
+                </View>
+              </View>
+            </View>
+            <View>
+              <View>
+                <Text
+                  style={{
+                    alignSelf: 'flex-start',
+                    marginLeft: 25,
+                    flexDirection: 'row',
+                    fontWeight: '500',
+                    marginTop: 5,
+                  }}>
+                  Gender:
+                </Text>
+              </View>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  margin: 12,
+                  borderWidth: 0.5,
+                  height: vh(5),
+                  // padding: 10,
+                  borderRadius: 20,
+                }}>
+                <View>
+                  <TextInput
+                    // style={{margi}}
+                    placeholder="Gender"
+                    editable
+                    maxLength={40}
+                    onChangeText={txt => {
+                      setGender(txt);
+                    }}
+                  />
+                </View>
+                <View>
+                  <IconFa
+                    name="chevron-down"
+                    style={{marginTop: 9, paddingLeft: 200, fontSize: vf(3)}}
+                  />
+                </View>
+              </View>
+            </View>
+            <View>
+              <View>
+                <Text
+                  style={{
+                    alignSelf: 'flex-start',
+                    marginLeft: 25,
+                    flexDirection: 'row',
+                    fontWeight: '500',
+                    marginTop: 5,
+                  }}>
+                  Location:
+                </Text>
+              </View>
+
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  margin: 12,
+                  borderWidth: 0.5,
+                  height: vh(5),
+                  // padding: 10,
+                  borderRadius: 20,
+                }}>
+                <View>
+                  <TextInput
+                    // style={{margi}}
+                    placeholder="Location"
+                    editable
+                    maxLength={40}
+                    onChangeText={txt => {
+                      setLocation(txt);
+                    }}
+                  />
+                </View>
+                <View>
+                  <IconFa
+                    name="map-marker"
+                    style={{marginTop: 9, paddingLeft: 200, fontSize: vf(2.5)}}
+                  />
+                </View>
+              </View>
             </View>
           </View>
 
@@ -213,7 +404,8 @@ const AccountSetUp1 = () => {
             style={{
               backgroundColor: '#fe5e75',
               height: 50,
-              margin: 20,
+              // width:vw(90),
+              margin: 10,
               borderRadius: 30,
             }}>
             <Text
@@ -260,15 +452,13 @@ const styles = StyleSheet.create({
   },
   input: {
     display: 'flex',
+    // heigh/t:vh(90),
     margin: 8,
     padding: 10,
   },
   input2: {
-    height: 40,
-    margin: 12,
-    borderWidth: 0.5,
-    padding: 10,
-    borderRadius: 20,
+    // height: 40,
+   
   },
 });
 export default AccountSetUp1;

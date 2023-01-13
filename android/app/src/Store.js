@@ -16,7 +16,7 @@ import {
 import loginReducer from './Redux/Slice/LoginSlice';
 
 // import homeReducer from './Slice/HomeSlice';
-import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+// import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 const reducers = combineReducers({
   login: loginReducer,
@@ -26,7 +26,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage: AsyncStorage,
-  stateReconciler: autoMergeLevel2,
+  // stateReconciler: autoMergeLevel2,
   whitelist: ['login'], //Things u want to persist
   blacklist: [], //Things u dont
 };

@@ -31,7 +31,7 @@ const SignIn = () => {
               style={{
                 fontSize: 25,
                 marginTop: 40,
-                marginLeft: 30,
+                marginLeft:30,
                 color: '#fe5e75',
               }}
             />
@@ -40,40 +40,55 @@ const SignIn = () => {
             <Text style={styles.header}>Let's you in</Text>
           </View>
 
-          <View style={styles.body}>
-            <IconFa name="facebook" style={{fontSize: 30, color: '#3b5998'}} />
+          <View style={styles.body1}>
+            <IconFa
+              name="facebook"
+              style={{
+                fontSize: 30,
+                color: 'white',
+               
+              }}
+            />
             <Text
               style={{
                 textAlign: 'center',
                 fontSize: 18,
                 // marginTop: 12,
-                color: 'black',
+                color: 'white',
                 marginLeft: 10,
               }}>
               Facebook
             </Text>
           </View>
-          <View style={styles.body}>
-            <IconFa name="google" color={'black'} style={{fontSize: 30}} />
+          <View style={styles.body2}>
+            <IconFa
+              name="google"
+              color={'white'}
+              style={{fontSize: 30}}
+            />
             <Text
               style={{
                 textAlign: 'center',
                 fontSize: 18,
-                color: 'black',
+                color: 'white',
                 marginLeft: 10,
               }}>
               Google
             </Text>
           </View>
-          <View style={styles.body}>
-            <IconFa name="apple" color={'black'} style={{fontSize: 30}} />
+          <View style={styles.body3}>
+            <IconFa
+              name="apple"
+              color={'black'}
+              style={{fontSize: 30}}
+            />
             <Text
               style={{
                 textAlign: 'center',
                 fontSize: 18,
-
                 color: 'black',
                 marginLeft: 10,
+                // paddingLeft:5,
               }}>
               Apple
             </Text>
@@ -115,6 +130,7 @@ const SignIn = () => {
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
+              marginTop:120,
             }}>
             <View>
               <Text
@@ -150,7 +166,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 30,
     marginTop: 70,
-    fontWeight: '600',
+    fontWeight: '500',
   },
   body: {
     // backgroundColor: '#D56AAC',
@@ -163,6 +179,45 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  body1: {
+    backgroundColor: '#3b5998',
+    borderWidth: 1,
+    height: 50,
+    margin: 10,
+    borderRadius: 10,
+    height: 60,
+    borderColor: '#B3B0B0',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
+  },
+  body2: {
+    backgroundColor: '#E24610',
+    borderWidth: 1,
+    height: 50,
+    margin: 10,
+    borderRadius: 10,
+    height: 60,
+    borderColor: '#B3B0B0',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 20,
+  },
+  body3: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    height: 50,
+    margin: 10,
+    borderRadius: 10,
+    height: 60,
+    borderColor: '#B3B0B0',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 30,
   },
   footer: {
     flexDirection: 'row',

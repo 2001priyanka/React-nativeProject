@@ -13,12 +13,20 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {
+  responsiveHeight as vh,
+  responsiveWidth as vw,
+  responsiveFontSize as vf,
+} from 'react-native-responsive-dimensions';
 const Homepage = () => {
  const navigation = useNavigation();
  const onNextPressed = () => {
    navigation.navigate('Home');
  };
+ setTimeout(()=>{
+  navigation.navigate('Home')
+  console.log('redirect to home screen')
+ },2000)
   return (
     <SafeAreaView>
       <ScrollView>
@@ -29,11 +37,9 @@ const Homepage = () => {
                 uri: 'https://i.dlpng.com/static/png/6509551_preview.png',
               }}
               style={{
-                height: 450,
-                width: 450,
+                height: vh(75),
+                width: vw(90),
                 borderRadius: 10,
-                // marginLeft: 100,
-                // marginRight: 40,
                 marginTop: 100,
                 alignSelf: 'center',
               }}
@@ -55,12 +61,12 @@ const Homepage = () => {
                   alignSelf: 'center',
                   
                 }}>
-                <Button
+                {/* <Button
                   title="Welcome"
                   color="#D56AAC"
                   onPress={onNextPressed}
                   style={{borderRadius:50}}
-                />
+                /> */}
               </View>
             </TouchableOpacity>
           </View>

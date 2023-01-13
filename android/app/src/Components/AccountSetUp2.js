@@ -200,6 +200,7 @@ const AccountSetUp2 = () => {
               height: 50,
               margin: 20,
               borderRadius: 30,
+              marginTop:180,
             }}>
             <Text
               style={{

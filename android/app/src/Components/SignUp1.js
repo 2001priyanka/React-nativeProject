@@ -23,12 +23,12 @@ const SignUp1 = () => {
               uri: 'https://i.dlpng.com/static/png/6509551_preview.png',
             }}
             style={{
-              height: 200,
-              width: 200,
+              height: vh(10),
+              width: 150,
               borderRadius: 10,
-              marginLeft: 100,
+              // marginLeft: 100,
               // marginRight: 40,
-              marginTop: 20,
+              marginTop: 10,
             }}
           />
         </View>

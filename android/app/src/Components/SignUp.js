@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
   SafeAreaView,
@@ -16,36 +16,75 @@ import {
   responsiveWidth as vw,
   responsiveFontSize as vf,
 } from 'react-native-responsive-dimensions';
+import { API_URL } from '../../../../Config';
+import axios from 'axios';
 
 const SignUp = () => {
+   const [username, setUsername] = useState('');
+   const [phoneNo, setPhoneNo] = useState('');
+  // const [email,setEmail] = useState('');
+  const [password, setPassword] = useState('');
+   const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation();
   const onNextPressed3 = () => {
-    navigation.navigate('SetUp2');
+    navigation.navigate('AccountSetUp');
   };
   const onNext2Pressed = () => {
     navigation.navigate('SignIn1');
   };
-  //  const onNext1Pressed = () => {
-  //    navigation.navigate('SignIn1');
-  //  };
+
+  const submitHandler = async()=>{
+    console.log({
+      username,
+      phoneNo,
+      password,
+      // email,
+      confirmPassword,
+    });
+    try {
+      const signupData = await axios({
+        url: API_URL + 'auth/signup',
+        method: 'POST',
+        data: {
+          username,
+          phoneNo,
+          // email,
+          password,
+          confirmPassword,
+          role: 'user',
+        },
+        Headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if(signupData){
+        console.log('signupData',signupData);
+        if(signupData?.data?.success){
+          console.log('signupData?.data',signupData?.data);
+        }
+      }
+    } catch (error) {
+      console.log('ERROR', error)
+    }
+  }
+
   return (
     <SafeAreaView>
       <ScrollView>
-        <View>
+        {/* <View>
           <Image
             source={{
               uri: 'https://i.dlpng.com/static/png/6509551_preview.png',
             }}
             style={{
-              height: 200,
-              width: 200,
+              height: vh(20),
+              width: vw(45),
               borderRadius: 10,
-              marginLeft: 100,
-              // marginRight: 40,
-              marginTop: 50,
+              alignSelf: 'center',
+              marginTop: 20,
             }}
           />
-        </View>
+        </View> */}
         <View style={styles.conatiner}>
           <View>
             <Text
@@ -53,13 +92,34 @@ const SignUp = () => {
                 marginTop: 30,
                 textAlign: 'center',
                 color: 'black',
-                fontSize: 25,
+                fontSize: vf(3),
               }}>
               Create an Account
             </Text>
           </View>
           <View style={styles.input}>
             <View>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                }}>
+                User Name:
+              </Text>
+              <TextInput
+                style={styles.input2}
+                placeholder="User Name"
+                editable
+                maxLength={40}
+                onChangeText={txt => {
+                  setUsername(txt);
+                }}
+              />
+            </View>
+
+            {/* <View>
               <Text
                 style={{
                   alignSelf: 'flex-start',
@@ -74,9 +134,31 @@ const SignUp = () => {
                 placeholder="Email"
                 editable
                 maxLength={40}
+                onChangeText={txt => {
+                  setPassword(txt);
+                }}
+              />
+            </View> */}
+            <View>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                }}>
+                 phoneNo:
+              </Text>
+              <TextInput
+                style={styles.input2}
+                placeholder="phoneNo"
+                editable
+                maxLength={40}
+                onChangeText={txt => {
+                  setPhoneNo(txt);
+                }}
               />
             </View>
-
             <View>
               <Text
                 style={{
@@ -92,6 +174,29 @@ const SignUp = () => {
                 placeholder="Password"
                 editable
                 maxLength={40}
+                onChangeText={txt => {
+                  setPassword(txt);
+                }}
+              />
+            </View>
+            <View>
+              <Text
+                style={{
+                  alignSelf: 'flex-start',
+                  marginLeft: 25,
+                  flexDirection: 'row',
+                  fontWeight: '500',
+                }}>
+                Confirm Password:
+              </Text>
+              <TextInput
+                style={styles.input2}
+                placeholder="Confirm Password"
+                editable
+                maxLength={40}
+                onChangeText={txt => {
+                  setConfirmPassword(txt);
+                }}
               />
             </View>
           </View>
@@ -101,30 +206,33 @@ const SignUp = () => {
               marginLeft: 50,
               flexDirection: 'row',
             }}>
-            <IconFa name="checkbox-blank-outline" style={{fontSize: 20}} />
-            <Text style={{color: 'black', fontSize: 15, marginLeft: 10}}>
+            <IconFa name="checkbox-blank-outline" style={{fontSize: vf(2.5)}} />
+            <Text style={{color: 'black', fontSize: vf(2), marginLeft: 10}}>
               Remember me
             </Text>
           </View>
-          <View
-            style={{
-              backgroundColor: '#fe5e75',
-              height: 50,
-              margin: 20,
-              borderRadius: 30,
-            }}>
-            <Text
+          <TouchableOpacity>
+            <View
               style={{
-                textAlign: 'center',
-                // height: 40,
-                // width: 100,
-                marginTop: 12,
-                color: 'white',
-              }}
-              onPress={onNextPressed3}>
-              Sign Up
-            </Text>
-          </View>
+                backgroundColor: '#fe5e75',
+                height: vh(7),
+                margin: 20,
+                borderRadius: 30,
+              }}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  // height: 40,
+                  // width: 100,
+                  marginTop: 12,
+                  color: 'white',
+                  fontSize: vf(2.4),
+                }}
+                onPress={submitHandler}>
+                Sign Up
+              </Text>
+            </View>
+          </TouchableOpacity>
           <View>
             <Text style={{textAlign: 'center'}}>or continue with</Text>
           </View>
@@ -137,10 +245,14 @@ const SignUp = () => {
                 borderWidth: 1,
                 borderColor: '#B3B0B0',
                 paddingHorizontal: 20,
-                height: vh(7),
+                height: vh(8),
+                width: vw(45),
                 borderRadius: 10,
               }}>
-              <IconFa name="facebook" style={{fontSize: 30, color: 'blue'}} />
+              <IconFa
+                name="facebook"
+                style={{fontSize: vf(3.5), color: 'blue'}}
+              />
               <Text style={{fontWeight: '500', marginLeft: 10}}>Facebook</Text>
             </View>
             <View
@@ -152,6 +264,8 @@ const SignUp = () => {
                 borderColor: '#B3B0B0',
                 borderRadius: 10,
                 paddingHorizontal: 20,
+                height: vh(8),
+                width: vw(45),
               }}>
               <IconFa name="google" style={{fontSize: 30}} />
               <Text style={{fontWeight: '500', marginLeft: 10}}>Google</Text>

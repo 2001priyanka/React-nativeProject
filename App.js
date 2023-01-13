@@ -27,6 +27,7 @@ import NotificationPage from './android/app/src/Components/NotificationPage';
 import SecurityPage from './android/app/src/Components/SecurityPage';
 import InvitePage from './android/app/src/Components/InvitePage';
 import SignIn from './android/app/src/Components/SignIn ';
+import PhotoScreen from './android/app/src/Components/PhotoScreen';
 
 const Stack = createStackNavigator();
 
@@ -37,7 +38,7 @@ const App = () => {
         {/* <Navigation /> */}
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="InvitePage"
+            initialRouteName="Signin"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="HomePage" component={Homepage} />
             <Stack.Screen name="Home" component={Home} />
@@ -61,6 +62,7 @@ const App = () => {
             />
             <Stack.Screen name="SecurityPage" component={SecurityPage} />
             <Stack.Screen name="InvitePage" component={InvitePage} />
+            <Stack.Screen name="PhotoScreen" component={PhotoScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </PersistGate>

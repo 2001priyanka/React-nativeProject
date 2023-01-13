@@ -26,7 +26,7 @@ const ForgetPassword = () => {
             <Text style={styles.upperSection}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#D56AAC'}}
+                style={{fontSize: 25, color: '#fe5e75'}}
               />
               <Text style={{paddingLeft: 10, color: 'black'}}>
                 Forgot Password
@@ -67,7 +67,7 @@ const ForgetPassword = () => {
                 style={{
                   fontSize: 30,
                   marginTop: 15,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   marginLeft: 15,
                 }}
               />
@@ -90,7 +90,7 @@ const ForgetPassword = () => {
                 style={{
                   fontSize: 30,
                   marginTop: 15,
-                  color: '#D56AAC',
+                  color: '#fe5e75',
                   marginLeft: 15,
                 }}
               />
@@ -103,7 +103,7 @@ const ForgetPassword = () => {
           <TouchableOpacity>
             <View
               style={{
-                backgroundColor: '#D56AAC',
+                backgroundColor: '#fe5e75',
                 height: 50,
                 margin: 20,
                 borderRadius: 30,
@@ -115,7 +115,8 @@ const ForgetPassword = () => {
                   // width: 100,
                   marginTop: 12,
                   color: 'white',
-                }} onPress={onNextPressed6}>
+                }}
+                onPress={onNextPressed6}>
                 continue
               </Text>
             </View>
@@ -140,12 +141,12 @@ const styles = StyleSheet.create({
     margin: 20,
     height: 100,
     borderRadius: 15,
-    borderColor: '#D56AAC',
+    borderColor: '#fe5e75',
+    paddingRight:100,
   },
   body1: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    // borderWidth: 1,
+    justifyContent: 'space-evenly', 
     padding: 20,
     margin: 20,
     height: 100,

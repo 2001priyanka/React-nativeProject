@@ -33,8 +33,11 @@ const SignIn1 = () => {
     navigation.navigate('HomeScreens');
   };
   const dispatch = useDispatch();
-  const [username, setUsername] = useState('');
-  const [passoword, setPassword] = useState('');
+  const [username, setUsername] = useState ('');
+  // const [number, setNumber] = useState('');
+  // const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const [confirmPassword, setConfirmPassword] = useState('');
   // const [signinData, setSigninData] = useState({
   //   email:"",
   //   password:"",
@@ -43,17 +46,20 @@ const SignIn1 = () => {
   const submitHandler = async () => {
     console.log({
       username,
-      passoword,
+      // number,
+      // email,
+      password,
+      // confirmPassword
     });
 
     try {
       const signinData = await axios({
-        url: API_URL + '/auth/signin',
+        url: API_URL + 'auth/signin',
         method: 'POST',
         data: {
           username,
-          passoword,
-        },
+          password,
+        },  
       });
       if (signinData) {
         console.log('signinData', signinData);
@@ -61,7 +67,7 @@ const SignIn1 = () => {
           console.log('signinData?.data', signinData?.data);
           dispatch(setIsLoggedIn(true));
           dispatch(setLoggedInUser(signinData?.data));
-          navigation.navigate('HomeScreens');
+          navigation.navigate('AccountSetUp');
         }
       }
     } catch (error) {
@@ -77,12 +83,10 @@ const SignIn1 = () => {
               uri: 'https://i.dlpng.com/static/png/6509551_preview.png',
             }}
             style={{
-              height: 200,
-              width: 200,
+              height:vh(20),
+              width: vw(35),
               borderRadius: 10,
-              marginLeft: 100,
-              // marginRight: 40,
-              marginTop: 20,
+              alignSelf:'center',
             }}
           />
         </View>
@@ -93,7 +97,7 @@ const SignIn1 = () => {
                 // marginTop: 30,
                 textAlign: 'center',
                 color: 'black',
-                fontSize: 25,
+                fontSize: vf(3.3),
               }}>
               Let's Sign You In
             </Text>
@@ -106,13 +110,12 @@ const SignIn1 = () => {
                   marginLeft: 25,
                   flexDirection: 'row',
                   fontWeight: '500',
-                  marginTop: 5,
                 }}>
-                Email:
+                username:
               </Text>
               <TextInput
                 style={styles.input2}
-                placeholder="Email"
+                placeholder="username"
                 editable
                 maxLength={40}
                 onChangeText={txt => {
@@ -141,7 +144,7 @@ const SignIn1 = () => {
                 onChangeText={txt => {
                   setPassword(txt);
                 }}
-                value={passoword}
+                value={password}
               />
             </View>
           </View>
@@ -153,12 +156,12 @@ const SignIn1 = () => {
             }}>
             <IconFa
               name="checkbox-marked"
-              style={{fontSize: 20, color: '#fe5e75'}}
+              style={{fontSize: vf(3), color: '#fe5e75'}}
             />
             <Text
               style={{
                 color: 'black',
-                fontSize: 15,
+                fontSize: vf(2),
                 textAlign: 'center',
                 marginLeft: 10,
               }}>
@@ -169,7 +172,7 @@ const SignIn1 = () => {
             <View
               style={{
                 backgroundColor: '#fe5e75',
-                height: 50,
+                height:vh(7),
                 margin: 20,
                 borderRadius: 30,
               }}>
@@ -178,7 +181,7 @@ const SignIn1 = () => {
                   textAlign: 'center',
                   marginTop: 12,
                   color: 'white',
-                  fontSize: 18,
+                  fontSize: vf(2.5),
                 }}
                 onPress={() => {
                   submitHandler();
@@ -220,14 +223,15 @@ const SignIn1 = () => {
                 borderWidth: 1,
                 borderColor: '#B3B0B0',
                 paddingHorizontal: 10,
-                height: vh(7),
+                height: vh(9),
+                width: vw(45),
                 borderRadius: 10,
               }}>
               <IconFa
                 name="facebook"
-                style={{fontSize: 30, color: '#3b5998'}}
+                style={{fontSize: vf(4), color: '#3b5998'}}
               />
-              <Text style={{fontSize: 20, color: 'black', marginLeft: 10}}>
+              <Text style={{fontSize: vf(2.5), color: 'black', marginLeft: 10}}>
                 Facebook
               </Text>
             </View>
@@ -239,11 +243,12 @@ const SignIn1 = () => {
                 borderWidth: 1,
                 borderColor: '#B3B0B0',
                 paddingHorizontal: 20,
-                height: vh(7),
+                height: vh(9),
+                width: vw(45),
                 borderRadius: 10,
               }}>
-              <IconFa name="google" style={{fontSize: 30}} />
-              <Text style={{color: 'black', fontSize: 20, marginLeft: 10}}>
+              <IconFa name="google" style={{fontSize: vf(4)}} />
+              <Text style={{color: 'black', fontSize: vf(2.5), marginLeft: 10}}>
                 Google
               </Text>
             </View>
@@ -251,7 +256,7 @@ const SignIn1 = () => {
           <View style={styles.footer}>
             <View>
               <Text
-                style={{textAlign: 'center', marginTop: 20, fontWeight: '500'}}>
+                style={{textAlign: 'center', marginTop: 10, fontWeight: '500'}}>
                 Don't have an account?
               </Text>
             </View>
@@ -260,7 +265,7 @@ const SignIn1 = () => {
                 <Text
                   style={{
                     textAlign: 'center',
-                    marginTop: 20,
+                    marginTop: 10,
                     color: '#fe5e75',
                     fontWeight: '500',
                     marginLeft: 10,
