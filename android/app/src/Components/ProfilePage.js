@@ -12,9 +12,11 @@ import {
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import { API_URL } from '../../../../Config';
+import RangeSlider from 'react-native-range-slider';
 
 
 function ModalTester() {
+  
   // const [userData, setUsersData] = useState({
   //   name: '',
   //   email: '',

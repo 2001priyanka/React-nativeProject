@@ -58,7 +58,6 @@ const InboxPage = () => {
       new: 3,
     },
   ]);
-  const [text, onChangeText] = React.useState(null);
   const _renderItem = ({item, index}) => {
     return (
       <View style={styles.uppersection1}>
@@ -109,54 +108,9 @@ const InboxPage = () => {
             <Text style={{fontSize: vf(1.8), marginTop: 5}}>{item.time}</Text>
           </View>
         </View>
-        {/* <View>
-          <Image
-            source={{
-              uri: item.img,
-            }}
-            style={{
-              height: 70,
-              width: 70,
-              borderRadius: 35,
-            }}
-          />
-        </View> */}
-        {/* <View>
-          <Text style={{fontSize: 18, color: 'black', marginTop: 20}}>
-            {item.name}
-          </Text>
-          <Text style={{fontSize: 15}}>{item.msg}</Text>
-        </View> */}
-        <View>
-          {/* {item.new && (
-            <View
-              style={{
-                backgroundColor: '#fe5e75',
-                borderWidth: 1.5,
-                borderColor: '#fe5e75',
-                height: 30,
-                width: 30,
-                borderRadius: 40,
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  alignSelf: 'center',
-
-                  color: 'white',
-                }}>
-                {item.new}
-              </Text>
-            </View>
-          )} */}
-          {/* <Text style={{marginTop: 10, fontSize: 18}}>{item.time}</Text> */}
         </View>
-      </View>
     );
-  };
+  };  
   return (
     <SafeAreaView>
       <ScrollView>
@@ -167,7 +121,7 @@ const InboxPage = () => {
                 name="heart-multiple"
                 style={{fontSize: 30, color: '#fe5e75'}}
               />
-              <View></View>
+             
               <View>
                 <Text style={{fontSize: 20, paddingLeft: 10, color: 'black'}}>
                   Inbox

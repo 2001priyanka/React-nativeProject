@@ -25,6 +25,7 @@ import Modal from 'react-native-modal';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 import { color } from '@rneui/base';
 import { API_URL } from '../../../../Config';
+import RangeSlider from 'react-native-range-slider';
 import axios from 'axios';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
@@ -525,6 +526,26 @@ const HomeScreens = () => {
                     Others
                   </Text>
                 </View>
+              </View>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <RangeSlider
+                  minValue={0}
+                  maxValue={100}
+                  tintColor={'#da0f22'}
+                  handleBorderWidth={1}
+                  handleBorderColor="#454d55"
+                  selectedMinimum={20}
+                  selectedMaximum={40}
+                  style={{
+                    flex: 1,
+                    height: 70,
+                    padding: 10,
+                    backgroundColor: '#ddd',
+                  }}
+                  onChange={data => {
+                    console.log(data);
+                  }}
+                />
               </View>
               {/* <RangeSlider
                 style={styles.slider}
