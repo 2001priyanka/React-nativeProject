@@ -28,6 +28,7 @@ import SecurityPage from './android/app/src/Components/SecurityPage';
 import InvitePage from './android/app/src/Components/InvitePage';
 import SignIn from './android/app/src/Components/SignIn ';
 import PhotoScreen from './android/app/src/Components/PhotoScreen';
+import Footer from './android/app/src/Components/Footer';
 
 const Stack = createStackNavigator();
 
@@ -36,9 +37,10 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {/* <Navigation /> */}
+        <Footer />
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Signin"
+            initialRouteName="AccountSetUp1"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="HomePage" component={Homepage} />
             <Stack.Screen name="Home" component={Home} />
@@ -56,6 +58,7 @@ const App = () => {
             <Stack.Screen name="AccountSetUp3" component={AccountSetUp3} />
             <Stack.Screen name="EditProfile" component={EditProfile} />
             <Stack.Screen name="ProfilePage" component={ProfilePage} />
+            <Stack.Screen name="Footer" component={Footer} />
             <Stack.Screen
               name="NotificationPage"
               component={NotificationPage}
@@ -64,6 +67,7 @@ const App = () => {
             <Stack.Screen name="InvitePage" component={InvitePage} />
             <Stack.Screen name="PhotoScreen" component={PhotoScreen} />
           </Stack.Navigator>
+          <Footer />
         </NavigationContainer>
       </PersistGate>
     </Provider>

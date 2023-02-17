@@ -27,6 +27,7 @@ import { color } from '@rneui/base';
 import { API_URL } from '../../../../Config';
 import RangeSlider from 'react-native-range-slider';
 import axios from 'axios';
+import Footer from './Footer';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const HomeScreens = () => {
@@ -586,6 +587,7 @@ const HomeScreens = () => {
             </View>
           </View>
         </Modal>
+        <Footer/>
       </View>
     </SafeAreaView>
   );

@@ -8,25 +8,454 @@ import {
   TextInput,
   Image,
   View,
+  FlatList,
  StatusBar,
-  TouchableOpacity,
+  TouchableOpacity,  
 } from 'react-native';
 import {
   responsiveHeight as vh,
   responsiveWidth as vw,
   responsiveFontSize as vf,
 } from 'react-native-responsive-dimensions';
+import DocumentPicker from 'react-native-document-picker';
+import {PermissionsAndroid} from 'react-native';
+import * as RNFS from 'react-native-fs';
+import { Axios } from 'axios';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
+import { API_URL } from '../../../../Config';
+// import { FlatList } from 'react-native-gesture-handler';
 
 const PhotoScreen = () => {
+  const [files, setFiles] = useState([]);
+  const [imageUri, setimageUri] = useState(null);
+  const [photo, SetPhoto] = useState([
+    {
+      name: 'devwithsaad and new_javascript',
+      text: ' devwithsaad what is redux toolkit? Follow @nasir for more such content...',
+      likes: '1,025',
+      days: '3',
+      img: 'https://miro.medium.com/max/1400/1*LyZcwuLWv2FArOumCxobpA.png',
+    },
+    {
+      name: 'devwithsaad',
+      text: 'devwithsaad what is redux toolkit? Follow @devwithsaad for more such content...',
+      likes: '1,000',
+      days: '2',
+      img: 'https://miro.medium.com/max/1400/0*KLsMk7RfsSQnW9WE',
+    },
+  ]);
   const navigation = useNavigation();
   const onNextPressed14 = () => {
     navigation.navigate('AccountSetUp2');
   };
 
-  
+  const _renderItem = ({item, index}) => {
+    return (
+      <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+        <View style={styles.body}>
+          <Text
+            style={{
+              textAlign: 'center',
+              color: '#fe5e75',
+              fontSize: 18,
+            }}>
+            <View
+              style={{
+                backgroundColor: '#fe5e75',
+                width: 60,
+                height: 60,
+                borderRadius: 50,
+              }}>
+              <IconFa
+                name="plus"
+                style={{
+                  fontSize: 30,
+                  marginTop: 15,
+                  color: 'white',
+                  marginLeft: 15,
+                }}
+                onPress={() => {
+                  selectAllFiles();
+                }}
+              />
+            </View>
+          </Text>
+        </View>
+        <View style={styles.body}>
+          <Text
+            style={{
+              textAlign: 'center',
+              color: '#fe5e75',
+              fontSize: 18,
+            }}>
+            <View
+              style={{
+                backgroundColor: '#fe5e75',
+                width: 60,
+                height: 60,
+                borderRadius: 50,
+              }}>
+              <IconFa
+                name="plus"
+                style={{
+                  fontSize: 30,
+                  marginTop: 15,
+                  color: 'white',
+                  marginLeft: 15,
+                }}
+                onPress={() => {
+                  selectAllFiles();
+                }}
+              />
+            </View>
+          </Text>
+        </View>
+      </View>
+    );
+  }
+    const requestCameraPermission = async () => {
+      try {
+        // const granted = await PermissionsAndroid.request(
+        //   PermissionsAndroid.PERMISSIONS.CAMERA,
+        //   {
+        //     title: 'App Camera Permission',
+        //     message: 'App needs access to your camera ',
+        //     buttonNeutral: 'Ask Me Later',
+        //     buttonNegative: 'Cancel',
+        //     buttonPositive: 'OK',
+        //   },
+        // );
+        // if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        const grants = await PermissionsAndroid.requestMultiple([
+          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+          PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+          // PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+          PermissionsAndroid.PERMISSIONS.CAMERA,
+          // PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          // PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+        ]);
+        if (
+          grants['android.permission.CAMERA'] ===
+            PermissionsAndroid.RESULTS.GRANTED &&
+          grants['android.permission.WRITE_EXTERNAL_STORAGE'] ===
+            PermissionsAndroid.RESULTS.GRANTED &&
+          grants['android.permission.READ_EXTERNAL_STORAGE'] ===
+            PermissionsAndroid.RESULTS.GRANTED &&
+          grants['android.permission.RECORD_AUDIO'] ===
+            PermissionsAndroid.RESULTS.GRANTED
+        ) {
+          console.log('Camera permission given');
+          // const options = {
+          //   storageOptions: {
+          //     path: 'images',
+          //     mediaType: 'photo',
+          //   },
+          //   includeBase64: true,
+          // };
+        } else {
+          console.log('Camera permission denied');
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    };
+    const selectAllFiles = async () => {
+      requestCameraPermission();
+      //Opening Document Picker for selection of one file
+      try {
+        const res = await DocumentPicker.pickMultiple({
+          type: [DocumentPicker.types.allFiles],
+          allowMultiSelection: true,
+        });
+        //Printing the log realted to the file
+        console.log('123asdrfvbgt res xxx: ', res);
+        console.log('123asdrfvbgt typeof res : ' + typeof res);
+        console.log('123asdrfvbgt URI : ' + res[0].uri);
+        console.log('123asdrfvbgt Type : ' + res[0].type);
+        console.log('123asdrfvbgt File Name : ' + res[0].name);
+        console.log('123asdrfvbgt File Size : ' + res[0].size);
+        console.log('123asdrfvbgt File id: ' + res[0]._id);
+        setimageUri(res[0]);
+
+        //Setting the state to show single file attributes
+        setFiles([...files, ...res]);
+        console.log('123asdrfvbgt results>>', res);
+        // if (res[0]) {
+        //   navigation.navigate('newPost', {
+        //     response: res[0],
+        //   });
+        // }
+        // uploadFile(res[0]);
+      } catch (err) {
+        //Handling any exception (If any)
+        if (DocumentPicker.isCancel(err)) {
+          //If user canceled the document selection
+          alert('Canceled File Selection');
+        } else {
+          //For Unknown Error
+          alert('Unknown Error: ' + JSON.stringify(err));
+          throw err;
+        }
+      }
+    };
+    const deleteFile = name => {
+      const myfiles = files.filter(f => {
+        return f.name !== name;
+      });
+      setFiles(myfiles);
+    };
+    const submitText = async () => {
+      console.log('submitTextx', txt, type);
+      console.log('submitTextx', doc);
+      console.log('submitTextx', files);
+      // const myDoc = doc?.doctors[0];
+      const myDoc = doc;
+      console.log('myDoc :>> ', myDoc);
+      if (myDoc) {
+        if (txt.length > 1) {
+          try {
+            const reqData = {
+              date: moment().format('DD-MM-YYYY'),
+              time: moment().format('hh:mma'),
+              doctorName: myDoc?.name,
+              name: user?.user?.name,
+              users: user?.id,
+              doctors: myDoc?._id,
+              type,
+              content: txt,
+            };
+            console.log('reqData', reqData, user);
+            // return;
+            const res = await call.Calls(
+              'doctorAppointment',
+              'POST',
+              reqData,
+              Config,
+            );
+            if (res) {
+              console.log('doctorAppointment reqData', reqData, res);
+            }
+            if (res.status == 200) {
+              console.log('doctorAppointment reqData2', reqData, res);
+              uploadFilesToAPI(res?.data?.results?._id);
+              navigation.navigate('AppointmentDetails', {
+                ...doc,
+                respData: res?.data,
+                type,
+              });
+            }
+          } catch (error) {
+            console.log('error', error);
+          }
+        } else {
+          Alert.alert('No Data', 'Please type your message in the textbox!');
+        }
+      }
+    };
+    const uploadFilesToAPI = async _id => {
+      const data = files;
+      // console.log('Config 9fb83f', Config);
+      // Check if any file is selected or not
+      var uploadUrl = `${API_URL}/upload`; // For testing purposes, go to http://requestb.in/ and create your own link
+      try {
+        // create an array of objects of the files you want to upload
+        var filesArr = [];
+        files.map(async (item, index) => {
+          if (item.uri.startsWith('content://')) {
+            const urlComponents = item.uri.split('/');
+            // const fileNameAndExtension = urlComponents[urlComponents.length - 1];
+            const destPath = `${RNFS.ExternalCachesDirectoryPath}/${
+              item.name
+            }.${MimeTypeMap[item.type]}`;
+
+            filesArr.push({
+              name: item.name + MimeTypeMap[item.type],
+              // name: 'file',
+              filename: item.name + MimeTypeMap[item.type],
+              filepath: destPath,
+              filetype: item.type,
+              uri: item?.uri,
+              type: item.type,
+            });
+            await RNFS.copyFile(item.uri, destPath);
+          }
+        });
+        var uploadBegin = response => {
+          var jobId = response.jobId;
+          // console.log('UPLOAD HAS BEGUN! JobId: ' + jobId, filesArr);
+        };
+        // uploadFiles;
+        var uploadProgress = response => {
+          var percentage = Math.floor(
+            (response.totalBytesSent / response.totalBytesExpectedToSend) * 100,
+          );
+          // console.log('UPLOAD IS ' + percentage + '% DONE!');
+        };
+        uploadFiles({
+          toUrl: uploadUrl,
+          files: filesArr,
+          method: 'POST',
+          headers: {
+            Accept: '*/*',
+            // 'Content-Type': 'multipart/form-data',
+          },
+          fields: {
+            // name: 'MHN1.mp3',
+            model_id: _id,
+            model: 'media',
+            model_key: 'content',
+            // user_id: doc.id,
+            // reqType: 'FCM_BCAST',
+          },
+          begin: uploadBegin,
+          progress: uploadProgress,
+        })
+          .then(response => {
+            console.log('responseZZZ1', response);
+            if (response.statusCode == 200) {
+              console.log('FILES UPLOADED!'); // response.statusCode, response.headers, response.body
+            } else {
+              console.log('SERVER ERROR');
+            }
+          })
+          .catch(err => {
+            if (err.description === 'cancelled') {
+              // cancelled by user
+            }
+            console.log(err);
+          });
+      } catch (error) {
+        console.log('UPLOADS', error);
+      }
+      if (data != null && data?.length > 0 && false) {
+        // If file selected then create FormData
+        const fileToUpload = data;
+        const form = new FormData();
+
+        console.log('TextReq.js:290 58eef2 item', filesArr);
+        filesArr.map((item, index) => {
+          // form.append(`files[${index}]`, item);
+          // console.log('TextReq.js:231 b3f667 ', {
+          //   uri: item?.uri,
+          //   name: 'image.jpg',
+          //   type: 'image/jpeg',
+          // });
+        });
+        // form.append('files', {
+        //   uri: fileToUpload[0]?.uri,
+        //   name: 'image.jpg',
+        //   type: 'image/jpeg',
+        // });
+        // form.append('files[]', fileToUpload);
+        form.append('files', filesArr);
+        // form.append('files', fileToUpload[0]);
+        // form.append('apiRoute', 'prescription');
+        form.append('userId', doc._id);
+        console.log('TextReq.js:227 9fb83f form', form);
+        await axios({
+          url: `${API_URL}/upload`,
+          // url: 'http://3.16.156.10:3001/api/upload',
+          //url: 'http://13.232.211.114:3000/api/upload',
+          method: 'POST',
+          data: form,
+          headers: {
+            'Content-Type': 'multipart/form-data; boundary=BOUNDARY',
+            // 'Access-Control-Allow-Origin': '*',
+            // 'Access-Control-Allow-Credentials': true,
+          },
+        })
+          .then(res => {
+            console.log('res.data >>> ' + res.data);
+            if (res.data) {
+              alert('File Upload Successfully!');
+            }
+          })
+          .catch(err => {
+            alert(err);
+            console.log('err >>> ' + err);
+          });
+      }
+    };
+
+    // new functions from admin panel
+    const submitHandler = async () => {
+      console.log('submitHandler called');
+      if (postData.user_id != '') {
+        console.log('CALL API');
+
+        try {
+          const postRes = await axios({
+            url: API_URL + '/admin/post',
+            method: 'POST',
+            data: {
+              user_id: postData?.user_id,
+              content: postData?.content,
+            },
+          });
+
+          if (postRes) {
+            console.log('postRes ', postRes);
+            if (postRes?.data?.success) {
+              // navigate("/posts");
+              createMedia(postRes?.data?.data?._id);
+            }
+          }
+        } catch (error) {
+          console.log('API error', error);
+        }
+      } else {
+        window.alert('Required Fields Missing');
+      }
+    };
+
+      const createMedia = async post_id => {
+        try {
+          const mediaRes = await axios({
+            url: API_URL + '/admin/media',
+            method: 'POST',
+            data: {
+              user_id: postData?.user_id,
+              post_id,
+            },
+          });
+
+          if (mediaRes) {
+            console.log('mediaRes ', mediaRes);
+            if (mediaRes?.data?.success) {
+              updatePost(post_id, mediaRes?.data?.data?._id);
+              // navigate("/posts");
+              // uploadMedia(mediaRes?.data?.data?._id);
+              uploadFilesToAPI(mediaRes?.data?.data?._id);
+            }
+          }
+        } catch (error) {
+          console.log('API error', error);
+        }
+      };
+      const updatePost = async (post_id, media_id) => {
+        try {
+          const updatePostRes = await axios({
+            url: API_URL + '/admin/post/' + post_id,
+            method: 'PUT',
+            data: {
+              //  user_id: postData?.user_id,
+              media_id,
+            },
+          });
+
+          if (updatePostRes) {
+            console.log('updatePostRes ', updatePostRes);
+            if (updatePostRes?.data?.success) {
+              // navigate("/posts");
+              // uploadMedia(updatePostRes?.data?.data?._id);
+            }
+          }
+        } catch (error) {
+          console.log('API error', error);
+        }
+      };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -53,129 +482,26 @@ const PhotoScreen = () => {
               Add your best photos to get a higher amount of daily matches
             </Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-            <View style={styles.body1}>
-              <View>
-                <Image
-                  source={{
-                    uri: 'https://6.vikiplatform.com/image/f39b70cc709449058542b107d493cff7.jpg?x=b&a=0x0&s=460x268&e=t&f=t&cb=1',
-                  }}
-                  style={{
-                    height: vh(25),
-                    width: vw(35),
-                    borderRadius: 20,
-                    marginTop: 20,
-                    alignSelf: 'center',
-                  }}
-                />
-              </View>
-            </View>
-            <View style={styles.body}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  color: '#fe5e75',
-                  fontSize: 18,
-                }}>
-                <View
-                  style={{
-                    backgroundColor: '#fe5e75',
-                    width: 60,
-                    height: 60,
-                    borderRadius: 50,
-                  }}>
-                  <IconFa
-                    name="plus"
-                    style={{
-                      fontSize: 30,
-                      marginTop: 15,
-                      color: 'white',
-                      marginLeft: 15,
-                    }}
-                  />
-                </View>
-              </Text>
-              {/* <Text style={{fontSize: 20, marginTop: 10, color: 'black'}}>
-                Fling
-              </Text> */}
-            </View>
-          </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-            <View style={styles.body}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  color: '#fe5e75',
-                  fontSize: 18,
-                }}>
-                <View
-                  style={{
-                    backgroundColor: '#fe5e75',
-                    width: 60,
-                    height: 60,
-                    borderRadius: 50,
-                  }}>
-                  <IconFa
-                    name="plus"
-                    style={{
-                      fontSize: 30,
-                      marginTop: 15,
-                      color: 'white',
-                      marginLeft: 15,
-                    }}
-                  />
-                </View>
-              </Text>
-            </View>
-            <View style={styles.body}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  color: '#fe5e75',
-                  fontSize: 18,
-                }}>
-                <View
-                  style={{
-                    backgroundColor: '#fe5e75',
-                    width: 60,
-                    height: 60,
-                    borderRadius: 50,
-                  }}>
-                  <IconFa
-                    name="plus"
-                    style={{
-                      fontSize: 30,
-                      marginTop: 15,
-                      color: 'white',
-                      marginLeft: 15,
-                    }}
-                  />
-                </View>
-              </Text>
-              {/* <Text style={{fontSize: 20, marginTop: 10, color: 'black'}}>
-                Business
-              </Text> */}
-            </View>
-          </View>
-          <View
+        </View>
+        <FlatList data={photo} renderItem={_renderItem} />
+        <View
+          style={{
+            backgroundColor: '#fe5e75',
+            height: 50,
+            margin: 20,
+            borderRadius: 30,
+            marginTop: 80,
+          }}>
+          <Text
             style={{
-              backgroundColor: '#fe5e75',
-              height: 50,
-              margin: 20,
-              borderRadius: 30,
-              marginTop: 80,
-            }}>
-            <Text
-              style={{
-                textAlign: 'center',
-                marginTop: 12,
-                color: 'white',
-                fontSize: 20,
-              }}
-              onPress={onNextPressed14}>
-              Next
-            </Text>
-          </View>
+              textAlign: 'center',
+              marginTop: 12,
+              color: 'white',
+              fontSize: 20,
+            }}
+            onPress={onNextPressed14}>
+            Next
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>

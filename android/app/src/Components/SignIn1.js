@@ -37,19 +37,11 @@ const SignIn1 = () => {
   // const [number, setNumber] = useState('');
   // const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
-  // const [signinData, setSigninData] = useState({
-  //   email:"",
-  //   password:"",
-  // })
 
   const submitHandler = async () => {
     console.log({
       username,
-      // number,
-      // email,
       password,
-      // confirmPassword
     });
 
     try {

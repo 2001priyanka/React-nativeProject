@@ -25,57 +25,75 @@ import axios from 'axios';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const AccountSetUp1 = () => {
-  const token = useSelector(reduxState => reduxState?.signin?.user?.accessToken)
-  console.log(token)
+  //  const [name, setName] = useState('');
+  //  const [number, setNumber] = useState('');
+  //  const [email, setEmail] = useState('');
+  //  const [gender, setGender] = useState('');
+  //  const [location, setLocation] = useState('');
+  //  const [msgs, setMsgs] = useState([]);
+   const [text, onChangeText] = React.useState(null);
+  const [userData, setUsersData] = useState({
+    name: '',
+    email: '',
+    address1: '',
+    mobile: '',
+    gender: '',
+    age: '',
+    intrest: '',
+    about: '',
+  });
+  const token = useSelector(reduxState => reduxState?.login?.user?.accessToken)
+  console.log('token',token)
   const navigation = useNavigation();
+
   const onNextPressed12 = () => {
     navigation.navigate('PhotoScreen');
   };
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const [email,setEmail] = useState('');
-  const [gender, setGender] = useState('');
-  const [location, setLocation] = useState('');
-  const [msgs, setMsgs] = useState([]);
-  const [text, onChangeText] = React.useState(null);
+ 
+  const getUsersData = async()=>{
+    if(token){
+      try {
+        const res = await axios({
+          url: API_URL + 'user/user/getProfile',
+          method: 'GET',
+          headers: {
+            Authorization:`Bearer ${token}`
+          },
+        });
+        if(res){
+          console.log('Users data',res?.data?.users);
+          setUsersData(res?.data?.user);
+        }
+      } catch (error) {
+        console.log('profile data error',error);
+      }
+    }
+  }
 
-  // const submitHandler = async() =>{
-  //   console.log({
-  //     name,
-  //     email,
-  //     number,
-  //     gender,
-  //     location,
-  //   });
-  //   try {
-  //     const usersData = await axios({
-  //       url: API_URL + 'user/user/getProfile',
-  //       method: 'POST',
-  //       data: {
-  //         name,
-  //         email,
-  //         number,
-  //         gender,
-  //         location,
-  //         role: 'user',
-  //       },
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     if(usersData){
-  //       console.log('usersData', usersData);
-  //       if(usersData?.data?.success){
-  //         console.log('usersData?.data',usersData?.data)
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.log('ERROR' ,error)
-  //   }
-  // }
-  // useEffect(()=>{
-    
-  // },[token]);
+   const submitUserProfileData = async () => {
+       try {
+         const res = await axios({
+           url: API_URL + 'admin/user',
+           method: 'POST',
+           data: {
+             ...userData,
+           },
+           headers: {
+             Authorization: `Bearer ${token}`,
+           },
+         });
+         if (res) {
+           console.log('update users res', res);
+           navigation.navigate('homepage');
+         }
+       } catch (error) {
+         console.log('submit user data', error);
+       }
+   };
+  useEffect(()=>{
+    getUsersData();
+  },[token]);
+
   const _renderItem = ({item, index}) => {
     return (
       <View style={styles.uppersection1}>
@@ -212,14 +230,17 @@ const AccountSetUp1 = () => {
                     placeholder="Full Name"
                     editable
                     maxLength={40}
-                    onChangeText={txt => {
-                      setName(txt);
+                    onChangeText={e => {
+                      setName({
+                        ...userData,
+                        name: e,
+                      });
                     }}
+                    value={userData?.name}
                   />
                 </View>
-                <View>
-                  <IconFa style={{marginTop: 15, paddingLeft: 200}} />
-                </View>
+
+                <IconFa style={{marginTop: 15, paddingLeft: 200}} />
               </View>
             </View>
             <View>
@@ -240,7 +261,7 @@ const AccountSetUp1 = () => {
                 style={{
                   flex: 1,
                   flexDirection: 'row',
-                  justifyContent: 'space-around',
+                  // justifyContent: 'space-around',
                   margin: 12,
                   borderWidth: 0.5,
                   height: vh(5),
@@ -259,10 +280,10 @@ const AccountSetUp1 = () => {
                   />
                 </View>
                 <View>
-                  <IconFa
+                  {/* <IconFa
                     name="email"
                     style={{marginTop: 9, paddingLeft: 200, fontSize: vf(2.5)}}
-                  />
+                  /> */}
                 </View>
               </View>
             </View>
@@ -300,6 +321,7 @@ const AccountSetUp1 = () => {
                     onChangeText={txt => {
                       setNumber(txt);
                     }}
+                    // value={number?.number}
                   />
                 </View>
                 <View>
@@ -399,7 +421,7 @@ const AccountSetUp1 = () => {
             </View>
           </View>
 
-          <FlatList data={msgs} renderItem={_renderItem} />
+          {/* <FlatList data={msgs} renderItem={_renderItem} /> */}
           <View
             style={{
               backgroundColor: '#fe5e75',

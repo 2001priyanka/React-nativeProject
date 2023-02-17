@@ -13,10 +13,12 @@ import {
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import { API_URL } from '../../../../Config';
 import axios from 'axios';
 
 const EditProfile = () => {
+      const navigation = useNavigation();
   const [userData, setUsersData] = useState({
     name: '',
     email: '',
@@ -57,10 +59,10 @@ const EditProfile = () => {
        console.log('token',token)
       try {
         const res = await axios({
-          url: API_URL + '/user/user/',
+          url: API_URL + 'user/user/',
           method:'PUT',
           data:{
-            ...userData,
+            ...userData, 
           }, 
          headers: {
             Authorization: `Bearer ${token}`,
@@ -68,6 +70,7 @@ const EditProfile = () => {
         });
         if(res){
           console.log('update users res', res);
+          navigation.navigate('homepage')
         }
       } catch (error) {
         console.log('edit profile error' ,error)
