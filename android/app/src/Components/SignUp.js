@@ -20,9 +20,9 @@ import { API_URL } from '../../../../Config';
 import axios from 'axios';
 
 const SignUp = () => {
-   const [username, setUsername] = useState('');
+  //  const [username, setUsername] = useState('');
    const [phoneNo, setPhoneNo] = useState('');
-  // const [email,setEmail] = useState('');
+  const [email,setEmail] = useState('');
   const [password, setPassword] = useState('');
    const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation();
@@ -35,10 +35,10 @@ const SignUp = () => {
 
   const submitHandler = async()=>{
     console.log({
-      username,
+      // username,
       phoneNo,
       password,
-      // email,
+      email,
       confirmPassword,
     });
     try {
@@ -46,9 +46,9 @@ const SignUp = () => {
         url: API_URL + 'auth/signup',
         method: 'POST',
         data: {
-          username,
+          username: phoneNo,
           phoneNo,
-          // email,
+          email,
           password,
           confirmPassword,
           role: 'user',
@@ -61,6 +61,7 @@ const SignUp = () => {
         console.log('signupData',signupData);
         if(signupData?.data?.success){
           console.log('signupData?.data',signupData?.data);
+          navigation.navigate('AccountSetUp');
         }
       }
     } catch (error) {
@@ -98,7 +99,7 @@ const SignUp = () => {
             </Text>
           </View>
           <View style={styles.input}>
-            <View>
+            {/* <View>
               <Text
                 style={{
                   alignSelf: 'flex-start',
@@ -117,9 +118,9 @@ const SignUp = () => {
                   setUsername(txt);
                 }}
               />
-            </View>
+            </View> */}
 
-            {/* <View>
+            <View>
               <Text
                 style={{
                   alignSelf: 'flex-start',
@@ -135,10 +136,10 @@ const SignUp = () => {
                 editable
                 maxLength={40}
                 onChangeText={txt => {
-                  setPassword(txt);
+                  setEmail(txt);
                 }}
               />
-            </View> */}
+            </View>
             <View>
               <Text
                 style={{

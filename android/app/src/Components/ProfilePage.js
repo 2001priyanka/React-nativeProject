@@ -80,6 +80,9 @@ function ModalTester() {
   const onNextPressed20 = () => {
     navigation.navigate('HomeScreens');
   };
+  const onNextPressed21 = () => {
+    navigation.navigate('PhotoScreen');
+  };
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -167,6 +170,7 @@ function ModalTester() {
             <IconFa
               name="square-edit-outline"
               style={{fontSize: vf(2.5), color: 'white'}}
+              onPress={onNextPressed21}
             />
           </View>
         </View>

@@ -40,7 +40,7 @@ const App = () => {
         <Footer />
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="AccountSetUp1"
+            initialRouteName="HomeScreens"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="HomePage" component={Homepage} />
             <Stack.Screen name="Home" component={Home} />

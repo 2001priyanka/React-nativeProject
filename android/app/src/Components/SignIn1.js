@@ -59,7 +59,7 @@ const SignIn1 = () => {
           console.log('signinData?.data', signinData?.data);
           dispatch(setIsLoggedIn(true));
           dispatch(setLoggedInUser(signinData?.data));
-          navigation.navigate('AccountSetUp');
+          navigation.navigate('HomeScreens');
         }
       }
     } catch (error) {

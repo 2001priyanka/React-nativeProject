@@ -23,13 +23,13 @@ import Modal from 'react-native-modal';
 const AccountSetUp3 = () => {
   const navigation = useNavigation();
   const onNextPressed14 = () => {
-    navigation.navigate('HomeScreens');
+    navigation.navigate('SetUp2');
   };
-  const [isModalVisible, setModalVisible] = useState(false);
+  // const [isModalVisible, setModalVisible] = useState(false);
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+  // const toggleModal = () => {
+  //   setModalVisible(!isModalVisible);
+  // };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -183,11 +183,11 @@ const AccountSetUp3 = () => {
                 color: 'white',
                 fontSize: 20,
               }}
-              onPress={toggleModal}>
+              onPress={onNextPressed14}>
               Next
             </Text>
           </View>
-          <Modal
+          {/* <Modal
             onBackdropPress={() => setModalVisible(false)}
             onBackButtonPress={() => setModalVisible(false)}
             isVisible={isModalVisible}
@@ -263,7 +263,7 @@ const AccountSetUp3 = () => {
                 </View>
               </View>
             </View>
-          </Modal>
+          </Modal> */}
         </View>
       </ScrollView>
     </SafeAreaView>
