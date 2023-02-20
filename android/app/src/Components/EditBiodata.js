@@ -155,15 +155,17 @@ const EditBiodata = () => {
                 </View>
               </View>
             </View>
-            <View style={styles.input}>
+            <View>
               <View>
                 <Text style={{color: 'black', fontSize: 15}}>About:</Text>
 
                 <TextInput
-                  style={styles.input2}
+                  style={styles.input3}
                   placeholder="About"
-                  editable
-                  maxLength={40}
+                  multiline={true}
+                  numberOfLines={10}
+                  // editable
+                  // maxLength={40}
                   onChangeText={e => {
                     console.log(e);
                     setUsersData({
@@ -175,8 +177,8 @@ const EditBiodata = () => {
                 />
               </View>
             </View>
-           
-            <View style={styles.input}>
+
+            <View>
               <View>
                 <Text style={{color: 'black', fontSize: 15}}>Address:</Text>
 
@@ -231,7 +233,15 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   input2: {
-    height: 40,
+    height:50,
+    margin: 12,
+    borderWidth: 1.4,
+    borderColor: '#fe5e75',
+    padding: 10,
+    borderRadius: 20,
+  },
+  input3: {
+    height: 100,
     margin: 12,
     borderWidth: 1.4,
     borderColor: '#fe5e75',

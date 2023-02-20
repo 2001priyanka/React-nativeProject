@@ -91,7 +91,9 @@ const EditContactDetails = () => {
                 name="arrow-left"
                 style={{fontSize: 25, color: '#fe5e75'}}
               />
-              <Text style={{color: 'black', fontSize: 25}}>Edit Profile</Text>
+              <Text style={{color: 'black', fontSize: 25}}>
+                Edit Contact Details
+              </Text>
             </Text>
           </View>
           <View style={styles.input}>
