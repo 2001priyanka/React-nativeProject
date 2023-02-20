@@ -22,13 +22,15 @@ import AccountSetUp1 from './android/app/src/Components/AccountSetUp1';
 import AccountSetUp2 from './android/app/src/Components/AccountSetUp2';
 import AccountSetUp3 from './android/app/src/Components/AccountSetUp3';
 import ProfilePage from './android/app/src/Components/ProfilePage';
-import EditProfile from './android/app/src/Components/EditProfile';
+// import EditProfile from './android/app/src/Components/EditBiodata';
 import NotificationPage from './android/app/src/Components/NotificationPage';
 import SecurityPage from './android/app/src/Components/SecurityPage';
 import InvitePage from './android/app/src/Components/InvitePage';
 import SignIn from './android/app/src/Components/SignIn ';
 import PhotoScreen from './android/app/src/Components/PhotoScreen';
 import Footer from './android/app/src/Components/Footer';
+import EditContactDetails from './android/app/src/Components/EditContactDetails';
+import EditBiodata from './android/app/src/Components/EditBiodata';
 
 const Stack = createStackNavigator();
 
@@ -56,7 +58,7 @@ const App = () => {
             <Stack.Screen name="AccountSetUp1" component={AccountSetUp1} />
             <Stack.Screen name="AccountSetUp2" component={AccountSetUp2} />
             <Stack.Screen name="AccountSetUp3" component={AccountSetUp3} />
-            <Stack.Screen name="EditProfile" component={EditProfile} />
+            <Stack.Screen name="EditBiodata" component={EditBiodata} />
             <Stack.Screen name="ProfilePage" component={ProfilePage} />
             <Stack.Screen name="Footer" component={Footer} />
             <Stack.Screen
@@ -66,6 +68,10 @@ const App = () => {
             <Stack.Screen name="SecurityPage" component={SecurityPage} />
             <Stack.Screen name="InvitePage" component={InvitePage} />
             <Stack.Screen name="PhotoScreen" component={PhotoScreen} />
+            <Stack.Screen
+              name="EditContactDetails"
+              component={EditContactDetails}
+            />
           </Stack.Navigator>
           <Footer />
         </NavigationContainer>

@@ -66,13 +66,13 @@ function ModalTester() {
     navigation.navigate('SignIn1');
   };
   const onNextPressed16 = () => {
-    navigation.navigate('EditProfile');
+    navigation.navigate('EditBiodata');
   };
   const onNextPressed17 = () => {
-    navigation.navigate('NotificationPage');
+    navigation.navigate('AccountSetUp2');
   };
   const onNextPressed18 = () => {
-    navigation.navigate('SecurityPage');
+    navigation.navigate('EditContactDetails');
   };
   const onNextPressed19 = () => {
     navigation.navigate('InvitePage');
@@ -213,7 +213,7 @@ function ModalTester() {
                   marginTop: 4,
                 }}
                 onPress={onNextPressed16}>
-                Edit Profile
+                Edit Biodata
               </Text>
             </View>
             <View>
@@ -250,7 +250,7 @@ function ModalTester() {
                   marginTop: 4,
                 }}
                 onPress={onNextPressed17}>
-                Notification
+                Edit Interest
               </Text>
             </View>
             <View>
@@ -281,13 +281,13 @@ function ModalTester() {
             <View>
               <Text
                 style={{
-                  paddingRight: 190,
+                  paddingRight: 100,
                   fontSize: 18,
                   color: 'black',
                   marginTop: 4,
                 }}
                 onPress={onNextPressed18}>
-                Security
+                Edit Contact Details
               </Text>
             </View>
             <View>
@@ -297,39 +297,7 @@ function ModalTester() {
               />
             </View>
           </View>
-          <View style={styles.uppersection1}>
-            <View
-              style={{
-                backgroundColor: '#FFDBE9',
-                width: vw(10),
-                height: vh(5),
-                borderRadius: 50,
-                justifyContent: 'center',
-              }}>
-              <IconFa
-                name="eye"
-                style={{
-                  fontSize: vf(2.5),
-                  color: '#fe5e75',
-                  marginLeft: 10,
-                }}
-              />
-            </View>
-            <View>
-              <Text
-                style={{
-                  paddingRight: 140,
-                  fontSize: 18,
-                  color: 'black',
-                  marginTop: 4,
-                }}>
-                Dark Mode
-              </Text>
-            </View>
-            <View>
-              <IconFa name="toggle-switch-off" style={{fontSize: vf(6)}} />
-            </View>
-          </View>
+         
           <View style={styles.uppersection1}>
             <View
               style={{

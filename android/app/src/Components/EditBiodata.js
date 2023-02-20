@@ -17,7 +17,7 @@ import {useNavigation} from '@react-navigation/native';
 import { API_URL } from '../../../../Config';
 import axios from 'axios';
 
-const EditProfile = () => {
+const EditBiodata = () => {
       const navigation = useNavigation();
   const [userData, setUsersData] = useState({
     name: '',
@@ -91,7 +91,7 @@ const EditProfile = () => {
                 name="arrow-left"
                 style={{fontSize: 25, color: '#fe5e75'}}
               />
-              <Text style={{color: 'black', fontSize: 25}}>Edit Profile</Text>
+              <Text style={{color: 'black', fontSize: 25}}>Edit Biodata</Text>
             </Text>
           </View>
           <View style={styles.input}>
@@ -111,46 +111,6 @@ const EditProfile = () => {
                   });
                 }}
                 value={userData?.name}
-              />
-            </View>
-          </View>
-          <View style={styles.input}>
-            <View>
-              <Text style={{color: 'black', fontSize: 15}}>Email:</Text>
-
-              <TextInput
-                style={styles.input2}
-                placeholder="Email"
-                editable
-                maxLength={40}
-                onChangeText={e => {
-                  console.log(e);
-                  setUsersData({
-                    ...userData,
-                    email: e,
-                  });
-                }}
-                value={userData?.email}
-              />
-            </View>
-          </View>
-          <View style={styles.input}>
-            <View>
-              <Text style={{color: 'black', fontSize: 15}}>Phone Number:</Text>
-
-              <TextInput
-                style={styles.input2}
-                placeholder="Phone Number"
-                editable
-                maxLength={40}
-                onChangeText={e => {
-                  console.log(e);
-                  setUsersData({
-                    ...userData,
-                    mobile: e,
-                  });
-                }}
-                value={userData?.mobile}
               />
             </View>
           </View>
@@ -215,26 +175,7 @@ const EditProfile = () => {
                 />
               </View>
             </View>
-            <View style={styles.input}>
-              <View>
-                <Text style={{color: 'black', fontSize: 15}}>Intrest:</Text>
-
-                <TextInput
-                  style={styles.input2}
-                  placeholder="Intrest"
-                  editable
-                  maxLength={40}
-                  onChangeText={e => {
-                    console.log(e);
-                    setUsersData({
-                      ...userData,
-                      intrest: e,
-                    });
-                  }}
-                  value={userData?.intrest}
-                />
-              </View>
-            </View>
+           
             <View style={styles.input}>
               <View>
                 <Text style={{color: 'black', fontSize: 15}}>Address:</Text>
@@ -307,4 +248,4 @@ const styles = StyleSheet.create({
     width: 150,
   },
 });
-export default EditProfile;
+export default EditBiodata;
