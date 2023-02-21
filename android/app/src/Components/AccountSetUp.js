@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
   ScrollView,
@@ -27,40 +27,55 @@ const AccountSetUp = () => {
   };
   const [msgs, setMsgs] = useState([
     {
+      id: 1,
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
       name: 'Afghanisthan',
       msg: 'IN',
       new: 1,
     },
     {
+      id: 2,
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
       name: 'America',
       msg: 'IN',
       new: 1,
     },
     {
+      id: 3,
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
       name: 'India',
       msg: 'IN',
       new: 1,
     },
     {
+      id: 4,
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
-      name: 'India',
-      msg: 'IN',
+      name: 'Japan',
+      msg: 'JA',
       new: 1,
     },
     {
+      id: 5,
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
-      name: 'India',
-      msg: 'IN',
+      name: 'China',
+      msg: 'CH',
       new: 1,
     },
   ]);
   const [text, onChangeText] = React.useState(null);
+
+  const [countryName, setCountryName] = useState('');
+
   const _renderItem = ({item, index}) => {
     return (
-      <View style={styles.uppersection1}>
+      <TouchableOpacity
+        style={styles.uppersection1}
+        onPress={q => {
+          console.log('okaa', [item.id]);
+          console.log('okaa', [item.name]);
+
+          setCountryName(item.name);
+        }}>
         <View style={{}}>
           <View>
             <View
@@ -86,16 +101,21 @@ const AccountSetUp = () => {
               </View>
               <View style={{justifyContent: 'center', alignItems: 'center'}}>
                 <IconFa
-                  name="circle-outline"
+                  name={
+                    countryName === item.name
+                      ? 'checkbox-marked-circle-outline'
+                      : 'circle-outline'
+                  }
                   style={{fontSize: 20, color: '#fe5e75'}}
                 />
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -119,7 +139,7 @@ const AccountSetUp = () => {
               alignSelf: 'center',
             }}>
             <SearchBar
-              placeholder="Search "
+              placeholder="Search"
               // onChangeText={updateSearch}
               // value={search}
               // onPressIn={onNextPressed3}
@@ -148,7 +168,11 @@ const AccountSetUp = () => {
                 color: 'white',
                 fontSize: 20,
               }}
-              onPress={onNextPressed11}>
+              onPress={() => {
+                navigation.navigate('AccountSetUp1', {
+                  countryName,
+                });
+              }}>
               Next
             </Text>
           </View>

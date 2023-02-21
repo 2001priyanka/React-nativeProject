@@ -1,5 +1,5 @@
-import React from 'react';
-import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,6 +9,7 @@ import {
   Image,
   View,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import {
   responsiveHeight as vh,
@@ -16,14 +17,114 @@ import {
   responsiveFontSize as vf,
 } from 'react-native-responsive-dimensions';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
+import axios from 'axios';
+import {API_URL} from '../../../../Config';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const AccountSetUp2 = () => {
+  const route = useRoute();
+  console.log(route);
   const navigation = useNavigation();
   const onNextPressed13 = () => {
     navigation.navigate('AccountSetUp3');
   };
   // const [text, onChangeText] = React.useState(null);
+
+  const [category, setCategory] = useState([]);
+
+  const getCategory = async () => {
+    try {
+      const res = await axios({
+        url: API_URL + 'category',
+        method: 'GET',
+      });
+
+      if (res) {
+        console.log('getCategory ress', res);
+        setCategory(res?.data?.category);
+      }
+    } catch (error) {
+      console.log('getCategory error', error);
+    }
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
+  const [categoryName, setCategoryName] = useState('');
+
+  const updateCategoryID = async () => {
+    try {
+      const res = await axios({
+        url: API_URL + 'admin/user/id ayega',
+      });
+    } catch (error) {
+      console.log('updateCategoryID error', error);
+    }
+  };
+
+  const _renderCategory = ({item, index}) => {
+    return (
+      <>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+          }}>
+          <TouchableOpacity
+            style={{
+              fontSize: 15,
+              height: 50,
+              width: vh(15),
+              borderWidth: 1,
+              borderRadius: 30,
+              borderColor: '#fe5e75',
+              // backgroundColor: '#F7BEF4',
+              backgroundColor: item.name === categoryName ? '#FFA2D5' : 'white',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+              marginTop: 30,
+              marginHorizontal: 30,
+            }}
+            onPress={() => {
+              console.log('id', item._id);
+              setCategoryName(item.name);
+            }}>
+            <Text
+              style={{
+                textAlign: 'center',
+                color: '#fe5e75',
+                fontSize: 18,
+              }}>
+              <IconFa
+                name="gamepad-variant"
+                style={{fontSize: 20, color: 'black'}}
+              />
+              {item?.name}
+            </Text>
+          </TouchableOpacity>
+          {/* <View style={styles.body1}>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    color: '#fe5e75',
+                    fontSize: 18,
+                  }}>
+                  <IconFa
+                    name="dance-ballroom"
+                    style={{fontSize: 20, color: 'black'}}
+                  />
+                  Dancing
+                </Text>
+              </View> */}
+          {/* <View></View> */}
+        </View>
+      </>
+    );
+  };
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -45,40 +146,48 @@ const AccountSetUp2 = () => {
               in common
             </Text>
           </View>
-          <View>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-              <View style={styles.body1}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: '#fe5e75',
-                    fontSize: 18,
-                  }}>
-                  <IconFa
-                    name="gamepad-variant"
-                    style={{fontSize: 20, color: 'black'}}
-                  />
-                  Gaming
-                </Text>
-              </View>
-              <View style={styles.body1}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: '#fe5e75',
-                    fontSize: 18,
-                  }}>
-                  <IconFa
-                    name="dance-ballroom"
-                    style={{fontSize: 20, color: 'black'}}
-                  />
-                  Dancing
-                </Text>
-              </View>
-              <View></View>
-            </View>
-            <View
+          <View style={{}}>
+            {/* here map */}
+
+            {/* {category?.map(c => {
+              return (
+                <>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-around',
+                    }}>
+                    <View style={styles.body1}>
+                      <Text
+                        style={{
+                          textAlign: 'center',
+                          color: '#fe5e75',
+                          fontSize: 18,
+                        }}>
+                        <IconFa
+                          name="gamepad-variant"
+                          style={{fontSize: 20, color: 'black'}}
+                        />
+                        {c?.name}
+                      </Text>
+                    </View>
+                    
+                  </View>
+                </>
+              );
+            })} */}
+
+            <FlatList
+              data={category}
+              renderItem={_renderCategory}
+              numColumns={2}
+              contentContainerStyle={{
+                // backgroundColor: 'red',
+                justifyContent: 'space-around',
+              }}
+            />
+
+            {/* <View
               style={{flexDirection: 'row', justifyContent: 'space-around'}}>
               <View style={styles.body1}>
                 <Text
@@ -117,8 +226,8 @@ const AccountSetUp2 = () => {
                   movie
                 </Text>
               </View>
-            </View>
-            <View
+            </View> */}
+            {/* <View
               style={{flexDirection: 'row', justifyContent: 'space-around'}}>
               <View style={styles.body1}>
                 <Text
@@ -147,8 +256,8 @@ const AccountSetUp2 = () => {
                   Book
                 </Text>
               </View>
-            </View>
-            <View
+            </View> */}
+            {/* <View
               style={{flexDirection: 'row', justifyContent: 'space-around'}}>
               <View style={styles.body}>
                 <Text
@@ -192,7 +301,7 @@ const AccountSetUp2 = () => {
                   Football
                 </Text>
               </View>
-            </View>
+            </View> */}
           </View>
           <View
             style={{
@@ -200,7 +309,7 @@ const AccountSetUp2 = () => {
               height: 50,
               margin: 20,
               borderRadius: 30,
-              marginTop:180,
+              marginTop: 180,
             }}>
             <Text
               style={{
@@ -263,10 +372,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 30,
     borderColor: '#fe5e75',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    backgroundColor: '#F7BEF4',
+    backgroundColor: '#FFA2D5',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     alignItems: 'center',
     marginTop: 30,
+    marginHorizontal: 30,
   },
 });
 export default AccountSetUp2;

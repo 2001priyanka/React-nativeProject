@@ -42,7 +42,7 @@ const App = () => {
         <Footer />
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="PhotoScreen"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="HomePage" component={Homepage} />
             <Stack.Screen name="Home" component={Home} />

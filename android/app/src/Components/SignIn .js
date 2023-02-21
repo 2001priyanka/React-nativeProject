@@ -31,7 +31,7 @@ const SignIn = () => {
               style={{
                 fontSize: 25,
                 marginTop: 40,
-                marginLeft:30,
+                marginLeft: 30,
                 color: '#fe5e75',
               }}
             />
@@ -46,7 +46,6 @@ const SignIn = () => {
               style={{
                 fontSize: 30,
                 color: 'white',
-               
               }}
             />
             <Text
@@ -61,11 +60,7 @@ const SignIn = () => {
             </Text>
           </View>
           <View style={styles.body2}>
-            <IconFa
-              name="google"
-              color={'white'}
-              style={{fontSize: 30}}
-            />
+            <IconFa name="google" color={'white'} style={{fontSize: 30}} />
             <Text
               style={{
                 textAlign: 'center',
@@ -77,11 +72,7 @@ const SignIn = () => {
             </Text>
           </View>
           <View style={styles.body3}>
-            <IconFa
-              name="apple"
-              color={'black'}
-              style={{fontSize: 30}}
-            />
+            <IconFa name="apple" color={'black'} style={{fontSize: 30}} />
             <Text
               style={{
                 textAlign: 'center',
@@ -130,7 +121,7 @@ const SignIn = () => {
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
-              marginTop:120,
+              marginTop: 120,
             }}>
             <View>
               <Text

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
   SafeAreaView,
@@ -16,15 +16,15 @@ import {
   responsiveWidth as vw,
   responsiveFontSize as vf,
 } from 'react-native-responsive-dimensions';
-import { API_URL } from '../../../../Config';
+import {API_URL} from '../../../../Config';
 import axios from 'axios';
 
 const SignUp = () => {
   //  const [username, setUsername] = useState('');
-   const [phoneNo, setPhoneNo] = useState('');
-  const [email,setEmail] = useState('');
+  const [phoneNo, setPhoneNo] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-   const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation();
   const onNextPressed3 = () => {
     navigation.navigate('AccountSetUp');
@@ -33,7 +33,7 @@ const SignUp = () => {
     navigation.navigate('SignIn1');
   };
 
-  const submitHandler = async()=>{
+  const submitHandler = async () => {
     console.log({
       // username,
       phoneNo,
@@ -57,17 +57,17 @@ const SignUp = () => {
           'Content-Type': 'application/json',
         },
       });
-      if(signupData){
-        console.log('signupData',signupData);
-        if(signupData?.data?.success){
-          console.log('signupData?.data',signupData?.data);
+      if (signupData) {
+        console.log('signupData', signupData);
+        if (signupData?.data?.success) {
+          console.log('signupData?.data', signupData?.data);
           navigation.navigate('AccountSetUp');
         }
       }
     } catch (error) {
-      console.log('ERROR', error)
+      console.log('ERROR', error);
     }
-  }
+  };
 
   return (
     <SafeAreaView>
@@ -148,7 +148,7 @@ const SignUp = () => {
                   flexDirection: 'row',
                   fontWeight: '500',
                 }}>
-                 phoneNo:
+                phoneNo:
               </Text>
               <TextInput
                 style={styles.input2}
@@ -229,7 +229,12 @@ const SignUp = () => {
                   color: 'white',
                   fontSize: vf(2.4),
                 }}
-                onPress={submitHandler}>
+                onPress={
+                  // submitHandler
+                  () => {
+                    navigation.navigate('AccountSetUp');
+                  }
+                }>
                 Sign Up
               </Text>
             </View>
@@ -276,7 +281,7 @@ const SignUp = () => {
             <View>
               <Text
                 style={{textAlign: 'center', marginTop: 20, fontWeight: '500'}}>
-                Already have an account?
+                Already have an account??
               </Text>
             </View>
             <TouchableOpacity>
