@@ -56,9 +56,7 @@ const AccountSetUp2 = () => {
 
   const updateCategoryID = async () => {
     try {
-      const res = await axios({
-        url: API_URL + 'admin/user/id ayega',
-      });
+      const res = await axios({});
     } catch (error) {
       console.log('updateCategoryID error', error);
     }
