@@ -59,10 +59,11 @@ const SignUp = () => {
       });
       if (signupData) {
         console.log('signupData', signupData);
-        if (signupData?.data?.success) {
-          console.log('signupData?.data', signupData?.data);
-          navigation.navigate('AccountSetUp');
-        }
+
+        console.log('signupData?.data', signupData?.data);
+        navigation.navigate('AccountSetUp', {
+          _id: signupData?.data?._id,
+        });
       }
     } catch (error) {
       console.log('ERROR', error);
@@ -212,33 +213,33 @@ const SignUp = () => {
               Remember me
             </Text>
           </View>
-          <TouchableOpacity>
-            <View
+
+          <TouchableOpacity
+            onPress={
+              submitHandler
+              // () => {
+              //   navigation.navigate('AccountSetUp');
+              // }
+            }
+            style={{
+              backgroundColor: '#fe5e75',
+              height: vh(7),
+              margin: 20,
+              borderRadius: 30,
+            }}>
+            <Text
               style={{
-                backgroundColor: '#fe5e75',
-                height: vh(7),
-                margin: 20,
-                borderRadius: 30,
+                textAlign: 'center',
+                // height: 40,
+                // width: 100,
+                marginTop: 12,
+                color: 'white',
+                fontSize: vf(2.4),
               }}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  // height: 40,
-                  // width: 100,
-                  marginTop: 12,
-                  color: 'white',
-                  fontSize: vf(2.4),
-                }}
-                onPress={
-                  // submitHandler
-                  () => {
-                    navigation.navigate('AccountSetUp');
-                  }
-                }>
-                Sign Up
-              </Text>
-            </View>
+              Sign Up
+            </Text>
           </TouchableOpacity>
+
           <View>
             <Text style={{textAlign: 'center'}}>or continue with</Text>
           </View>

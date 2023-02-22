@@ -1,4 +1,4 @@
-import React , {useState, useEffect}from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {
   SafeAreaView,
@@ -14,11 +14,12 @@ import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import { API_URL } from '../../../../Config';
+import {API_URL} from '../../../../Config';
 import axios from 'axios';
+import {Alert} from 'react-native';
 
 const EditBiodata = () => {
-      const navigation = useNavigation();
+  const navigation = useNavigation();
   const [userData, setUsersData] = useState({
     name: '',
     email: '',
@@ -29,57 +30,63 @@ const EditBiodata = () => {
     intrest: '',
     about: '',
   });
-  const token = useSelector(reduxState => reduxState?.login?.user?.accessToken
-  );
-  console.log('token',token);
+  const token = useSelector(reduxState => reduxState?.login?.user?.accessToken);
+  console.log('token', token);
 
-  const getUsersData = async () => {
-    if (token) {
-      console.log('token',token)
+  const user = useSelector(reduxState => reduxState?.login?.user?.user?._id);
+
+  const getuserData = async () => {
+    if (user) {
       try {
         const res = await axios({
-          url: API_URL + 'user/user/getProfile',
+          url: API_URL + `admin/user/${user}`,
           method: 'GET',
+        });
+        if (res) {
+          console.log('getuserData res', res);
+          setUsersData(res?.data?.results);
+        }
+      } catch (error) {
+        console.log('getuserData error', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getuserData();
+  }, []);
+
+  const updateUserData = async () => {
+    if (user) {
+      try {
+        const res = await axios({
+          url: API_URL + `admin/user/${user}`,
+          method: 'PUT',
+          data: {
+            // ...userData,
+            name: userData?.name,
+            email: userData?.email,
+            about: userData?.about,
+            address1: userData?.address1,
+            gender: userData?.gender,
+            age: userData?.age,
+          },
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+
         if (res) {
-          console.log('users data in edit profile', res?.data?.user);
-          setUsersData(res?.data?.user);
-         
+          console.log('updateUserData res', res);
+          navigation.navigate('ProfilePage');
         }
       } catch (error) {
-        console.log('profile data error', error);
+        console.log('updateUserData error', error);
       }
+    } else {
+      Alert.alert('Required Fields Missing!');
     }
   };
-  const updateProfile = async()=>{
-    if(token){
-       console.log('token',token)
-      try {
-        const res = await axios({
-          url: API_URL + 'user/user/',
-          method:'PUT',
-          data:{
-            ...userData, 
-          }, 
-         headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        if(res){
-          console.log('update users res', res);
-          navigation.navigate('homepage')
-        }
-      } catch (error) {
-        console.log('edit profile error' ,error)
-      }
-    }
-  }
-  useEffect(()=>{
-    getUsersData();
-  },[token]);
 
   return (
     <SafeAreaView>
@@ -197,9 +204,27 @@ const EditBiodata = () => {
                   value={userData?.address1}
                 />
               </View>
+              <View>
+                <Text style={{color: 'black', fontSize: 15}}>Email:</Text>
+
+                <TextInput
+                  style={styles.input2}
+                  placeholder="Address"
+                  editable
+                  maxLength={40}
+                  onChangeText={e => {
+                    console.log(e);
+                    setUsersData({
+                      ...userData,
+                      email: e,
+                    });
+                  }}
+                  value={userData?.email}
+                />
+              </View>
             </View>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={updateUserData}>
             <View
               style={{
                 backgroundColor: '#fe5e75',
@@ -213,9 +238,8 @@ const EditBiodata = () => {
                   marginTop: 12,
                   color: 'white',
                   fontSize: 18,
-                }}
-                onPress={updateProfile}>
-                Save Change
+                }}>
+                Save Changes
               </Text>
             </View>
           </TouchableOpacity>
@@ -233,7 +257,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   input2: {
-    height:50,
+    height: 50,
     margin: 12,
     borderWidth: 1.4,
     borderColor: '#fe5e75',

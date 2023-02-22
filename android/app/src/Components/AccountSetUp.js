@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {
   ScrollView,
   StyleSheet,
@@ -25,6 +25,12 @@ const AccountSetUp = () => {
   const onNextPressed11 = () => {
     navigation.navigate('AccountSetUp1');
   };
+
+  const route = useRoute();
+  const userID = route?.params?._id;
+
+  console.log(route);
+
   const [msgs, setMsgs] = useState([
     {
       id: 1,
@@ -154,7 +160,13 @@ const AccountSetUp = () => {
             />
           </View>
           <FlatList data={msgs} renderItem={_renderItem} />
-          <View
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('AccountSetUp1', {
+                countryName,
+                _id: userID,
+              });
+            }}
             style={{
               backgroundColor: '#fe5e75',
               height: 50,
@@ -167,15 +179,10 @@ const AccountSetUp = () => {
                 marginTop: 12,
                 color: 'white',
                 fontSize: 20,
-              }}
-              onPress={() => {
-                navigation.navigate('AccountSetUp1', {
-                  countryName,
-                });
               }}>
               Next
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

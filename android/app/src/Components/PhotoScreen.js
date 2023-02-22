@@ -20,14 +20,16 @@ import {
 import DocumentPicker from 'react-native-document-picker';
 import {PermissionsAndroid} from 'react-native';
 import * as RNFS from 'react-native-fs';
-import {Axios} from 'axios';
+import axios, {Axios} from 'axios';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import {API_URL} from '../../../../Config';
+import {useEffect} from 'react';
 // import { FlatList } from 'react-native-gesture-handler';
 
 const PhotoScreen = () => {
+  let count = 0;
   const [files, setFiles] = useState([]);
   const [imageUri, setimageUri] = useState(null);
   const [photo, SetPhoto] = useState([
@@ -70,9 +72,14 @@ const PhotoScreen = () => {
   };
 
   const route = useRoute();
-  console.log(route);
-  const usersData = route?.params?.usersData;
+
+  // const [images, setImages] = useState([]);
+  let images = [];
+
+  console.log(route?.params);
+  const usersData = route?.params?.userData;
   const imageUrl = route?.params?.imageUri;
+  const location = route?.params?.location;
 
   const [id, setId] = useState('');
 
@@ -84,71 +91,14 @@ const PhotoScreen = () => {
           style={styles.body}
           onPress={e => {
             selectAllFiles();
-            setId(item.id);
+            // setId(item.id);
           }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: '#fe5e75',
-              fontSize: 18,
-            }}>
-            {id === item.id && imageUri ? (
-              <Image
-                source={{uri: imageUri}}
-                style={{height: vh(30), width: vw(30)}}
-              />
-            ) : (
-              <View
-                style={{
-                  backgroundColor: '#fe5e75',
-                  width: 60,
-                  height: 60,
-                  borderRadius: 50,
-                }}>
-                <IconFa
-                  name="plus"
-                  style={{
-                    fontSize: 30,
-                    marginTop: 15,
-                    color: 'white',
-                    marginLeft: 15,
-                  }}
-                  onPress={() => {
-                    // selectAllFiles();
-                  }}
-                />
-              </View>
-            )}
-
-            {/* <View
-              style={{
-                backgroundColor: '#fe5e75',
-                width: 60,
-                height: 60,
-                borderRadius: 50,
-              }}>
-              <IconFa
-                name="plus"
-                style={{
-                  fontSize: 30,
-                  marginTop: 15,
-                  color: 'white',
-                  marginLeft: 15,
-                }}
-                onPress={() => {
-                  selectAllFiles();
-                }}
-              />
-            </View> */}
-          </Text>
-        </TouchableOpacity>
-        {/* <View style={styles.body}>
-          <Text
-            style={{
-              textAlign: 'center',
-              color: '#fe5e75',
-              fontSize: 18,
-            }}>
+          {files[0].uri ? (
+            <Image
+              source={{uri: item.uri}}
+              style={{height: vh(33), width: vw(40)}}
+            />
+          ) : (
             <View
               style={{
                 backgroundColor: '#fe5e75',
@@ -164,13 +114,10 @@ const PhotoScreen = () => {
                   color: 'white',
                   marginLeft: 15,
                 }}
-                onPress={() => {
-                  selectAllFiles();
-                }}
               />
             </View>
-          </Text>
-        </View> */}
+          )}
+        </TouchableOpacity>
       </View>
     );
   };
@@ -220,6 +167,9 @@ const PhotoScreen = () => {
       console.warn(err);
     }
   };
+
+  const [imagepath, setImagePath] = useState('');
+
   const selectAllFiles = async () => {
     requestCameraPermission();
     //Opening Document Picker for selection of one file
@@ -237,10 +187,22 @@ const PhotoScreen = () => {
       console.log('123asdrfvbgt File Size : ' + res[0].size);
       console.log('123asdrfvbgt File id: ' + res[0]._id);
       setimageUri(res[0].uri);
+      setImagePath(res[0].uri);
+
+      // if (res) {
+      // count += 1;
+      // }
+
+      // console.log('counttt', count);
 
       //Setting the state to show single file attributes
+
       setFiles([...files, ...res]);
+      if (files[3]) {
+        setIsTrue(true);
+      }
       console.log('123asdrfvbgt results>>', res);
+      console.log('files', files);
       // if (res[0]) {
       //   navigation.navigate('newPost', {
       //     response: res[0],
@@ -259,6 +221,13 @@ const PhotoScreen = () => {
       }
     }
   };
+
+  console.log('files', files[0]);
+
+  console.log('counttttt', count);
+
+  console.log(imagepath, images);
+
   const deleteFile = name => {
     const myfiles = files.filter(f => {
       return f.name !== name;
@@ -518,6 +487,28 @@ const PhotoScreen = () => {
 
   // const route = useRoute()
 
+  const [isTrue, setIsTrue] = useState(false);
+
+  // const [count, setCount] = useState(0);
+
+  // console.log('count', count);
+
+  const signUpHandler = async () => {
+    try {
+      const res = await axios({
+        url: API_URL + 'auth/signup',
+        method: 'POST',
+        data: {
+          username: usersData?.username,
+          password: usersData?.password,
+          role: 'user',
+        },
+      });
+    } catch (error) {
+      console.log('signUpHandler error', error);
+    }
+  };
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -545,31 +536,107 @@ const PhotoScreen = () => {
             </Text>
           </View>
         </View>
-        <FlatList data={photo} renderItem={_renderItem} numColumns={2} />
-        <View
+        {/* <FlatList data={photo} renderItem={_renderItem} numColumns={2} /> */}
+        {/* {
+          files && isTrue ? null : (
+            <TouchableOpacity
+              onPress={() => {
+                selectAllFiles() && setIsTrue(true);
+              }}
+              style={{
+                backgroundColor: '#fe5e75',
+                height: 50,
+                margin: 20,
+                borderRadius: 30,
+                marginTop: 80,
+              }}>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  marginTop: 12,
+                  color: 'white',
+                  fontSize: 20,
+                }}>
+                Add Photos?
+              </Text>
+            </TouchableOpacity>
+          )
+          
+        } */}
+
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('AccountSetUp2');
+          }}
           style={{
             backgroundColor: '#fe5e75',
-            height: 50,
-            margin: 20,
-            borderRadius: 30,
-            marginTop: 80,
+            height: 40,
+
+            width: vw(20),
+            borderRadius: 100,
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'absolute',
+            top: vh(16),
+            right: 10,
           }}>
-          <Text
-            style={{
-              textAlign: 'center',
-              marginTop: 12,
-              color: 'white',
-              fontSize: 20,
-            }}
-            onPress={() => {
-              navigation.navigate('AccountSetUp2', {
-                usersData,
-                imageUrl,
-              });
-            }}>
-            Next
+          <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
+            Done
           </Text>
-        </View>
+        </TouchableOpacity>
+
+        <FlatList data={files} renderItem={_renderItem} numColumns={2} />
+
+        {count === 3 && isTrue ? (
+          <TouchableOpacity
+            onPress={() => {
+              // navigation.navigate('AccountSetUp2', {
+              //   usersData,
+              //   imageUrl,
+              // });
+            }}
+            style={{
+              backgroundColor: '#fe5e75',
+              height: 50,
+              margin: 20,
+              borderRadius: 30,
+              marginTop: 80,
+            }}>
+            <Text
+              style={{
+                textAlign: 'center',
+                marginTop: 12,
+                color: 'white',
+                fontSize: 20,
+              }}>
+              Next
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => {
+              console.log('inside upload false');
+              selectAllFiles();
+              console.log((count += 1));
+            }}
+            style={{
+              backgroundColor: '#fe5e75',
+              height: 50,
+              margin: 20,
+              borderRadius: 30,
+              marginTop: 80,
+            }}>
+            <Text
+              style={{
+                textAlign: 'center',
+                marginTop: 12,
+                color: 'white',
+                fontSize: 20,
+              }}>
+              Upload Photos?
+            </Text>
+          </TouchableOpacity>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -626,6 +693,7 @@ const styles = StyleSheet.create({
     borderColor: '#fe5e75',
     backgroundColor: '#FFDBE9',
     marginHorizontal: 20,
+    overflow: 'hidden',
   },
 });
 export default PhotoScreen;

@@ -94,7 +94,7 @@ const SignIn = () => {
               }}>
               Or
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onNext1Pressed}>
               <View
                 style={{
                   backgroundColor: '#fe5e75',
@@ -108,8 +108,7 @@ const SignIn = () => {
                   style={{
                     color: 'white',
                     fontWeight: '500',
-                  }}
-                  onPress={onNext1Pressed}>
+                  }}>
                   Sign in with password
                 </Text>
               </View>

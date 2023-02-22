@@ -36,18 +36,7 @@ const AccountSetUp1 = () => {
   //  const [location, setLocation] = useState('');
   //  const [msgs, setMsgs] = useState([]);
   const [text, onChangeText] = React.useState(null);
-  const [userData, setUsersData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    address1: '',
-    mobile: '',
-    gender: '',
-    age: '',
-    intrest: '',
-    about: '',
-    location: '',
-  });
+
   const token = useSelector(reduxState => reduxState?.login?.user?.accessToken);
   console.log('token', token);
   const navigation = useNavigation();
@@ -71,7 +60,7 @@ const AccountSetUp1 = () => {
   //       });
   //       if (res) {
   //         console.log('Users data', res?.data?.users);
-  //         setUsersData(res?.data?.user);
+  //         setUserDetail(res?.data?.user);
   //       }
   //     } catch (error) {
   //       console.log('profile data error', error);
@@ -85,7 +74,7 @@ const AccountSetUp1 = () => {
   //       url: API_URL + 'admin/user',
   //       method: 'POST',
   //       data: {
-  //         ...userData,
+  //         ...userDetail,
   //       },
   //       headers: {
   //         Authorization: `Bearer ${token}`,
@@ -378,6 +367,81 @@ const AccountSetUp1 = () => {
       </View>
     );
   };
+
+  const location = route?.params?.countryName;
+
+  const _id = route?.params?._id;
+  console.log(route);
+
+  const [userDetail, setUserDetail] = useState({
+    name: '',
+    email: '',
+    phoneNo: '',
+    gender: '',
+    location: '',
+    profilePic: '',
+  });
+
+  const getUser = async () => {
+    if (_id) {
+      try {
+        const res = await axios({
+          url: API_URL + `admin/user/${_id}`,
+          method: 'GET',
+        });
+
+        if (res) {
+          console.log('getUser res', res);
+          setUserDetail(res?.data?.results);
+        }
+      } catch (error) {
+        console.log('getUser error', error);
+      }
+    }
+  };
+
+  const [isTrue, setIsTrue] = useState(false);
+
+  const accessToken = useSelector(
+    reduxState => reduxState?.login?.user?.accessToken,
+  );
+
+  const updateUser = async () => {
+    if (_id) {
+      try {
+        const res = await axios({
+          url: API_URL + `admin/user/${_id}`,
+          method: 'PUT',
+          data: {
+            name: userDetail?.name,
+            email: userDetail?.email,
+            phoneNo: userDetail?.phoneNo,
+            gender: userDetail?.gender,
+            location,
+            profilePic: imageUri,
+          },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        if (res) {
+          console.log('updateUser ress', res);
+
+          navigation.navigate('PhotoScreen');
+        }
+      } catch (error) {
+        console.log('updateUser error', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (_id) {
+      getUser();
+    }
+  }, [_id]);
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -435,7 +499,7 @@ const AccountSetUp1 = () => {
             </TouchableOpacity>
           </View>
           <Text style={{textAlign: 'center', fontSize: 20, color: 'black'}}>
-            {userData?.name}
+            {userDetail?.name}
           </Text>
           <View style={styles.input}>
             <View>
@@ -460,22 +524,21 @@ const AccountSetUp1 = () => {
                   margin: 12,
                   borderWidth: 0.5,
                   height: vh(5),
-                  // padding: 10,
                   borderRadius: 20,
                 }}>
                 <View>
                   <TextInput
-                    // style={{margi}}
                     placeholder="Full Name"
                     editable
                     maxLength={40}
                     onChangeText={e => {
-                      setUsersData({
-                        ...userData,
-                        username: e,
+                      console.log(e);
+                      setUserDetail({
+                        ...userDetail,
+                        name: e,
                       });
                     }}
-                    value={userData?.username}
+                    value={userDetail?.name}
                   />
                 </View>
 
@@ -515,11 +578,12 @@ const AccountSetUp1 = () => {
                     maxLength={40}
                     onChangeText={txt => {
                       // setEmail(txt);
-                      setUsersData({
-                        ...userData,
+                      setUserDetail({
+                        ...userDetail,
                         email: txt,
                       });
                     }}
+                    value={userDetail?.email}
                   />
                 </View>
                 <View>
@@ -563,12 +627,12 @@ const AccountSetUp1 = () => {
                     maxLength={40}
                     onChangeText={txt => {
                       // setNumber(txt);
-                      setUsersData({
-                        ...userData,
-                        mobile: txt,
+                      setUserDetail({
+                        ...userDetail,
+                        phoneNo: txt,
                       });
                     }}
-                    // value={number?.number}
+                    value={userDetail?.phoneNo}
                   />
                 </View>
                 <View>
@@ -611,11 +675,12 @@ const AccountSetUp1 = () => {
                     maxLength={40}
                     onChangeText={txt => {
                       // setGender(txt);
-                      setUsersData({
-                        ...userData,
+                      setUserDetail({
+                        ...userDetail,
                         gender: txt,
                       });
                     }}
+                    value={userDetail?.gender}
                   />
                 </View>
                 <View>
@@ -636,7 +701,7 @@ const AccountSetUp1 = () => {
                     fontWeight: '500',
                     marginTop: 5,
                   }}>
-                  Password:
+                  Location:
                 </Text>
               </View>
 
@@ -654,17 +719,17 @@ const AccountSetUp1 = () => {
                 <View>
                   <TextInput
                     // style={{margi}}
-                    placeholder="Password"
+                    placeholder="Location"
                     editable
                     maxLength={40}
-                    secureTextEntry={true}
                     onChangeText={txt => {
                       // setLocation(txt);
-                      setUsersData({
-                        ...userData,
-                        password: txt,
+                      setUserDetail({
+                        ...userDetail,
+                        location: txt,
                       });
                     }}
+                    value={location}
                   />
                 </View>
                 <View>
@@ -680,10 +745,8 @@ const AccountSetUp1 = () => {
           {/* <FlatList data={msgs} renderItem={_renderItem} /> */}
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('PhotoScreen', {
-                userData,
-                imageUri,
-              });
+              // navigation.navigate('PhotoScreen');
+              updateUser();
             }}
             style={{
               backgroundColor: '#fe5e75',

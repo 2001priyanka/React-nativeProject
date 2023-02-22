@@ -19,6 +19,8 @@ import {
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 import axios from 'axios';
 import {API_URL} from '../../../../Config';
+import {Alert} from 'react-native';
+import {useSelector} from 'react-redux';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const AccountSetUp2 = () => {
@@ -54,11 +56,36 @@ const AccountSetUp2 = () => {
 
   const [categoryName, setCategoryName] = useState('');
 
-  const updateCategoryID = async () => {
-    try {
-      const res = await axios({});
-    } catch (error) {
-      console.log('updateCategoryID error', error);
+  const accessToken = useSelector(
+    reduxState => reduxState?.login?.user?.accessToken,
+  );
+
+  const user = useSelector(reduxState => reduxState?.login?.user?.user?._id);
+  const [id, setID] = useState('');
+
+  const updateUserData = async () => {
+    if (user && id) {
+      try {
+        const res = await axios({
+          url: API_URL + `admin/user/${user}`,
+          method: 'PUT',
+          data: {
+            category_id: id,
+          },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        if (res) {
+          console.log('updateUserData res', res);
+          navigation.navigate('LiveMatch');
+        }
+      } catch (error) {
+        console.log('updateUserData error', error);
+      }
+    } else {
+      Alert.alert('Some error occured!');
     }
   };
 
@@ -88,7 +115,11 @@ const AccountSetUp2 = () => {
             }}
             onPress={() => {
               console.log('id', item._id);
+              setID(item._id);
               setCategoryName(item.name);
+              id
+                ? updateUserData()
+                : Alert.alert('Are You Sure about the category?');
             }}>
             <Text
               style={{
