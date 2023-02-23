@@ -40,7 +40,7 @@ const SignIn = () => {
             <Text style={styles.header}>Let's you in</Text>
           </View>
 
-          <View style={styles.body1}>
+          <TouchableOpacity style={styles.body1}>
             <IconFa
               name="facebook"
               style={{
@@ -58,8 +58,8 @@ const SignIn = () => {
               }}>
               Facebook
             </Text>
-          </View>
-          <View style={styles.body2}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.body2}>
             <IconFa name="google" color={'white'} style={{fontSize: 30}} />
             <Text
               style={{
@@ -70,7 +70,7 @@ const SignIn = () => {
               }}>
               Google
             </Text>
-          </View>
+          </TouchableOpacity>
           <View style={styles.body3}>
             <IconFa name="apple" color={'black'} style={{fontSize: 30}} />
             <Text

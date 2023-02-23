@@ -23,8 +23,8 @@ import {
 } from 'react-native-responsive-dimensions';
 import Modal from 'react-native-modal';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
-import { color } from '@rneui/base';
-import { API_URL } from '../../../../Config';
+import {color} from '@rneui/base';
+import {API_URL} from '../../../../Config';
 import RangeSlider from 'react-native-range-slider';
 import axios from 'axios';
 import Footer from './Footer';
@@ -38,13 +38,13 @@ const HomeScreens = () => {
   const onNextPressed15 = () => {
     navigation.navigate('HomeScreens');
   };
- const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
   const swiperRef = useRef();
-   const [users, setUsers] = useState('');
+  const [users, setUsers] = useState('');
   const [cards, setCards] = useState([
     {
       name: 'Elena',
@@ -84,11 +84,39 @@ const HomeScreens = () => {
     },
   ]);
 
+  const [usersFromApi, setUsersFromApi] = useState([
+    {
+      name: 'Elena',
+      img: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
+      age: 21,
+      profession: 'Model',
+    },
+  ]);
+
+  const getUsers = async () => {
+    try {
+      const res = await axios({
+        url: API_URL + 'admin/user',
+        method: 'GET',
+      });
+      if (res) {
+        console.log('getUsers res', res);
+        setUsersFromApi(res?.data?.results);
+      }
+    } catch (error) {
+      console.log('getUsers error', error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   const [text, onChangeText] = React.useState(null);
   const _renderUsers = (item, index) => {
     return (
       <View>
-        <StatusBar/>
+        <StatusBar />
         <View
           style={{
             marginTop: 50,
@@ -99,7 +127,7 @@ const HomeScreens = () => {
           }}>
           <Image
             source={{
-              uri: item.img,
+              uri: item.profilePic,
             }}
             style={{
               height: vh(55),
@@ -127,7 +155,7 @@ const HomeScreens = () => {
                 }}>
                 {item.name},
               </Text>
-              <Text style={{color: 'white'}}>{item.profession}</Text>
+              <Text style={{color: 'white'}}>{item.roles}</Text>
             </View>
             <View>
               <Text
@@ -135,7 +163,7 @@ const HomeScreens = () => {
                   textAlign: 'center',
                   fontSize: vf(2),
                   color: 'white',
-                  paddingRight:220,
+                  paddingRight: 220,
                 }}>
                 {item.age}
               </Text>
@@ -154,54 +182,51 @@ const HomeScreens = () => {
     );
   };
 
- 
- const registerSwipe = async (idx,type) => {
-   try {
-     const target = users[idx]
-     console.log('target',target,idx,type)
-     const data = {
-       user1: '63bfdc9ee2b54a4b80979189',
-       user2:target?._id,
-       action1: type,
-       action2:type,
-     };
-     const res = await axios.post(API_URL + 'connection',data);
-     if (res.status === 200) {
-       console.log('res', res?.data?.results);
-     }
-   } catch (error) {
-     console.log('ERROR', error);
-   }
- };
+  const registerSwipe = async (idx, type) => {
+    try {
+      const target = users[idx];
+      console.log('target', target, idx, type);
+      const data = {
+        user1: '63bfdc9ee2b54a4b80979189',
+        user2: target?._id,
+        action1: type,
+        action2: type,
+      };
+      const res = await axios.post(API_URL + 'connection', data);
+      if (res.status === 200) {
+        console.log('res', res?.data?.results);
+      }
+    } catch (error) {
+      console.log('ERROR', error);
+    }
+  };
   useEffect(() => {
     registerSwipe();
   }, []);
 
-  const getUsersData = async()=>{
+  const getUsersData = async () => {
     try {
-      const res = await axios.get(
-        API_URL + 'admin/user',
-    );
-    if(res.status === 200){
-      console.log('res', res?.data?.results)
-      setUsers(res?.data?.results)
-    }
+      const res = await axios.get(API_URL + 'admin/user');
+      if (res.status === 200) {
+        console.log('res', res?.data?.results);
+        setUsers(res?.data?.results);
+      }
     } catch (error) {
-      console.log('ERROR', error)
+      console.log('ERROR', error);
     }
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     getUsersData();
-  },[]);
+  }, []);
 
   return (
     <SafeAreaView style={{backgroundColor: 'white'}}>
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <Swiper
           ref={swiperRef}
-          cards={cards}
+          cards={usersFromApi}
           renderCard={_renderUsers}
-          data={getUsersData}
+          // data={getUsersData}
           // user={users}
           overlayLabels={{
             bottom: {
@@ -587,7 +612,7 @@ const HomeScreens = () => {
             </View>
           </View>
         </Modal>
-        <Footer/>
+        {/* <Footer/> */}
       </View>
     </SafeAreaView>
   );

@@ -59,7 +59,8 @@ const SetUp2 = () => {
               Your account is ready to use
             </Text>
           </View>
-          <View
+          <TouchableOpacity
+            onPress={onNextPressed9}
             style={{
               backgroundColor: '#fe5e75',
               height: 50,
@@ -74,11 +75,10 @@ const SetUp2 = () => {
                 marginTop: vf(1),
                 color: 'white',
                 fontSize: 20,
-              }}
-              onPress={onNextPressed9}>
+              }}>
               Go to HomePage
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -1,4 +1,4 @@
-import React ,{useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
   SafeAreaView,
@@ -19,7 +19,6 @@ import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 
-
 const AccountSetUp3 = () => {
   const navigation = useNavigation();
   const onNextPressed14 = () => {
@@ -34,14 +33,18 @@ const AccountSetUp3 = () => {
     <SafeAreaView>
       <ScrollView>
         <View style={{padding: 20}}>
-          <View>
-            <Text style={styles.uppersection}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('AccountSetUp2');
+              }}>
               <IconFa
                 name="arrow-left"
-                style={{fontSize: 25, color: '#fe5e75'}}
+                style={{fontSize: 25, color: '#fe5e75', marginRight: 20}}
               />
-              <Text style={{color: 'black', fontSize: 25}}>Ideal Match</Text>
-            </Text>
+            </TouchableOpacity>
+
+            <Text style={{color: 'black', fontSize: 25}}>Ideal Match</Text>
           </View>
           <View>
             <Text style={{fontSize: 18, color: 'black', marginTop: 20}}>
@@ -168,7 +171,8 @@ const AccountSetUp3 = () => {
               </Text>
             </View>
           </View>
-          <View
+          <TouchableOpacity
+            onPress={onNextPressed14}
             style={{
               backgroundColor: '#fe5e75',
               height: 50,
@@ -182,11 +186,10 @@ const AccountSetUp3 = () => {
                 marginTop: 12,
                 color: 'white',
                 fontSize: 20,
-              }}
-              onPress={onNextPressed14}>
+              }}>
               Next
             </Text>
-          </View>
+          </TouchableOpacity>
           {/* <Modal
             onBackdropPress={() => setModalVisible(false)}
             onBackButtonPress={() => setModalVisible(false)}
@@ -333,4 +336,3 @@ const styles = StyleSheet.create({
   },
 });
 export default AccountSetUp3;
-

@@ -368,22 +368,20 @@ function ModalTester() {
     <View style={styles.flexView}>
       <StatusBar />
       <View>
-        <View style={styles.uppersection}>
-          <View style={styles.uppersection}>
-            <View>
+        <View style={{margin: 25}}>
+          <View style={{}}>
+            <View style={{flexDirection: 'row'}}>
               <IconFa
                 name="heart-multiple"
                 style={{fontSize: vf(4), color: '#fe5e75'}}
               />
-            </View>
-            <View style={{paddingRight: 120}}>
               <Text
-                style={{fontSize: vf(2.5), paddingLeft: 10, color: 'black'}}>
+                style={{fontSize: vf(2.5), paddingLeft: 20, color: 'black'}}>
                 Profile
               </Text>
             </View>
           </View>
-          <View style={styles.uppersection2}>
+          {/* <View style={{backgroundColor: 'red'}}>
             <View
               style={{
                 borderRadius: 50,
@@ -411,10 +409,17 @@ function ModalTester() {
                 }}
               />
             </View>
-          </View>
+          </View> */}
         </View>
         <View style={{alignSelf: 'center'}}>
-          <View>
+          <View
+            style={{
+              borderWidth: 1,
+              borderColor: '#fe5e75',
+              borderRadius: 100,
+              height: vh(15),
+              width: vw(30),
+            }}>
             <Image
               source={{
                 // uri: 'https://6.vikiplatform.com/image/f39b70cc709449058542b107d493cff7.jpg?x=b&a=0x0&s=460x268&e=t&f=t&cb=1',
@@ -426,6 +431,8 @@ function ModalTester() {
                 borderRadius: 100,
                 marginTop: 20,
                 alignSelf: 'center',
+                borderWidth: 1,
+                borderColor: '#fe5e75',
               }}
             />
           </View>
@@ -519,18 +526,22 @@ function ModalTester() {
                 }}
               />
             </View>
-            <View>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('AccountSetUp2', {
+                  name: 'profile',
+                });
+              }}>
               <Text
                 style={{
                   paddingRight: 170,
                   fontSize: 18,
                   color: 'black',
                   marginTop: 4,
-                }}
-                onPress={onNextPressed17}>
+                }}>
                 Edit Interest
               </Text>
-            </View>
+            </TouchableOpacity>
             <View>
               <IconFa
                 name="chevron-right"

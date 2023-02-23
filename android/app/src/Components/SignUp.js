@@ -244,7 +244,7 @@ const SignUp = () => {
             <Text style={{textAlign: 'center'}}>or continue with</Text>
           </View>
           <View style={styles.socialIcon}>
-            <View
+            <TouchableOpacity
               style={{
                 flexDirection: 'row',
                 justifyContent: 'center',
@@ -261,8 +261,8 @@ const SignUp = () => {
                 style={{fontSize: vf(3.5), color: 'blue'}}
               />
               <Text style={{fontWeight: '500', marginLeft: 10}}>Facebook</Text>
-            </View>
-            <View
+            </TouchableOpacity>
+            <TouchableOpacity
               style={{
                 flexDirection: 'row',
                 justifyContent: 'center',
@@ -276,7 +276,7 @@ const SignUp = () => {
               }}>
               <IconFa name="google" style={{fontSize: 30}} />
               <Text style={{fontWeight: '500', marginLeft: 10}}>Google</Text>
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.footer}>
             <View>

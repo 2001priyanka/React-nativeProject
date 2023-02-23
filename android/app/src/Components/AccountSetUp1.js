@@ -526,21 +526,20 @@ const AccountSetUp1 = () => {
                   height: vh(5),
                   borderRadius: 20,
                 }}>
-                <View>
-                  <TextInput
-                    placeholder="Full Name"
-                    editable
-                    maxLength={40}
-                    onChangeText={e => {
-                      console.log(e);
-                      setUserDetail({
-                        ...userDetail,
-                        name: e,
-                      });
-                    }}
-                    value={userDetail?.name}
-                  />
-                </View>
+                <TextInput
+                  placeholder="Full Name"
+                  editable
+                  maxLength={40}
+                  onChangeText={e => {
+                    console.log(e);
+                    setUserDetail({
+                      ...userDetail,
+                      name: e,
+                    });
+                  }}
+                  // style={{width: vw(100), marginLeft: 100}}
+                  value={userDetail?.name}
+                />
 
                 <IconFa style={{marginTop: 15, paddingLeft: 200}} />
               </View>

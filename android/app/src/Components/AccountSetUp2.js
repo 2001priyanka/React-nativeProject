@@ -28,7 +28,9 @@ const AccountSetUp2 = () => {
   console.log(route);
   const navigation = useNavigation();
   const onNextPressed13 = () => {
-    navigation.navigate('AccountSetUp3');
+    route?.params?.name === 'profile'
+      ? navigation.navigate('ProfilePage')
+      : navigation.navigate('AccountSetUp3');
   };
   // const [text, onChangeText] = React.useState(null);
 
@@ -53,6 +55,8 @@ const AccountSetUp2 = () => {
   useEffect(() => {
     getCategory();
   }, []);
+  // const route = useRoute();
+  console.log(route);
 
   const [categoryName, setCategoryName] = useState('');
 
@@ -158,12 +162,19 @@ const AccountSetUp2 = () => {
     <SafeAreaView>
       <ScrollView>
         <View style={{padding: 20}}>
-          <View>
-            <Text style={styles.uppersection}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity
+              onPress={() => {
+                route?.params?.name === 'profile'
+                  ? navigation.navigate('ProfilePage')
+                  : navigation.navigate('PhotoScreen');
+              }}>
               <IconFa
                 name="arrow-left"
                 style={{fontSize: 25, color: '#fe5e75'}}
               />
+            </TouchableOpacity>
+            <Text style={styles.uppersection}>
               <Text style={{color: 'black', fontSize: 25}}>
                 Select Your Interest
               </Text>
@@ -332,7 +343,8 @@ const AccountSetUp2 = () => {
               </View>
             </View> */}
           </View>
-          <View
+          <TouchableOpacity
+            onPress={onNextPressed13}
             style={{
               backgroundColor: '#fe5e75',
               height: 50,
@@ -346,11 +358,10 @@ const AccountSetUp2 = () => {
                 marginTop: 12,
                 color: 'white',
                 fontSize: 20,
-              }}
-              onPress={onNextPressed13}>
+              }}>
               Next
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

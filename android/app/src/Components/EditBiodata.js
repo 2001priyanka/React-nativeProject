@@ -13,7 +13,7 @@ import {
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {API_URL} from '../../../../Config';
 import axios from 'axios';
 import {Alert} from 'react-native';
@@ -92,12 +92,17 @@ const EditBiodata = () => {
     <SafeAreaView>
       <ScrollView>
         <View style={{padding: 20}}>
-          <View>
-            <Text style={styles.uppersection}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('ProfilePage');
+              }}>
               <IconFa
                 name="arrow-left"
                 style={{fontSize: 25, color: '#fe5e75'}}
               />
+            </TouchableOpacity>
+            <Text style={styles.uppersection}>
               <Text style={{color: 'black', fontSize: 25}}>Edit Biodata</Text>
             </Text>
           </View>
