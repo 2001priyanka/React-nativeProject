@@ -28,9 +28,11 @@ const AccountSetUp2 = () => {
   console.log(route);
   const navigation = useNavigation();
   const onNextPressed13 = () => {
-    route?.params?.name === 'profile'
-      ? navigation.navigate('ProfilePage')
-      : navigation.navigate('AccountSetUp3');
+    isTrue
+      ? route?.params?.name === 'profile'
+        ? navigation.navigate('ProfilePage')
+        : navigation.navigate('AccountSetUp3')
+      : Alert.alert('Select a Category!!');
   };
   // const [text, onChangeText] = React.useState(null);
 
@@ -66,6 +68,8 @@ const AccountSetUp2 = () => {
 
   const user = useSelector(reduxState => reduxState?.login?.user?.user?._id);
   const [id, setID] = useState('');
+
+  const [isTrue, setIsTrue] = useState(false);
 
   const updateUserData = async () => {
     if (user && id) {
@@ -121,6 +125,7 @@ const AccountSetUp2 = () => {
               console.log('id', item._id);
               setID(item._id);
               setCategoryName(item.name);
+              setIsTrue(true);
               id
                 ? updateUserData()
                 : Alert.alert('Are You Sure about the category?');
@@ -138,21 +143,6 @@ const AccountSetUp2 = () => {
               {item?.name}
             </Text>
           </TouchableOpacity>
-          {/* <View style={styles.body1}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: '#fe5e75',
-                    fontSize: 18,
-                  }}>
-                  <IconFa
-                    name="dance-ballroom"
-                    style={{fontSize: 20, color: 'black'}}
-                  />
-                  Dancing
-                </Text>
-              </View> */}
-          {/* <View></View> */}
         </View>
       </>
     );
@@ -187,161 +177,14 @@ const AccountSetUp2 = () => {
             </Text>
           </View>
           <View style={{}}>
-            {/* here map */}
-
-            {/* {category?.map(c => {
-              return (
-                <>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-around',
-                    }}>
-                    <View style={styles.body1}>
-                      <Text
-                        style={{
-                          textAlign: 'center',
-                          color: '#fe5e75',
-                          fontSize: 18,
-                        }}>
-                        <IconFa
-                          name="gamepad-variant"
-                          style={{fontSize: 20, color: 'black'}}
-                        />
-                        {c?.name}
-                      </Text>
-                    </View>
-                    
-                  </View>
-                </>
-              );
-            })} */}
-
             <FlatList
               data={category}
               renderItem={_renderCategory}
               numColumns={2}
               contentContainerStyle={{
-                // backgroundColor: 'red',
                 justifyContent: 'space-around',
               }}
             />
-
-            {/* <View
-              style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-              <View style={styles.body1}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: '#fe5e75',
-                    fontSize: 18,
-                  }}>
-                  <IconFa name="head" style={{fontSize: 20, color: 'black'}} />
-                  language
-                </Text>
-              </View>
-              <View style={styles.body}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: 'white',
-                    fontSize: 18,
-                  }}>
-                  <IconFa name="music" style={{fontSize: 20, color: 'black'}} />
-                  Music
-                </Text>
-              </View>
-              <View style={styles.body1}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: '#fe5e75',
-                    fontSize: 18,
-                    // paddingLeft:10,
-                  }}>
-                  <IconFa
-                    name="movie-open"
-                    style={{color: 'black', fontSize: 18}}
-                  />
-                  movie
-                </Text>
-              </View>
-            </View> */}
-            {/* <View
-              style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-              <View style={styles.body1}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: '#fe5e75',
-                  }}>
-                  <IconFa
-                    name="picture-in-picture-bottom-right"
-                    style={{color: 'black', fontSize: 15}}
-                  />
-                  Photography
-                </Text>
-              </View>
-              <View style={styles.body}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: 'white',
-                    fontSize: 18,
-                  }}>
-                  <IconFa
-                    name="book-account"
-                    style={{fontSize: 20, color: 'black'}}
-                  />
-                  Book
-                </Text>
-              </View>
-            </View> */}
-            {/* <View
-              style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-              <View style={styles.body}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: 'white',
-                    fontSize: 18,
-                  }}>
-                  <IconFa
-                    name="pencil"
-                    style={{fontSize: 20, color: 'black'}}
-                  />
-                  Writing
-                </Text>
-              </View>
-              <View style={styles.body1}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: '#fe5e75',
-                    fontSize: 15,
-                  }}>
-                  <IconFa
-                    name="office-building"
-                    style={{fontSize: 18, color: 'black'}}
-                  />
-                  Architecture
-                </Text>
-              </View>
-              <View style={styles.body}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: 'white',
-                    fontSize: 18,
-                  }}>
-                  <IconFa
-                    name="football"
-                    style={{fontSize: 20, color: 'black'}}
-                  />
-                  Football
-                </Text>
-              </View>
-            </View> */}
           </View>
           <TouchableOpacity
             onPress={onNextPressed13}

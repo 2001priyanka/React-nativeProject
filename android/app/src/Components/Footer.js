@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
   uppersection: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    // marginTop: 20,
+    alignContent: 'flex-end',
     // paddingRight:20,
   },
 });

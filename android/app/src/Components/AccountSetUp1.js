@@ -537,7 +537,7 @@ const AccountSetUp1 = () => {
                       name: e,
                     });
                   }}
-                  // style={{width: vw(100), marginLeft: 100}}
+                  style={{width: vw(100), marginLeft: 100}}
                   value={userDetail?.name}
                 />
 
@@ -583,6 +583,7 @@ const AccountSetUp1 = () => {
                       });
                     }}
                     value={userDetail?.email}
+                    style={{width: vw(100), paddingLeft: 10}}
                   />
                 </View>
                 <View>
@@ -632,6 +633,10 @@ const AccountSetUp1 = () => {
                       });
                     }}
                     value={userDetail?.phoneNo}
+                    style={{
+                      width: vw(100),
+                      marginLeft: 100,
+                    }}
                   />
                 </View>
                 <View>
@@ -680,6 +685,7 @@ const AccountSetUp1 = () => {
                       });
                     }}
                     value={userDetail?.gender}
+                    style={{width: vw(100), marginLeft: 110}}
                   />
                 </View>
                 <View>

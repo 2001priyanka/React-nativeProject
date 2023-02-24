@@ -71,7 +71,7 @@ const SignIn = () => {
               Google
             </Text>
           </TouchableOpacity>
-          <View style={styles.body3}>
+          <TouchableOpacity style={styles.body3}>
             <IconFa name="apple" color={'black'} style={{fontSize: 30}} />
             <Text
               style={{
@@ -83,7 +83,7 @@ const SignIn = () => {
               }}>
               Apple
             </Text>
-          </View>
+          </TouchableOpacity>
           <View>
             <Text
               style={{
@@ -131,14 +131,13 @@ const SignIn = () => {
               </Text>
             </View>
             <View>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onNextPressed2}>
                 <Text
                   style={{
                     color: '#fe5e75',
                     marginLeft: 10,
                     fontWeight: '500',
-                  }}
-                  onPress={onNextPressed2}>
+                  }}>
                   Sign Up
                 </Text>
               </TouchableOpacity>

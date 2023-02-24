@@ -146,9 +146,6 @@ const AccountSetUp = () => {
             }}>
             <SearchBar
               placeholder="Search"
-              // onChangeText={updateSearch}
-              // value={search}
-              // onPressIn={onNextPressed3}
               lightTheme
               platform="ios"
               containerStyle={{

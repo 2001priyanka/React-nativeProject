@@ -225,6 +225,7 @@ const HomeScreens = () => {
         <Swiper
           ref={swiperRef}
           cards={usersFromApi}
+          // cards={cards}
           renderCard={_renderUsers}
           // data={getUsersData}
           // user={users}

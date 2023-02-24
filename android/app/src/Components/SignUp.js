@@ -215,12 +215,7 @@ const SignUp = () => {
           </View>
 
           <TouchableOpacity
-            onPress={
-              submitHandler
-              // () => {
-              //   navigation.navigate('AccountSetUp');
-              // }
-            }
+            onPress={submitHandler}
             style={{
               backgroundColor: '#fe5e75',
               height: vh(7),
@@ -286,7 +281,7 @@ const SignUp = () => {
               </Text>
             </View>
             <TouchableOpacity>
-              <View>
+              <TouchableOpacity onPress={onNext2Pressed}>
                 <Text
                   style={{
                     textAlign: 'center',
@@ -294,11 +289,10 @@ const SignUp = () => {
                     color: '#fe5e75',
                     fontWeight: '500',
                     marginLeft: 10,
-                  }}
-                  onPress={onNext2Pressed}>
+                  }}>
                   Sign In
                 </Text>
-              </View>
+              </TouchableOpacity>
             </TouchableOpacity>
           </View>
         </View>

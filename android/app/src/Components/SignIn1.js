@@ -33,7 +33,7 @@ const SignIn1 = () => {
     navigation.navigate('HomeScreens');
   };
   const dispatch = useDispatch();
-  const [username, setUsername] = useState ('');
+  const [username, setUsername] = useState('');
   // const [number, setNumber] = useState('');
   // const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,7 +51,7 @@ const SignIn1 = () => {
         data: {
           username,
           password,
-        },  
+        },
       });
       if (signinData) {
         console.log('signinData', signinData);
@@ -75,10 +75,10 @@ const SignIn1 = () => {
               uri: 'https://i.dlpng.com/static/png/6509551_preview.png',
             }}
             style={{
-              height:vh(20),
+              height: vh(20),
               width: vw(35),
               borderRadius: 10,
-              alignSelf:'center',
+              alignSelf: 'center',
             }}
           />
         </View>
@@ -161,10 +161,13 @@ const SignIn1 = () => {
             </Text>
           </View>
           <TouchableOpacity>
-            <View
+            <TouchableOpacity
+              onPress={() => {
+                submitHandler();
+              }}
               style={{
                 backgroundColor: '#fe5e75',
-                height:vh(7),
+                height: vh(7),
                 margin: 20,
                 borderRadius: 30,
               }}>
@@ -174,13 +177,10 @@ const SignIn1 = () => {
                   marginTop: 12,
                   color: 'white',
                   fontSize: vf(2.5),
-                }}
-                onPress={() => {
-                  submitHandler();
                 }}>
                 Sign In
               </Text>
-            </View>
+            </TouchableOpacity>
           </TouchableOpacity>
           <TouchableOpacity>
             <View>
@@ -207,7 +207,7 @@ const SignIn1 = () => {
             </Text>
           </View>
           <View style={styles.socialIcon}>
-            <View
+            <TouchableOpacity
               style={{
                 flexDirection: 'row',
                 justifyContent: 'center',
@@ -226,8 +226,8 @@ const SignIn1 = () => {
               <Text style={{fontSize: vf(2.5), color: 'black', marginLeft: 10}}>
                 Facebook
               </Text>
-            </View>
-            <View
+            </TouchableOpacity>
+            <TouchableOpacity
               style={{
                 flexDirection: 'row',
                 justifyContent: 'center',
@@ -243,7 +243,7 @@ const SignIn1 = () => {
               <Text style={{color: 'black', fontSize: vf(2.5), marginLeft: 10}}>
                 Google
               </Text>
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.footer}>
             <View>

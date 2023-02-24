@@ -108,13 +108,6 @@ function ModalTester() {
           url: API_URL + `admin/user/${user}`,
           method: 'PUT',
           data: {
-            // ...userData,
-            // name: userData?.name,
-            // email: userData?.email,
-            // about: userData?.about,
-            // address1: userData?.address1,
-            // gender: userData?.gender,
-            // age: userData?.age,
             profilePic: imageUri,
           },
           headers: {
@@ -549,43 +542,6 @@ function ModalTester() {
               />
             </View>
           </View>
-          <View style={styles.uppersection1}>
-            <View
-              style={{
-                backgroundColor: '#FFDBE9',
-                width: vw(10),
-                height: vh(5),
-                borderRadius: 50,
-                justifyContent: 'center',
-              }}>
-              <IconFa
-                name="lock"
-                style={{
-                  fontSize: vf(2.5),
-                  color: '#fe5e75',
-                  marginLeft: 10,
-                }}
-              />
-            </View>
-            <View>
-              <Text
-                style={{
-                  paddingRight: 100,
-                  fontSize: 18,
-                  color: 'black',
-                  marginTop: 4,
-                }}
-                onPress={onNextPressed18}>
-                Edit Contact Details
-              </Text>
-            </View>
-            <View>
-              <IconFa
-                name="chevron-right"
-                style={{fontSize: vf(2.5), color: '#fe5e75'}}
-              />
-            </View>
-          </View>
 
           <View style={styles.uppersection1}>
             <View
@@ -624,7 +580,16 @@ function ModalTester() {
               />
             </View>
           </View>
-          <View style={styles.uppersection1}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              marginTop: 20,
+              borderBottomWidth: 0.5,
+              height: 50,
+              margin: 5,
+              marginBottom: 180,
+            }}>
             <View
               style={{
                 backgroundColor: '#FFDBE9',
@@ -643,18 +608,17 @@ function ModalTester() {
                 }}
               />
             </View>
-            <View>
+            <TouchableOpacity onPress={toggleModal}>
               <Text
                 style={{
                   paddingRight: 225,
                   fontSize: 18,
                   color: 'black',
                   marginTop: 8,
-                }}
-                onPress={toggleModal}>
+                }}>
                 Logout
               </Text>
-            </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.uppersection}>
             <TouchableOpacity>
@@ -720,14 +684,13 @@ function ModalTester() {
                 </Text>
               </View>
               <View style={styles.body}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={onNextPressed15}>
                   <Text
                     style={{
                       textAlign: 'center',
                       color: 'white',
                       fontSize: 18,
-                    }}
-                    onPress={onNextPressed15}>
+                    }}>
                     Yes, Logout
                   </Text>
                 </TouchableOpacity>
