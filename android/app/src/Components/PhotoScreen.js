@@ -24,12 +24,25 @@ import axios, {Axios} from 'axios';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
-import {API_URL} from '../../../../Config';
+import {API_URL, URL} from '../../../../Config';
 import {useEffect} from 'react';
-// import { FlatList } from 'react-native-gesture-handler';
+import MimeTypeMap from '../../../../MimeTypeMap';
 
 const PhotoScreen = () => {
-  let count = 0;
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  const [image, setImage] = useState({
+    image1: '',
+    image2: '',
+    image3: '',
+    image4: '',
+    image5: '',
+    image6: '',
+    image7: '',
+    image8: '',
+    image9: '',
+  });
+
   const [files, setFiles] = useState([]);
   const [imageUri, setimageUri] = useState(null);
   const [photo, SetPhoto] = useState([
@@ -73,50 +86,69 @@ const PhotoScreen = () => {
 
   const route = useRoute();
 
-  // const [images, setImages] = useState([]);
-  let images = [];
-
-  console.log(route?.params);
   const usersData = route?.params?.userData;
   const imageUrl = route?.params?.imageUri;
   const location = route?.params?.location;
 
-  const [id, setId] = useState('');
+  const _id = route?.params?._id;
 
   const _renderItem = ({item, index}) => {
     return (
-      <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-        {/* <TouchableOpacity style={styles.body}> */}
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+        }}>
         <TouchableOpacity
           style={styles.body}
           onPress={e => {
-            selectAllFiles();
-            // setId(item.id);
+            selectAllFiles(item);
+            console.log('item', item);
           }}>
-          {files[0].uri ? (
-            <Image
-              source={{uri: item.uri}}
-              style={{height: vh(33), width: vw(40)}}
-            />
-          ) : (
-            <View
+          <Image
+            source={{
+              uri:
+                item == 1
+                  ? image?.image1
+                  : item == 2
+                  ? image?.image2
+                  : item == 3
+                  ? image?.image3
+                  : item == 4
+                  ? image?.image4
+                  : item == 5
+                  ? image?.image5
+                  : item == 6
+                  ? image?.image6
+                  : item == 7
+                  ? image?.image7
+                  : item == 8
+                  ? image?.image8
+                  : item == 9
+                  ? image?.image9
+                  : null,
+            }}
+            style={{height: vh(33), width: vw(40)}}
+          />
+
+          {/* <View
+            style={{
+              backgroundColor: '#fe5e75',
+              width: 60,
+              height: 60,
+              borderRadius: 50,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <IconFa
+              name="plus"
               style={{
-                backgroundColor: '#fe5e75',
-                width: 60,
-                height: 60,
-                borderRadius: 50,
-              }}>
-              <IconFa
-                name="plus"
-                style={{
-                  fontSize: 30,
-                  marginTop: 15,
-                  color: 'white',
-                  marginLeft: 15,
-                }}
-              />
-            </View>
-          )}
+                // marginTop: 15,
+                color: 'white',
+              }}
+              size={40}
+            />
+          </View> */}
         </TouchableOpacity>
       </View>
     );
@@ -168,10 +200,9 @@ const PhotoScreen = () => {
     }
   };
 
-  const [imagepath, setImagePath] = useState('');
-
-  const selectAllFiles = async () => {
+  const selectAllFiles = async item => {
     requestCameraPermission();
+    console.log('item', item);
     //Opening Document Picker for selection of one file
     try {
       const res = await DocumentPicker.pickMultiple({
@@ -187,13 +218,67 @@ const PhotoScreen = () => {
       console.log('123asdrfvbgt File Size : ' + res[0].size);
       console.log('123asdrfvbgt File id: ' + res[0]._id);
       setimageUri(res[0].uri);
-      setImagePath(res[0].uri);
 
-      // if (res) {
-      // count += 1;
-      // }
+      switch (item) {
+        case 1:
+          console.log('case 1', item);
+          setImage({
+            ...image,
+            image1: res[0].uri,
+          });
+          break;
+        case 2:
+          setImage({
+            ...image,
+            image2: res[0].uri,
+          });
+          break;
+        case 3:
+          setImage({
+            ...image,
+            image3: res[0].uri,
+          });
+          break;
+        case 4:
+          setImage({
+            ...image,
+            image4: res[0].uri,
+          });
+          break;
+        case 5:
+          setImage({
+            ...image,
+            image5: res[0].uri,
+          });
+          break;
+        case 6:
+          setImage({
+            ...image,
+            image6: res[0].uri,
+          });
+          break;
+        case 7:
+          setImage({
+            ...image,
+            image7: res[0].uri,
+          });
+          break;
+        case 8:
+          setImage({
+            ...image,
+            image8: res[0].uri,
+          });
+          break;
+        case 9:
+          setImage({
+            ...image,
+            image9: res[0].uri,
+          });
+          break;
 
-      // console.log('counttt', count);
+        default:
+          break;
+      }
 
       //Setting the state to show single file attributes
 
@@ -203,12 +288,6 @@ const PhotoScreen = () => {
       }
       console.log('123asdrfvbgt results>>', res);
       console.log('files', files);
-      // if (res[0]) {
-      //   navigation.navigate('newPost', {
-      //     response: res[0],
-      //   });
-      // }
-      // uploadFile(res[0]);
     } catch (err) {
       //Handling any exception (If any)
       if (DocumentPicker.isCancel(err)) {
@@ -222,71 +301,11 @@ const PhotoScreen = () => {
     }
   };
 
-  console.log('files', files[0]);
-
-  console.log('counttttt', count);
-
-  console.log(imagepath, images);
-
-  const deleteFile = name => {
-    const myfiles = files.filter(f => {
-      return f.name !== name;
-    });
-    setFiles(myfiles);
-  };
-  const submitText = async () => {
-    console.log('submitTextx', txt, type);
-    console.log('submitTextx', doc);
-    console.log('submitTextx', files);
-    // const myDoc = doc?.doctors[0];
-    const myDoc = doc;
-    console.log('myDoc :>> ', myDoc);
-    if (myDoc) {
-      if (txt.length > 1) {
-        try {
-          const reqData = {
-            date: moment().format('DD-MM-YYYY'),
-            time: moment().format('hh:mma'),
-            doctorName: myDoc?.name,
-            name: user?.user?.name,
-            users: user?.id,
-            doctors: myDoc?._id,
-            type,
-            content: txt,
-          };
-          console.log('reqData', reqData, user);
-          // return;
-          const res = await call.Calls(
-            'doctorAppointment',
-            'POST',
-            reqData,
-            Config,
-          );
-          if (res) {
-            console.log('doctorAppointment reqData', reqData, res);
-          }
-          if (res.status == 200) {
-            console.log('doctorAppointment reqData2', reqData, res);
-            uploadFilesToAPI(res?.data?.results?._id);
-            navigation.navigate('AppointmentDetails', {
-              ...doc,
-              respData: res?.data,
-              type,
-            });
-          }
-        } catch (error) {
-          console.log('error', error);
-        }
-      } else {
-        Alert.alert('No Data', 'Please type your message in the textbox!');
-      }
-    }
-  };
   const uploadFilesToAPI = async _id => {
     const data = files;
     // console.log('Config 9fb83f', Config);
     // Check if any file is selected or not
-    var uploadUrl = `${API_URL}/upload`; // For testing purposes, go to http://requestb.in/ and create your own link
+    var uploadUrl = `${URL}/upload`; // For testing purposes, go to http://requestb.in/ and create your own link
     try {
       // create an array of objects of the files you want to upload
       var filesArr = [];
@@ -383,7 +402,7 @@ const PhotoScreen = () => {
       form.append('userId', doc._id);
       console.log('TextReq.js:227 9fb83f form', form);
       await axios({
-        url: `${API_URL}/upload`,
+        url: `${URL}/upload`,
         // url: 'http://3.16.156.10:3001/api/upload',
         //url: 'http://13.232.211.114:3000/api/upload',
         method: 'POST',
@@ -485,27 +504,33 @@ const PhotoScreen = () => {
     }
   };
 
-  // const route = useRoute()
+  // code for sending all user images
 
-  const [isTrue, setIsTrue] = useState(false);
-
-  // const [count, setCount] = useState(0);
-
-  // console.log('count', count);
-
-  const signUpHandler = async () => {
+  const uploadUserImages = async () => {
     try {
       const res = await axios({
-        url: API_URL + 'auth/signup',
+        url: API_URL + 'UserImage',
         method: 'POST',
         data: {
-          username: usersData?.username,
-          password: usersData?.password,
-          role: 'user',
+          userId: _id,
+          image1: image?.image1,
+          image2: image?.image2,
+          image3: image?.image3,
+          image4: image?.image4,
+          image5: image?.image5,
+          image6: image?.image6,
+          image7: image?.image7,
+          image8: image?.image8,
+          image9: image?.image9,
         },
       });
+
+      if (res) {
+        console.log('uploadUserImages res', res);
+        navigation.navigate('AccountSetUp2');
+      }
     } catch (error) {
-      console.log('signUpHandler error', error);
+      console.log('uploadUserImages error', error);
     }
   };
 
@@ -536,107 +561,30 @@ const PhotoScreen = () => {
             </Text>
           </View>
         </View>
-        {/* <FlatList data={photo} renderItem={_renderItem} numColumns={2} /> */}
-        {/* {
-          files && isTrue ? null : (
-            <TouchableOpacity
-              onPress={() => {
-                selectAllFiles() && setIsTrue(true);
-              }}
-              style={{
-                backgroundColor: '#fe5e75',
-                height: 50,
-                margin: 20,
-                borderRadius: 30,
-                marginTop: 80,
-              }}>
-              <Text
-                style={{
-                  textAlign: 'center',
-                  marginTop: 12,
-                  color: 'white',
-                  fontSize: 20,
-                }}>
-                Add Photos?
-              </Text>
-            </TouchableOpacity>
-          )
-          
-        } */}
+
+        <FlatList data={arr} renderItem={_renderItem} numColumns={2} />
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('AccountSetUp2');
+            uploadUserImages();
           }}
           style={{
             backgroundColor: '#fe5e75',
-            height: 40,
-
-            width: vw(20),
-            borderRadius: 100,
-            justifyContent: 'center',
-            alignItems: 'center',
-            position: 'absolute',
-            top: vh(16),
-            right: 10,
+            height: 50,
+            margin: 20,
+            borderRadius: 30,
+            marginTop: 80,
           }}>
-          <Text style={{color: 'white', fontSize: 18, fontWeight: '600'}}>
-            Done
+          <Text
+            style={{
+              textAlign: 'center',
+              marginTop: 12,
+              color: 'white',
+              fontSize: 20,
+            }}>
+            Next
           </Text>
         </TouchableOpacity>
-
-        <FlatList data={files} renderItem={_renderItem} numColumns={2} />
-
-        {count === 3 && isTrue ? (
-          <TouchableOpacity
-            onPress={() => {
-              // navigation.navigate('AccountSetUp2', {
-              //   usersData,
-              //   imageUrl,
-              // });
-            }}
-            style={{
-              backgroundColor: '#fe5e75',
-              height: 50,
-              margin: 20,
-              borderRadius: 30,
-              marginTop: 80,
-            }}>
-            <Text
-              style={{
-                textAlign: 'center',
-                marginTop: 12,
-                color: 'white',
-                fontSize: 20,
-              }}>
-              Next
-            </Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => {
-              console.log('inside upload false');
-              selectAllFiles();
-              console.log((count += 1));
-            }}
-            style={{
-              backgroundColor: '#fe5e75',
-              height: 50,
-              margin: 20,
-              borderRadius: 30,
-              marginTop: 80,
-            }}>
-            <Text
-              style={{
-                textAlign: 'center',
-                marginTop: 12,
-                color: 'white',
-                fontSize: 20,
-              }}>
-              Upload Photos?
-            </Text>
-          </TouchableOpacity>
-        )}
       </ScrollView>
     </SafeAreaView>
   );

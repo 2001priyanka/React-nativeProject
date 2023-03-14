@@ -18,6 +18,7 @@ import DocumentPicker from 'react-native-document-picker';
 import {PermissionsAndroid} from 'react-native';
 import * as RNFS from 'react-native-fs';
 import axios from 'axios';
+import MimeTypeMap from '../../../../MimeTypeMap';
 
 function ModalTester() {
   // const [userData, setUsersData] = useState({

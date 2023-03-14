@@ -42,18 +42,44 @@ const IndividualProfile = () => {
 
   const navigation = useNavigation();
 
+  const [userImages, setUserImages] = useState([]);
+
+  const getUserImages = async () => {
+    try {
+      const res = await axios({
+        url: API_URL + 'UserImage',
+        method: 'GET',
+      });
+      if (res) {
+        console.log('getUserImages res', res);
+      }
+    } catch (error) {
+      console.log('getUserImages error', error);
+    }
+  };
+
+  useEffect(() => {
+    getUserImages();
+  }, []);
+
   return (
     <View>
       <View>
-        <View className="image">
-          <Image
-            source={{
-              //   uri: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
-              uri: pic,
-            }}
-            style={{height: vh(50), width: vw(100)}}
-          />
-        </View>
+        <ScrollView horizontal={true} className="image">
+          {[1, 2, 3, 4].map(e => {
+            return (
+              <ScrollView horizontal={true} style={{height: vh(50)}}>
+                <Image
+                  source={{
+                    //   uri: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
+                    uri: pic,
+                  }}
+                  style={{height: vh(50), width: vw(100)}}
+                />
+              </ScrollView>
+            );
+          })}
+        </ScrollView>
 
         <View className="description">
           <View style={{flexDirection: 'row', marginLeft: 20, marginTop: 20}}>

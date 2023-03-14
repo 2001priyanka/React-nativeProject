@@ -26,6 +26,8 @@ import axios from 'axios';
 import DocumentPicker from 'react-native-document-picker';
 import {PermissionsAndroid} from 'react-native';
 import * as RNFS from 'react-native-fs';
+import MimeTypeMap from '../../../../MimeTypeMap';
+
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const AccountSetUp1 = () => {
@@ -47,50 +49,6 @@ const AccountSetUp1 = () => {
   const onNextPressed12 = () => {
     navigation.navigate('PhotoScreen');
   };
-
-  // const getUsersData = async () => {
-  //   if (token) {
-  //     try {
-  //       const res = await axios({
-  //         url: API_URL + 'user/user/getProfile',
-  //         method: 'GET',
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
-  //       if (res) {
-  //         console.log('Users data', res?.data?.users);
-  //         setUserDetail(res?.data?.user);
-  //       }
-  //     } catch (error) {
-  //       console.log('profile data error', error);
-  //     }
-  //   }
-  // };
-
-  // const submitUserProfileData = async () => {
-  //   try {
-  //     const res = await axios({
-  //       url: API_URL + 'admin/user',
-  //       method: 'POST',
-  //       data: {
-  //         ...userDetail,
-  //       },
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     if (res) {
-  //       console.log('update users res', res);
-  //       navigation.navigate('homepage');
-  //     }
-  //   } catch (error) {
-  //     console.log('submit user data', error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getUsersData();
-  // }, [token]);
 
   //different usestates for saving data
   const [files, setFiles] = useState([]);
@@ -252,8 +210,8 @@ const AccountSetUp1 = () => {
           console.log('responseZZZ1', response);
           if (response.statusCode == 200) {
             console.log('FILES UPLOADED!'); // response.statusCode, response.headers, response.body
-            Alert.alert('Purchase Successful!!');
-            navigation.navigate('home');
+            // Alert.alert('Purchase Successful!!');
+            // navigation.navigate('home');
           } else {
             console.log('SERVER ERROR');
           }
@@ -428,7 +386,9 @@ const AccountSetUp1 = () => {
         if (res) {
           console.log('updateUser ress', res);
 
-          navigation.navigate('PhotoScreen');
+          navigation.navigate('PhotoScreen', {
+            _id,
+          });
         }
       } catch (error) {
         console.log('updateUser error', error);
