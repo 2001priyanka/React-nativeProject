@@ -419,8 +419,8 @@ const PhotoScreen = () => {
         url: API_URL + 'UserImage',
         method: 'POST',
         data: {
-          // userId: _id,
-          userId: '63d4cd315ebf132ee5292649',
+          userId: _id,
+
           image1: image?.image1,
           image2: image?.image2,
           image3: image?.image3,
