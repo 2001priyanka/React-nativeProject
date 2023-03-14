@@ -125,19 +125,27 @@ const HomeScreens = () => {
             borderRadius: 20,
             //  marginBottom:20,
           }}>
-          <Image
-            source={{
-              uri: item.profilePic,
-            }}
-            style={{
-              height: vh(55),
-              width: vh(40),
-              borderRadius: 20,
-              padding: 10,
-              marginTop: 50,
-              alignSelf: 'center',
-            }}
-          />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('IndividualProfile', {
+                details: item,
+              });
+            }}>
+            <Image
+              source={{
+                uri: item.img,
+              }}
+              style={{
+                height: vh(55),
+                width: vh(40),
+                borderRadius: 20,
+                padding: 10,
+                marginTop: 50,
+                alignSelf: 'center',
+              }}
+            />
+          </TouchableOpacity>
+
           <View
             style={{
               flexDirection: 'row',
@@ -200,9 +208,6 @@ const HomeScreens = () => {
       console.log('ERROR', error);
     }
   };
-  useEffect(() => {
-    registerSwipe();
-  }, []);
 
   const getUsersData = async () => {
     try {
@@ -224,8 +229,8 @@ const HomeScreens = () => {
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <Swiper
           ref={swiperRef}
-          cards={usersFromApi}
-          // cards={cards}
+          // cards={usersFromApi}
+          cards={cards}
           renderCard={_renderUsers}
           // data={getUsersData}
           // user={users}

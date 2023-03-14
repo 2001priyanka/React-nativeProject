@@ -96,6 +96,9 @@ function ModalTester() {
   const userDetail = useSelector(
     reduxState => reduxState?.login?.user?.user?.profilePic,
   );
+
+  console.log('profile piccccc', userDetail);
+
   console.log('details', userDetail);
   const name = useSelector(reduxState => reduxState?.login?.user?.user?.name);
   console.log(name);
@@ -103,6 +106,7 @@ function ModalTester() {
 
   const updateUserData = async () => {
     if (user) {
+      console.log('imageUri eee', imageUri);
       try {
         const res = await axios({
           url: API_URL + `admin/user/${user}`,
@@ -181,7 +185,7 @@ function ModalTester() {
   };
 
   const selectAllFiles = async () => {
-    setimageUri(null);
+    // setimageUri(null);
     setFiles(null);
     setFile(null);
     requestCameraPermission();
@@ -405,14 +409,7 @@ function ModalTester() {
           </View> */}
         </View>
         <View style={{alignSelf: 'center'}}>
-          <View
-            style={{
-              borderWidth: 1,
-              borderColor: '#fe5e75',
-              borderRadius: 100,
-              height: vh(15),
-              width: vw(30),
-            }}>
+          <View>
             <Image
               source={{
                 // uri: 'https://6.vikiplatform.com/image/f39b70cc709449058542b107d493cff7.jpg?x=b&a=0x0&s=460x268&e=t&f=t&cb=1',

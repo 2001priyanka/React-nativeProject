@@ -136,6 +136,7 @@ const SignIn1 = () => {
                 onChangeText={txt => {
                   setPassword(txt);
                 }}
+                secureTextEntry={true}
                 value={password}
               />
             </View>

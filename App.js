@@ -31,6 +31,8 @@ import PhotoScreen from './android/app/src/Components/PhotoScreen';
 import Footer from './android/app/src/Components/Footer';
 import EditContactDetails from './android/app/src/Components/EditContactDetails';
 import EditBiodata from './android/app/src/Components/EditBiodata';
+import IndividualProfile from './android/app/src/Components/IndividualProfile';
+import MatchProfile from './android/app/src/Components/MatchProfile';
 
 const Stack = createStackNavigator();
 
@@ -59,7 +61,12 @@ const App = () => {
             <Stack.Screen name="AccountSetUp3" component={AccountSetUp3} />
             <Stack.Screen name="EditBiodata" component={EditBiodata} />
             <Stack.Screen name="ProfilePage" component={ProfilePage} />
+            <Stack.Screen name="MatchProfile" component={MatchProfile} />
             <Stack.Screen name="Footer" component={Footer} />
+            <Stack.Screen
+              name="IndividualProfile"
+              component={IndividualProfile}
+            />
             <Stack.Screen
               name="NotificationPage"
               component={NotificationPage}
