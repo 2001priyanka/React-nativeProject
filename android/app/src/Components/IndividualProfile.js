@@ -44,6 +44,10 @@ const IndividualProfile = () => {
 
   const [userImages, setUserImages] = useState([]);
 
+  // getting userid from that user
+
+  const userId = route?.params?.details?._id;
+
   const getUserImages = async () => {
     try {
       const res = await axios({
@@ -52,6 +56,8 @@ const IndividualProfile = () => {
       });
       if (res) {
         console.log('getUserImages res', res);
+        let tmpUser = res?.data?.userImage;
+        setUserImages(res?.data?.userImage);
       }
     } catch (error) {
       console.log('getUserImages error', error);
@@ -61,7 +67,7 @@ const IndividualProfile = () => {
   useEffect(() => {
     getUserImages();
   }, []);
-
+  console.log('user images', userImages);
   return (
     <View>
       <View>

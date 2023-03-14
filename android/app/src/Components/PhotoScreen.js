@@ -44,6 +44,7 @@ const PhotoScreen = () => {
   });
 
   const [files, setFiles] = useState([]);
+  const [file, setFile] = useState(null);
   const [imageUri, setimageUri] = useState(null);
   const [photo, SetPhoto] = useState([
     {
@@ -130,25 +131,6 @@ const PhotoScreen = () => {
             }}
             style={{height: vh(33), width: vw(40)}}
           />
-
-          {/* <View
-            style={{
-              backgroundColor: '#fe5e75',
-              width: 60,
-              height: 60,
-              borderRadius: 50,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <IconFa
-              name="plus"
-              style={{
-                // marginTop: 15,
-                color: 'white',
-              }}
-              size={40}
-            />
-          </View> */}
         </TouchableOpacity>
       </View>
     );
@@ -201,7 +183,12 @@ const PhotoScreen = () => {
   };
 
   const selectAllFiles = async item => {
+    setimageUri(null);
+    setFiles(null);
+    setFile(null);
+
     requestCameraPermission();
+
     console.log('item', item);
     //Opening Document Picker for selection of one file
     try {
@@ -283,9 +270,7 @@ const PhotoScreen = () => {
       //Setting the state to show single file attributes
 
       setFiles([...files, ...res]);
-      if (files[3]) {
-        setIsTrue(true);
-      }
+
       console.log('123asdrfvbgt results>>', res);
       console.log('files', files);
     } catch (err) {
@@ -340,7 +325,7 @@ const PhotoScreen = () => {
         );
         // console.log('UPLOAD IS ' + percentage + '% DONE!');
       };
-      uploadFiles({
+      RNFS.uploadFiles({
         toUrl: uploadUrl,
         files: filesArr,
         method: 'POST',
@@ -351,7 +336,7 @@ const PhotoScreen = () => {
         fields: {
           // name: 'MHN1.mp3',
           model_id: _id,
-          model: 'media',
+          model: 'userImage',
           model_key: 'content',
           // user_id: doc.id,
           // reqType: 'FCM_BCAST',
@@ -426,84 +411,6 @@ const PhotoScreen = () => {
     }
   };
 
-  // new functions from admin panel
-  const submitHandler = async () => {
-    console.log('submitHandler called');
-    if (postData.user_id != '') {
-      console.log('CALL API');
-
-      try {
-        const postRes = await axios({
-          url: API_URL + '/admin/post',
-          method: 'POST',
-          data: {
-            user_id: postData?.user_id,
-            content: postData?.content,
-          },
-        });
-
-        if (postRes) {
-          console.log('postRes ', postRes);
-          if (postRes?.data?.success) {
-            // navigate("/posts");
-            createMedia(postRes?.data?.data?._id);
-          }
-        }
-      } catch (error) {
-        console.log('API error', error);
-      }
-    } else {
-      window.alert('Required Fields Missing');
-    }
-  };
-
-  const createMedia = async post_id => {
-    try {
-      const mediaRes = await axios({
-        url: API_URL + '/admin/media',
-        method: 'POST',
-        data: {
-          user_id: postData?.user_id,
-          post_id,
-        },
-      });
-
-      if (mediaRes) {
-        console.log('mediaRes ', mediaRes);
-        if (mediaRes?.data?.success) {
-          updatePost(post_id, mediaRes?.data?.data?._id);
-          // navigate("/posts");
-          // uploadMedia(mediaRes?.data?.data?._id);
-          uploadFilesToAPI(mediaRes?.data?.data?._id);
-        }
-      }
-    } catch (error) {
-      console.log('API error', error);
-    }
-  };
-  const updatePost = async (post_id, media_id) => {
-    try {
-      const updatePostRes = await axios({
-        url: API_URL + '/admin/post/' + post_id,
-        method: 'PUT',
-        data: {
-          //  user_id: postData?.user_id,
-          media_id,
-        },
-      });
-
-      if (updatePostRes) {
-        console.log('updatePostRes ', updatePostRes);
-        if (updatePostRes?.data?.success) {
-          // navigate("/posts");
-          // uploadMedia(updatePostRes?.data?.data?._id);
-        }
-      }
-    } catch (error) {
-      console.log('API error', error);
-    }
-  };
-
   // code for sending all user images
 
   const uploadUserImages = async () => {
@@ -512,7 +419,8 @@ const PhotoScreen = () => {
         url: API_URL + 'UserImage',
         method: 'POST',
         data: {
-          userId: _id,
+          // userId: _id,
+          userId: '63d4cd315ebf132ee5292649',
           image1: image?.image1,
           image2: image?.image2,
           image3: image?.image3,
@@ -527,6 +435,7 @@ const PhotoScreen = () => {
 
       if (res) {
         console.log('uploadUserImages res', res);
+        uploadFilesToAPI(res?.data?.userImage._id);
         navigation.navigate('AccountSetUp2');
       }
     } catch (error) {
