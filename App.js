@@ -33,6 +33,8 @@ import EditContactDetails from './android/app/src/Components/EditContactDetails'
 import EditBiodata from './android/app/src/Components/EditBiodata';
 import IndividualProfile from './android/app/src/Components/IndividualProfile';
 import MatchProfile from './android/app/src/Components/MatchProfile';
+import AllChats from './android/app/src/Components/AllChats';
+import Chat from './android/app/src/Components/Chat';
 
 const Stack = createStackNavigator();
 
@@ -43,7 +45,7 @@ const App = () => {
         {/* <Navigation /> */}
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="AllChats"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="HomePage" component={Homepage} />
             <Stack.Screen name="Home" component={Home} />
@@ -51,7 +53,12 @@ const App = () => {
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="SetUp2" component={SetUp2} />
             <Stack.Screen name="SignIn1" component={SignIn1} />
-            <Stack.Screen name="InboxPage" component={InboxPage} />
+            {/* <Stack.Screen name="InboxPage" component={InboxPage} /> */}
+            {/* testing chat */}
+            <Stack.Screen name="AllChats" component={AllChats} />
+            <Stack.Screen name="Chat" component={Chat} />
+            {/* testing chat */}
+
             <Stack.Screen name="ForgetPassword " component={ForgetPassword} />
             <Stack.Screen name="ResetPassword" component={ResetPassword} />
             <Stack.Screen name="HomeScreens" component={HomeScreens} />
