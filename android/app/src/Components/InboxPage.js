@@ -184,33 +184,6 @@ const InboxPage = () => {
             />
           </View>
           <FlatList data={msgs} renderItem={_renderItem} />
-          <View style={styles.uppersection3}>
-            <View>
-              <IconFa name="home" style={{fontSize: 25, color: '#fe5e75'}} />
-            </View>
-            <View>
-              <IconFa name="map" style={{fontSize: 25, color: '#fe5e75'}} />
-            </View>
-            <View>
-              <IconFa name="heart" style={{fontSize: 25, color: '#fe5e75'}} />
-            </View>
-            <View
-              style={{
-                backgroundColor: '#fe5e75',
-                justifyContent: 'center',
-                borderRadius: 20,
-                height: 35,
-                width: 35,
-              }}>
-              <IconFa
-                name="message-bulleted"
-                style={{fontSize: 25, color: 'white', marginLeft: 5}}
-              />
-            </View>
-            <View>
-              <IconFa name="account" style={{fontSize: 25, color: '#fe5e75'}} />
-            </View>
-          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

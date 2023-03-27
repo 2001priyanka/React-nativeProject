@@ -10,6 +10,13 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import {Picker} from '@react-native-picker/picker';
+import {
+  responsiveHeight as vh,
+  responsiveWidth as vw,
+  responsiveFontSize as vf,
+} from 'react-native-responsive-dimensions';
+
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
@@ -20,6 +27,7 @@ import {Alert} from 'react-native';
 
 const EditBiodata = () => {
   const navigation = useNavigation();
+  const [selectedValue, setSelectedValue] = useState('');
   const [userData, setUsersData] = useState({
     name: '',
     email: '',
@@ -126,10 +134,16 @@ const EditBiodata = () => {
               />
             </View>
           </View>
+
           <View>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-              <View>
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                // borderWidth: 1,
+                marginTop: 20,
+              }}>
+              {/* <View>
                 <Text style={{color: 'black', fontSize: 15}}>Gender:</Text>
 
                 <TextInput
@@ -146,13 +160,86 @@ const EditBiodata = () => {
                   }}
                   value={userData?.gender}
                 />
+              </View> */}
+              <View style={{}}>
+                <Text style={{color: 'black', fontSize:vf(2)}}>Gender:</Text>
+                <Picker
+                  // ref={pickerRef}
+                  selectedValue={selectedValue}
+                  placeholder="#000"
+                  onValueChange={(item, index) => setSelectedValue(item)}
+                  style={{
+                    width: vw(44),
+                    height: vh(5),
+                    borderWidth: 1.5,
+                    borderColor: '#fe5e75',
+                    borderRadius: 30,
+                  }}>
+                  <Picker.Item
+                    label="Female"
+                    value="Female"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label="Male"
+                    value="Male"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label="Transgender"
+                    value="Transgender"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label="Lesbian"
+                    value="Lesbian"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label="Gay"
+                    value="Gay"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label=" Queer"
+                    value=" Queer"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label="Questioning"
+                    value="Questioning"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label="Intersex"
+                    value="Intersex"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label="Pansexual"
+                    value="Pansexual"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label="Two-Spirited"
+                    value="Two-Spirited"
+                    style={{fontSize: vf(2)}}
+                  />
+                  <Picker.Item
+                    label="Asexual"
+                    value="Asexual"
+                    style={{fontSize: vf(2)}}
+                  />
+                </Picker>
               </View>
+
               <View>
                 <View>
                   <Text style={{color: 'black', fontSize: 15}}>Age:</Text>
                   <TextInput
                     style={styles.input1}
                     placeholder="Age"
+                    keyboardType = 'numeric'
                     editable
                     maxLength={40}
                     onChangeText={e => {
@@ -167,6 +254,7 @@ const EditBiodata = () => {
                 </View>
               </View>
             </View>
+
             <View>
               <View>
                 <Text style={{color: 'black', fontSize: 15}}>About:</Text>
@@ -279,12 +367,12 @@ const styles = StyleSheet.create({
   },
   input1: {
     height: 40,
-    margin: 12,
     borderWidth: 1.5,
     borderColor: '#fe5e75',
     padding: 10,
-    borderRadius: 20,
-    width: 150,
+    borderRadius: 30,
+    width:vw(43),
+    height:vh(7)
   },
 });
 export default EditBiodata;

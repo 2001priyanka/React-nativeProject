@@ -38,11 +38,11 @@ const HomeScreens = () => {
   const onNextPressed15 = () => {
     navigation.navigate('HomeScreens');
   };
-  const [isModalVisible, setModalVisible] = useState(false);
+  // const [isModalVisible, setModalVisible] = useState(false);
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+  // const toggleModal = () => {
+  //   setModalVisible(!isModalVisible);
+  // };
   const swiperRef = useRef();
   const [users, setUsers] = useState('');
   const [cards, setCards] = useState([
@@ -200,7 +200,7 @@ const HomeScreens = () => {
         action1: type,
         action2: type,
       };
-      const res = await axios.post(API_URL + 'connection', data);
+      const res = await axios.post(API_URL + 'admin/connection', data);
       if (res.status === 200) {
         console.log('res', res?.data?.results);
       }
@@ -255,7 +255,7 @@ const HomeScreens = () => {
               title: 'NOPE',
               style: {
                 label: {
-                  backgroundColor: '#fe5e75',
+                  // backgroundColor: '#fe5e75',
                   borderColor: '#fe5e75',
                   color: 'white',
                   borderWidth: 1,
@@ -367,7 +367,7 @@ const HomeScreens = () => {
                 justifyContent: 'center',
                 color: '#fe5e75',
               }}
-              onPress={toggleModal}
+              // onPress={toggleModal}
             />
           </View>
         </View>
@@ -407,6 +407,7 @@ const HomeScreens = () => {
             <IconFa
               name="star-outline"
               style={{fontSize: vf(6), color: '#fe5e75'}}
+              onPress={()=>{swiperRef.current.swipeTop();}}
             />
           </Text>
         </View>
@@ -433,193 +434,7 @@ const HomeScreens = () => {
       </View>
 
       {/* <FlatList data={cards} renderItem={_renderUsers} /> */}
-      <View style={styles.uppersection1}>
-        <View>
-          <IconFa
-            name="home"
-            style={{fontSize: vf(3.5), color: '#fe5e75'}}
-            onPress={onNextPressed15}
-          />
-        </View>
-        <View>
-          <IconFa name="map" style={{fontSize: vf(3.5), color: '#fe5e75'}} />
-        </View>
-        <View>
-          <IconFa name="heart" style={{fontSize: vf(3.5), color: '#fe5e75'}} />
-        </View>
-        <View>
-          <IconFa
-            name="message-bulleted"
-            style={{fontSize: vf(3.5), color: '#fe5e75'}}
-          />
-        </View>
-        <TouchableOpacity>
-          <View>
-            <IconFa
-              name="account"
-              style={{fontSize: vf(3.5), color: '#fe5e75'}}
-              onPress={onNextPressed14}
-            />
-          </View>
-        </TouchableOpacity>
-        <Modal
-          onBackdropPress={() => setModalVisible(false)}
-          onBackButtonPress={() => setModalVisible(false)}
-          isVisible={isModalVisible}
-          swipeDirection="down"
-          onSwipeComplete={toggleModal}
-          animationIn="bounceInUp"
-          // animationOut="bounceOutDown"
-          animationInTiming={900}
-          animationOutTiming={500}
-          backdropTransitionInTiming={900}
-          backdropTransitionOutTiming={500}
-          style={styles.modal}>
-          <View style={styles.modalContent}>
-            <View style={styles.center}>
-              <View style={styles.barIcon} />
-              <View>
-                <Text
-                  style={{
-                    alignSelf: 'flex-start',
-                    marginLeft: 25,
-                    flexDirection: 'row',
-                    fontWeight: '500',
-                    fontSize: vf(2),
-                    color: 'black',
-                  }}>
-                  Location:
-                </Text>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    height: 50,
-                    margin: 12,
-                    borderWidth: 1,
-                    paddingLeft: 30,
-                    borderRadius: 25,
-                    borderColor: '#B3B0B0',
-                  }}>
-                  <View>
-                    <TextInput
-                      // style={styles.input2}
-                      placeholder="Location"
-                      editable
-                      maxLength={40}
-                    />
-                  </View>
-                  <View>
-                    <IconFa
-                      name="map-marker"
-                      style={{
-                        marginTop: 9,
-                        paddingRight: 20,
-                        fontSize: vf(2.5),
-                      }}
-                    />
-                  </View>
-                </View>
-              </View>
-              <View>
-                <Text style={{color: 'black', fontSize: vf(2), marginLeft: 20}}>
-                  Gender
-                </Text>
-              </View>
-              <View
-                style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                <View style={styles.body1}>
-                  <Text
-                    style={{
-                      textAlign: 'center',
-                      color: '#fe5e75',
-                      fontSize: 15,
-                    }}>
-                    Male
-                  </Text>
-                </View>
-                <View style={styles.body}>
-                  <Text
-                    style={{
-                      textAlign: 'center',
-                      color: 'white',
-                      fontSize: 15,
-                    }}>
-                    Female
-                  </Text>
-                </View>
-                <View style={styles.body1}>
-                  <Text
-                    style={{
-                      textAlign: 'center',
-                      color: '#fe5e75',
-                      fontSize: 15,
-                    }}>
-                    Others
-                  </Text>
-                </View>
-              </View>
-              <View style={{flex: 1, flexDirection: 'row'}}>
-                <RangeSlider
-                  minValue={0}
-                  maxValue={100}
-                  tintColor={'#da0f22'}
-                  handleBorderWidth={1}
-                  handleBorderColor="#454d55"
-                  selectedMinimum={20}
-                  selectedMaximum={40}
-                  style={{
-                    flex: 1,
-                    height: 70,
-                    padding: 10,
-                    backgroundColor: '#ddd',
-                  }}
-                  onChange={data => {
-                    console.log(data);
-                  }}
-                />
-              </View>
-              {/* <RangeSlider
-                style={styles.slider}
-                min={0}
-                max={100}
-                step={1}
-                floatingLabel
-                renderThumb={renderThumb}
-                renderRail={renderRail}
-                renderRailSelected={renderRailSelected}
-                renderLabel={renderLabel}
-                renderNotch={renderNotch}
-                onValueChanged={handleValueChange}
-              /> */}
-              <View
-                style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                <View style={styles.body4}>
-                  <Text
-                    style={{
-                      textAlign: 'center',
-                      color: '#fe5e75',
-                      fontSize: 15,
-                    }}>
-                    Reset
-                  </Text>
-                </View>
-                <View style={styles.body3}>
-                  <Text
-                    style={{
-                      textAlign: 'center',
-                      color: 'white',
-                      fontSize: 15,
-                    }}>
-                    Apply Filter
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </Modal>
-        {/* <Footer/> */}
-      </View>
+     
     </SafeAreaView>
   );
 };
@@ -628,7 +443,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 10,
-    height: vh(85),
+    height: vh(83),
 
     // paddingLeft:20,
     // backgroundColor: 'white',

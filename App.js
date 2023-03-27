@@ -33,6 +33,9 @@ import EditContactDetails from './android/app/src/Components/EditContactDetails'
 import EditBiodata from './android/app/src/Components/EditBiodata';
 import IndividualProfile from './android/app/src/Components/IndividualProfile';
 import MatchProfile from './android/app/src/Components/MatchProfile';
+import ChangePassword from './android/app/src/Screens/ChangePassword';
+import ChangePhone from './android/app/src/Screens/ChangePhone';
+import EditEmail from './android/app/src/Screens/EditEmail';
 
 const Stack = createStackNavigator();
 
@@ -43,7 +46,7 @@ const App = () => {
         {/* <Navigation /> */}
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="ProfilePage"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="HomePage" component={Homepage} />
             <Stack.Screen name="Home" component={Home} />
@@ -62,7 +65,10 @@ const App = () => {
             <Stack.Screen name="EditBiodata" component={EditBiodata} />
             <Stack.Screen name="ProfilePage" component={ProfilePage} />
             <Stack.Screen name="MatchProfile" component={MatchProfile} />
-            <Stack.Screen name="Footer" component={Footer} />
+            <Stack.Screen name="ChangePassword" component={ChangePassword} />
+            <Stack.Screen name="ChangePhone" component={ChangePhone} />
+            <Stack.Screen name="EditEmail" component={EditEmail} />
+            {/* <Stack.Screen name="Footer" component={Footer}/> */}
             <Stack.Screen
               name="IndividualProfile"
               component={IndividualProfile}
@@ -79,7 +85,7 @@ const App = () => {
               component={EditContactDetails}
             />
           </Stack.Navigator>
-          <Footer />
+          <Footer/>
         </NavigationContainer>
       </PersistGate>
     </Provider>

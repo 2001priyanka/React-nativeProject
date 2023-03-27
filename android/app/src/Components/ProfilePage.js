@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {Button, StatusBar, StyleSheet, Text, View, Image} from 'react-native';
+import {Button, StatusBar, StyleSheet, Text, View, Image, SafeAreaView, ScrollView} from 'react-native';
 import Modal from 'react-native-modal';
 import {Icon, Input} from 'react-native-elements';
 import {useSelector} from 'react-redux';
@@ -86,6 +86,15 @@ function ModalTester() {
   };
   const onNextPressed21 = () => {
     navigation.navigate('PhotoScreen');
+  };
+  const onNextPressed22 = () => {
+    navigation.navigate('ChangePassword');
+  };
+  const onNextPressed23 = () => {
+    navigation.navigate('ChangePhone');
+  };
+  const onNextPressed24 = () => {
+    navigation.navigate('EditEmail');
   };
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -363,23 +372,29 @@ function ModalTester() {
   };
 
   return (
-    <View style={styles.flexView}>
-      <StatusBar />
-      <View>
-        <View style={{margin: 25}}>
-          <View style={{}}>
-            <View style={{flexDirection: 'row'}}>
-              <IconFa
-                name="heart-multiple"
-                style={{fontSize: vf(4), color: '#fe5e75'}}
-              />
-              <Text
-                style={{fontSize: vf(2.5), paddingLeft: 20, color: 'black'}}>
-                Profile
-              </Text>
-            </View>
-          </View>
-          {/* <View style={{backgroundColor: 'red'}}>
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.flexView}>
+          <StatusBar />
+          <View>
+            <View style={{margin: 25}}>
+              <View style={{}}>
+                <View style={{flexDirection: 'row'}}>
+                  <IconFa
+                    name="heart-multiple"
+                    style={{fontSize: vf(4), color: '#fe5e75'}}
+                  />
+                  <Text
+                    style={{
+                      fontSize: vf(2.5),
+                      paddingLeft: 20,
+                      color: 'black',
+                    }}>
+                    Profile
+                  </Text>
+                </View>
+              </View>
+              {/* <View style={{backgroundColor: 'red'}}>
             <View
               style={{
                 borderRadius: 50,
@@ -408,296 +423,420 @@ function ModalTester() {
               />
             </View>
           </View> */}
-        </View>
-        <View style={{alignSelf: 'center'}}>
-          <View>
-            <Image
-              source={{
-                // uri: 'https://6.vikiplatform.com/image/f39b70cc709449058542b107d493cff7.jpg?x=b&a=0x0&s=460x268&e=t&f=t&cb=1',
-                uri: userDetail,
-              }}
-              style={{
-                height: vh(15),
-                width: vw(30),
-                borderRadius: 100,
-                marginTop: 20,
-                alignSelf: 'center',
-                borderWidth: 1,
-                borderColor: '#fe5e75',
-              }}
-            />
-          </View>
-
-          <View
-            style={{
-              backgroundColor: '#fe5e75',
-              position: 'absolute',
-              justifyContent: 'center',
-              alignSelf: 'center',
-              bottom: 0,
-              right: 0,
-              width: vw(6.5),
-              height: vh(3.5),
-              borderRadius: 10,
-              color: 'white',
-              paddingLeft: 3,
-            }}>
-            <TouchableOpacity onPress={selectAllFiles}>
-              <IconFa
-                name="square-edit-outline"
-                style={{fontSize: vf(2.5), color: 'white'}}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View>
-          <Text
-            style={{
-              textAlign: 'center',
-              fontSize: vf(2.5),
-              color: 'black',
-              marginTop: 10,
-            }}>
-            {name}
-          </Text>
-        </View>
-        <View style={{margin: 20}}>
-          <View style={styles.uppersection1}>
-            <View
-              style={{
-                backgroundColor: '#FFDBE9',
-                width: vw(10),
-                height: vh(5),
-                borderRadius: 50,
-                justifyContent: 'center',
-              }}>
-              <IconFa
-                name="account"
-                style={{
-                  fontSize: vf(2.5),
-                  color: '#fe5e75',
-                  marginLeft: 10,
-                }}
-              />
             </View>
-            <View>
-              <Text
-                style={{
-                  paddingRight: 170,
-                  fontSize: 18,
-                  color: 'black',
-                  marginTop: 4,
-                }}
-                onPress={onNextPressed16}>
-                Edit Biodata
-              </Text>
-            </View>
-            <View>
-              <IconFa
-                name="chevron-right"
-                style={{fontSize: vf(2.5), color: '#fe5e75'}}
-              />
-            </View>
-          </View>
-          <View style={styles.uppersection1}>
-            <View
-              style={{
-                backgroundColor: '#FFDBE9',
-                width: vw(10),
-                height: vh(5),
-                borderRadius: 50,
-                justifyContent: 'center',
-              }}>
-              <IconFa
-                name="bell"
-                style={{
-                  fontSize: vf(2.5),
-                  color: '#fe5e75',
-                  marginLeft: 10,
-                }}
-              />
-            </View>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('AccountSetUp2', {
-                  name: 'profile',
-                });
-              }}>
-              <Text
-                style={{
-                  paddingRight: 170,
-                  fontSize: 18,
-                  color: 'black',
-                  marginTop: 4,
-                }}>
-                Edit Interest
-              </Text>
-            </TouchableOpacity>
-            <View>
-              <IconFa
-                name="chevron-right"
-                style={{fontSize: vf(2.5), color: '#fe5e75'}}
-              />
-            </View>
-          </View>
-
-          <View style={styles.uppersection1}>
-            <View
-              style={{
-                backgroundColor: '#FFDBE9',
-                width: vw(10),
-                height: vh(5),
-                borderRadius: 50,
-                justifyContent: 'center',
-              }}>
-              <IconFa
-                name="account-multiple"
-                style={{
-                  fontSize: vf(2.5),
-                  color: '#fe5e75',
-                  marginLeft: 10,
-                }}
-              />
-            </View>
-            <View>
-              <Text
-                style={{
-                  paddingRight: 145,
-                  fontSize: 18,
-                  color: 'black',
-                  marginTop: 4,
-                }}
-                onPress={onNextPressed19}>
-                Invite Friends
-              </Text>
-            </View>
-            <View>
-              <IconFa
-                name="chevron-right"
-                style={{fontSize: vf(2.5), color: '#fe5e75'}}
-              />
-            </View>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              marginTop: 20,
-              borderBottomWidth: 0.5,
-              height: 50,
-              margin: 5,
-              marginBottom: 180,
-            }}>
-            <View
-              style={{
-                backgroundColor: '#FFDBE9',
-                width: vw(10),
-                height: vh(5),
-                borderRadius: 50,
-                justifyContent: 'center',
-                alignSelf: 'center',
-              }}>
-              <IconFa
-                name="logout"
-                style={{
-                  fontSize: vf(2.5),
-                  color: '#fe5e75',
-                  marginLeft: 10,
-                }}
-              />
-            </View>
-            <TouchableOpacity onPress={toggleModal}>
-              <Text
-                style={{
-                  paddingRight: 225,
-                  fontSize: 18,
-                  color: 'black',
-                  marginTop: 8,
-                }}>
-                Logout
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.uppersection}>
-            <TouchableOpacity>
+            <View style={{alignSelf: 'center'}}>
               <View>
-                <IconFa
-                  name="home"
-                  style={{fontSize: 25, color: '#fe5e75'}}
-                  onPress={onNextPressed20}
+                <Image
+                  source={{
+                    // uri: 'https://6.vikiplatform.com/image/f39b70cc709449058542b107d493cff7.jpg?x=b&a=0x0&s=460x268&e=t&f=t&cb=1',
+                    uri: userDetail,
+                  }}
+                  style={{
+                    height: vh(15),
+                    width: vw(30),
+                    borderRadius: 100,
+                    marginTop: 20,
+                    alignSelf: 'center',
+                    borderWidth: 1,
+                    borderColor: '#fe5e75',
+                  }}
                 />
               </View>
-            </TouchableOpacity>
-            <View>
-              <IconFa name="map" style={{fontSize: 25, color: '#fe5e75'}} />
-            </View>
-            <View>
-              <IconFa name="heart" style={{fontSize: 25, color: '#fe5e75'}} />
-            </View>
-            <View>
-              <IconFa
-                name="message-bulleted"
-                style={{fontSize: 25, color: '#fe5e75'}}
-              />
-            </View>
-            <View>
-              <IconFa name="account" style={{fontSize: 25, color: '#fe5e75'}} />
-            </View>
-          </View>
-        </View>
-      </View>
 
-      <Modal
-        onBackdropPress={() => setModalVisible(false)}
-        onBackButtonPress={() => setModalVisible(false)}
-        isVisible={isModalVisible}
-        swipeDirection="down"
-        onSwipeComplete={toggleModal}
-        animationIn="bounceInUp"
-        // animationOut="bounceOutDown"
-        animationInTiming={900}
-        animationOutTiming={500}
-        backdropTransitionInTiming={900}
-        backdropTransitionOutTiming={500}
-        style={styles.modal}>
-        <View style={styles.modalContent}>
-          <View style={styles.center}>
-            <View style={styles.barIcon} />
-            <View>
-              <IconFa
-                name="logout"
-                style={{fontSize: 40, marginTop: 30, color: '#fe5e75'}}
-              />
-            </View>
-            <Text style={styles.text}>Are you sure want to logout</Text>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <View style={styles.body1}>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    color: '#fe5e75',
-                  }}>
-                  Cancel
-                </Text>
-              </View>
-              <View style={styles.body}>
-                <TouchableOpacity onPress={onNextPressed15}>
-                  <Text
-                    style={{
-                      textAlign: 'center',
-                      color: 'white',
-                      fontSize: 18,
-                    }}>
-                    Yes, Logout
-                  </Text>
+              <View
+                style={{
+                  backgroundColor: '#fe5e75',
+                  position: 'absolute',
+                  justifyContent: 'center',
+                  alignSelf: 'center',
+                  bottom: 0,
+                  right: 0,
+                  width: vw(6.5),
+                  height: vh(3.5),
+                  borderRadius: 10,
+                  color: 'white',
+                  paddingLeft: 3,
+                }}>
+                <TouchableOpacity onPress={selectAllFiles}>
+                  <IconFa
+                    name="square-edit-outline"
+                    style={{fontSize: vf(2.5), color: 'white'}}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
+            <View>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: vf(2.5),
+                  color: 'black',
+                  marginTop: 10,
+                }}>
+                {name}
+              </Text>
+            </View>
+            <View style={{margin: 20}}>
+              <View style={styles.uppersection1}>
+                <View
+                  style={{
+                    backgroundColor: '#FFDBE9',
+                    width: vw(10),
+                    height: vh(5),
+                    borderRadius: 50,
+                    justifyContent: 'center',
+                  }}>
+                  <IconFa
+                    name="account"
+                    style={{
+                      fontSize: vf(2.5),
+                      color: '#fe5e75',
+                      marginLeft: 10,
+                    }}
+                  />
+                </View>
+                <View>
+                  <Text
+                    style={{
+                      paddingRight: 170,
+                      fontSize: 18,
+                      color: 'black',
+                      marginTop: 4,
+                    }}
+                    onPress={onNextPressed16}>
+                    Edit Biodata
+                  </Text>
+                </View>
+                <View>
+                  <IconFa
+                    name="chevron-right"
+                    style={{fontSize: vf(2.5), color: '#fe5e75'}}
+                  />
+                </View>
+              </View>
+              <View style={styles.uppersection1}>
+                <View
+                  style={{
+                    backgroundColor: '#FFDBE9',
+                    width: vw(10),
+                    height: vh(5),
+                    borderRadius: 50,
+                    justifyContent: 'center',
+                  }}>
+                  <IconFa
+                    name="bell"
+                    style={{
+                      fontSize: vf(2.5),
+                      color: '#fe5e75',
+                      marginLeft: 10,
+                    }}
+                  />
+                </View>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('AccountSetUp2', {
+                      name: 'profile',
+                    });
+                  }}>
+                  <Text
+                    style={{
+                      paddingRight: 170,
+                      fontSize: 18,
+                      color: 'black',
+                      marginTop: 4,
+                    }}>
+                    Edit Interest
+                  </Text>
+                </TouchableOpacity>
+                <View>
+                  <IconFa
+                    name="chevron-right"
+                    style={{fontSize: vf(2.5), color: '#fe5e75'}}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.uppersection1}>
+                <View
+                  style={{
+                    backgroundColor: '#FFDBE9',
+                    width: vw(10),
+                    height: vh(5),
+                    borderRadius: 50,
+                    justifyContent: 'center',
+                  }}>
+                  <IconFa
+                    name="account-multiple"
+                    style={{
+                      fontSize: vf(2.5),
+                      color: '#fe5e75',
+                      marginLeft: 10,
+                    }}
+                  />
+                </View>
+                <View>
+                  <Text
+                    style={{
+                      paddingRight: 145,
+                      fontSize: 18,
+                      color: 'black',
+                      marginTop: 4,
+                    }}
+                    onPress={onNextPressed19}>
+                    Invite Friends
+                  </Text>
+                </View>
+                <View>
+                  <IconFa
+                    name="chevron-right"
+                    style={{fontSize: vf(2.5), color: '#fe5e75'}}
+                  />
+                </View>
+              </View>
+              <View style={styles.uppersection1}>
+                <View
+                  style={{
+                    backgroundColor: '#FFDBE9',
+                    width: vw(10),
+                    height: vh(5),
+                    borderRadius: 50,
+                    justifyContent: 'center',
+                  }}>
+                  <IconFa
+                    name="account-multiple"
+                    style={{
+                      fontSize: vf(2.5),
+                      color: '#fe5e75',
+                      marginLeft: 10,
+                    }}
+                  />
+                </View>
+                <View>
+                  <Text
+                    style={{
+                      paddingRight: 150,
+                      fontSize: 18,
+                      color: 'black',
+                      marginTop: 4,
+                    }}
+                    onPress={onNextPressed24}>
+                    Edit Email
+                  </Text>
+                </View>
+                <View>
+                  <IconFa
+                    name="chevron-right"
+                    style={{fontSize: vf(2.5), color: '#fe5e75'}}
+                  />
+                </View>
+              </View>
+              <View style={styles.uppersection1}>
+                <View
+                  style={{
+                    backgroundColor: '#FFDBE9',
+                    width: vw(10),
+                    height: vh(5),
+                    borderRadius: 50,
+                    justifyContent: 'center',
+                  }}>
+                  <IconFa
+                    name="account-multiple"
+                    style={{
+                      fontSize: vf(2.5),
+                      color: '#fe5e75',
+                      marginLeft: 10,
+                    }}
+                  />
+                </View>
+                <View>
+                  <Text
+                    style={{
+                      paddingRight: 50,
+                      fontSize: 18,
+                      color: 'black',
+                      marginTop: 4,
+                    }}
+                    onPress={onNextPressed23}>
+                    Change Phone Number
+                  </Text>
+                </View>
+                <View>
+                  <IconFa
+                    name="chevron-right"
+                    style={{fontSize: vf(2.5), color: '#fe5e75'}}
+                  />
+                </View>
+              </View>
+              <View style={styles.uppersection1}>
+                <View
+                  style={{
+                    backgroundColor: '#FFDBE9',
+                    width: vw(10),
+                    height: vh(5),
+                    borderRadius: 50,
+                    justifyContent: 'center',
+                  }}>
+                  <IconFa
+                    name="account-multiple"
+                    style={{
+                      fontSize: vf(2.5),
+                      color: '#fe5e75',
+                      marginLeft: 10,
+                    }}
+                  />
+                </View>
+                <View>
+                  <Text
+                    style={{
+                      paddingRight: 100,
+                      fontSize: 18,
+                      color: 'black',
+                      marginTop: 4,
+                    }}
+                    onPress={onNextPressed22}>
+                    Change Password
+                  </Text>
+                </View>
+                <View>
+                  <IconFa
+                    name="chevron-right"
+                    style={{fontSize: vf(2.5), color: '#fe5e75'}}
+                  />
+                </View>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  marginTop: 20,
+                  borderBottomWidth: 0.5,
+                  height: 50,
+                  margin: 5,
+                  marginBottom: 180,
+                }}>
+                <View
+                  style={{
+                    backgroundColor: '#FFDBE9',
+                    width: vw(10),
+                    height: vh(5),
+                    borderRadius: 50,
+                    justifyContent: 'center',
+                    alignSelf: 'center',
+                  }}>
+                  <IconFa
+                    name="logout"
+                    style={{
+                      fontSize: vf(2.5),
+                      color: '#fe5e75',
+                      marginLeft: 10,
+                    }}
+                  />
+                </View>
+                <TouchableOpacity>
+                  <Text
+                    style={{
+                      paddingRight: 225,
+                      fontSize: 18,
+                      color: 'black',
+                      marginTop: 8,
+                    }}
+                    onPress={toggleModal}>
+                    Logout
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              {/* <View style={styles.uppersection}>
+                <TouchableOpacity>
+                  <View>
+                    <IconFa
+                      name="home"
+                      style={{fontSize: 25, color: '#fe5e75'}}
+                      onPress={onNextPressed20}
+                    />
+                  </View>
+                </TouchableOpacity>
+                <View>
+                  <IconFa name="map" style={{fontSize: 25, color: '#fe5e75'}} />
+                </View>
+                <View>
+                  <IconFa
+                    name="heart"
+                    style={{fontSize: 25, color: '#fe5e75'}}
+                  />
+                </View>
+                <View>
+                  <IconFa
+                    name="message-bulleted"
+                    style={{fontSize: 25, color: '#fe5e75'}}
+                  />
+                </View>
+                <View>
+                  <IconFa
+                    name="account"
+                    style={{fontSize: 25, color: '#fe5e75'}}
+                  />
+                </View>
+              </View> */}
+            </View>
           </View>
+
+          <Modal
+            onBackdropPress={() => setModalVisible(false)}
+            onBackButtonPress={() => setModalVisible(false)}
+            isVisible={isModalVisible}
+            swipeDirection="down"
+            onSwipeComplete={toggleModal}
+            animationIn="bounceInUp"
+            // animationOut="bounceOutDown"
+            animationInTiming={900}
+            animationOutTiming={500}
+            backdropTransitionInTiming={900}
+            backdropTransitionOutTiming={500}
+            style={styles.modal}>
+            <View style={styles.modalContent}>
+              <View style={styles.center}>
+                <View style={styles.barIcon} />
+                <View>
+                  <IconFa
+                    name="logout"
+                    style={{fontSize: 40, marginTop: 30, color: '#fe5e75'}}
+                  />
+                </View>
+                <Text style={styles.text}>Are you sure want to logout</Text>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View style={styles.body1}>
+                    <Text
+                      style={{
+                        textAlign: 'center',
+                        color: '#fe5e75',
+                      }}>
+                      Cancel
+                    </Text>
+                  </View>
+                  <View style={styles.body}>
+                    <TouchableOpacity>
+                      <Text
+                        style={{
+                          textAlign: 'center',
+                          color: 'white',
+                          fontSize: 18,
+                        }}
+                        onPress={onNextPressed15}>
+                        Yes, Logout
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </Modal>
         </View>
-      </Modal>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 

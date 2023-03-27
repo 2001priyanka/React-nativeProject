@@ -25,6 +25,9 @@ const Home1 = () => {
   const onNextPressed1 = () => {
     navigation.navigate('SignIn');
   };
+  const onNextPressed2 = () => {
+    navigation.navigate('SignIn');
+  };
 
   const [showRealApp, setShowRealApp] = useState(false);
    const onDone = () => {
@@ -32,13 +35,13 @@ const Home1 = () => {
     //  onPress = {onNext2Pressed};
    };
     const RenderNextButton = () => {
-      return (
-        <View>
-          <Text style={{color: 'white', fontSize: vf(2.5)}}>
-            Next
-          </Text>
-        </View>
-      );
+      // return (
+      //   <View>
+      //     <Text style={{color: 'white', fontSize: vf(2.5)}}>
+      //       Next
+      //     </Text>
+      //   </View>
+      // );
     };
      const slides = [
        {
@@ -76,7 +79,7 @@ const Home1 = () => {
         return (
           <View>
             <Text
-              style={{color: 'white', fontSize: vf(2.5), marginTop: 10}}
+              style={{color: 'white', fontSize: vf(2.5),paddingBottom:100}}
               onPress={onNextPressed1}>
               Done
             </Text>
@@ -90,12 +93,14 @@ const Home1 = () => {
               style={{
                 flex: 1,
                 backgroundColor: item.backgroundColor,
-                height:item.height,
+                height: item.height,
                 alignItems: 'center',
                 justifyContent: 'space-around',
                 paddingBottom: 100,
               }}>
-              <Text style={styles.introTitleStyle2}>{item.text}</Text>
+              <Text style={styles.introTitleStyle2} onPress={onNextPressed2}>
+                {item.text}
+              </Text>
               <View>
                 <Image
                   style={styles.introImageStyle1}
