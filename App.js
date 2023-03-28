@@ -71,6 +71,7 @@ const App = () => {
             <Stack.Screen name="ChangePhone" component={ChangePhone} />
             <Stack.Screen name="EditEmail" component={EditEmail} />
             <Stack.Screen name="AllMatch" component={AllMatch} />
+            {/* <Stack.Screen name="model3" component={Model3} /> */}
             {/* <Stack.Screen name="Footer" component={Footer}/> */}
             <Stack.Screen
               name="IndividualProfile"
