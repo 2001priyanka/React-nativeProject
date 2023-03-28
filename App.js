@@ -48,7 +48,7 @@ const App = () => {
         {/* <Navigation /> */}
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="AllMatch"
+            initialRouteName="ProfilePage"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="HomePage" component={Homepage} />
             <Stack.Screen name="Home" component={Home} />

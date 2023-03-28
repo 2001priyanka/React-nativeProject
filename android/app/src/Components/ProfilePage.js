@@ -1,6 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {Button, StatusBar, StyleSheet, Text, View, Image, SafeAreaView, ScrollView} from 'react-native';
+import {
+  Button,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
 import Modal from 'react-native-modal';
 import {Icon, Input} from 'react-native-elements';
 import {useSelector} from 'react-redux';
@@ -18,20 +27,13 @@ import DocumentPicker from 'react-native-document-picker';
 import {PermissionsAndroid} from 'react-native';
 import * as RNFS from 'react-native-fs';
 import axios from 'axios';
-import MimeTypeMap from '../../../../MimeTypeMap';
+// import MimeTypeMap from '../../../../MimeTypeMap';
 import Footer from './Footer';
+import {MimeTypeMap} from '../../../../MimeTypeMap';
 
 function ModalTester() {
-  // const [userData, setUsersData] = useState({
-  //   name: '',
-  //   email: '',
-  //   address1: '',
-  //   mobile: '',
-  //   gender:'',
-  //   age:'',
-  //   intrest:'',
-  //   about:'',
-  // });
+  const [userData, setUsersData] = useState({});
+  const userId = '64206ee3cf54f837e016e354';
   // const token = useSelector(reduxState => reduxState?.signin?.user?.accessToken)
 
   // const getUsersData = async()=>{
@@ -141,33 +143,45 @@ function ModalTester() {
       Alert.alert('Required Fields Missing!');
     }
   };
+  const getUserData = async () => {
+    if (user) {
+      try {
+        const res = await axios({
+          url: API_URL + `admin/user/${userId}`,
+          method: 'GET',
+          // data: {
+          //   profilePic: imageUri,
+          // },
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          // },
+        });
+
+        if (res) {
+          console.log('updateUserDatax res', res?.data);
+          setUsersData(res?.data?.user);
+          // navigation.navigate('ProfilePage');
+        }
+      } catch (error) {
+        console.log('updateUserData error', error);
+      }
+    } else {
+      Alert.alert('Required Fields Missing!');
+    }
+  };
 
   //different usestates for saving data
-  const [files, setFiles] = useState([]);
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState(null);
+  // const [file, setFile] = useState(null);
   const [imageUri, setimageUri] = useState(null);
 
   // code to upload photo
   const requestCameraPermission = async () => {
     try {
-      // const granted = await PermissionsAndroid.request(
-      //   PermissionsAndroid.PERMISSIONS.CAMERA,
-      //   {
-      //     title: 'App Camera Permission',
-      //     message: 'App needs access to your camera ',
-      //     buttonNeutral: 'Ask Me Later',
-      //     buttonNegative: 'Cancel',
-      //     buttonPositive: 'OK',
-      //   },
-      // );
-      // if (granted === PermissionsAndroid.RESULTS.GRANTED) {
       const grants = await PermissionsAndroid.requestMultiple([
         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-        // PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
         PermissionsAndroid.PERMISSIONS.CAMERA,
-        // PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-        // PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
       ]);
       if (
         grants['android.permission.CAMERA'] ===
@@ -180,13 +194,6 @@ function ModalTester() {
           PermissionsAndroid.RESULTS.GRANTED
       ) {
         console.log('Camera permission given');
-        // const options = {
-        //   storageOptions: {
-        //     path: 'images',
-        //     mediaType: 'photo',
-        //   },
-        //   includeBase64: true,
-        // };
       } else {
         console.log('Camera permission denied');
       }
@@ -196,9 +203,8 @@ function ModalTester() {
   };
 
   const selectAllFiles = async () => {
-    // setimageUri(null);
     setFiles(null);
-    setFile(null);
+    // setFile(null);
     requestCameraPermission();
     //Opening Document Picker for selection of one file
     try {
@@ -207,28 +213,23 @@ function ModalTester() {
         allowMultiSelection: true,
       });
       //Printing the log realted to the file
-      console.log('123asdrfvbgt res x: ', res);
-      console.log('123asdrfvbgt typeof res : ' + typeof res);
-      console.log('123asdrfvbgt URI : ' + res[0].uri);
-      console.log('123asdrfvbgt Type : ' + res[0].type);
-      console.log('123asdrfvbgt File Name : ' + res[0].name);
-      console.log('123asdrfvbgt File Size : ' + res[0].size);
-      setimageUri(res[0].uri);
-
-      if (res[0]) {
-        updateUserData();
-      }
+      console.log('selectAllFiles res x: ', res);
+      console.log('selectAllFiles typeof res : ' + typeof res);
+      console.log('selectAllFiles URI : ' + res[0].uri);
+      console.log('selectAllFiles Type : ' + res[0].type);
+      console.log('selectAllFiles File Name : ' + res[0].name);
+      console.log('selectAllFiles File Size : ' + res[0].size);
+      // setimageUri(res[0].uri);
 
       // if (res[0]) {
-      //   navigation.navigate('newPost', {
-      //     imguri: res[0].uri,
-      //   });
+      setimageUri(res[0].uri);
+      setFiles(res[0]);
+      // updateUserData();
+
       // }
-      // setIsTrue(true);
 
       //Setting the state to show single file attributes
-      setFiles(res[0]);
-      console.log('123asdrfvbgt results>>', res);
+      // setFiles(res[0]);
 
       // uploadFile(res[0]);
     } catch (err) {
@@ -245,24 +246,23 @@ function ModalTester() {
   };
 
   const uploadFilesToAPI = async _id => {
-    const data = files;
-    // console.log('Config 9fb83f', Config);
+    // const data = files;
     // Check if any file is selected or not
-    var uploadUrl = `${URL}/upload`; // For testing purposes, go to http://requestb.in/ and create your own link
+    var uploadUrl = `${API_URL}upload`;
+    console.log('uploadFilesToAPI >> uploadUrl', uploadUrl, files, MimeTypeMap);
     try {
       // create an array of objects of the files you want to upload
       var filesArr = [];
       // files.map(async (item, index) => {
       if (files.uri.startsWith('content://')) {
-        const urlComponents = files.uri.split('/');
+        // const urlComponents = files.uri.split('/');
         // const fileNameAndExtension = urlComponents[urlComponents.length - 1];
         const destPath = `${RNFS.ExternalCachesDirectoryPath}/${files.name}.${
           MimeTypeMap[files.type]
         }`;
-
+        console.log('selectAllFiles File Size : ', destPath);
         filesArr.push({
           name: files.name + MimeTypeMap[files.type],
-          // name: 'file',
           filename: files.name + MimeTypeMap[files.type],
           filepath: destPath,
           filetype: files.type,
@@ -275,14 +275,18 @@ function ModalTester() {
 
       var uploadBegin = response => {
         var jobId = response.jobId;
-        console.log('UPLOAD HAS BEGUN! JobId: ' + jobId, filesArr);
+        console.log(
+          'uploadFilesToAPI UPLOAD HAS BEGUN! JobId: ' + jobId,
+          filesArr,
+          response,
+        );
       };
       // uploadFiles;
       var uploadProgress = response => {
         var percentage = Math.floor(
           (response.totalBytesSent / response.totalBytesExpectedToSend) * 100,
         );
-        console.log('UPLOAD IS ' + percentage + '% DONE!');
+        console.log('uploadFilesToAPI UPLOAD IS ' + percentage + '% DONE!');
       };
       RNFS.uploadFiles({
         toUrl: uploadUrl,
@@ -290,27 +294,23 @@ function ModalTester() {
         method: 'POST',
         headers: {
           Accept: '*/*',
-          // 'Content-Type': 'multipart/form-data',
         },
         fields: {
-          // name: 'MHN1.mp3',
           model_id: _id,
-          model: 'transaction',
-          model_key: 'screenshot',
-          // user_id: doc.id,
-          // reqType: 'FCM_BCAST',
+          model: 'user',
+          model_key: 'profilePic',
         },
         begin: uploadBegin,
         progress: uploadProgress,
       })
-        .then(response => {
-          console.log('responseZZZ1', response);
+        .promise.then(response => {
+          console.log('uploadFilesToAPI responseZZZ1', response);
           if (response.statusCode == 200) {
-            console.log('FILES UPLOADED!'); // response.statusCode, response.headers, response.body
-            Alert.alert('Purchase Successful!!');
-            navigation.navigate('home');
+            console.log('uploadFilesToAPI FILES UPLOADED!'); // response.statusCode, response.headers, response.body
+            // Alert.alert('Purchase Successful!!');
+            // navigation.navigate('home');
           } else {
-            console.log('SERVER ERROR');
+            console.log('uploadFilesToAPI SERVER ERROR');
           }
         })
         .catch(err => {
@@ -320,57 +320,17 @@ function ModalTester() {
           console.log(err);
         });
     } catch (error) {
-      console.log('UPLOADS', error);
-    }
-    if (data != null && data?.length > 0 && false) {
-      // If file selected then create FormData
-      const fileToUpload = data;
-      const form = new FormData();
-
-      console.log('TextReq.js:290 58eef2 item', filesArr);
-      filesArr.map((item, index) => {
-        // form.append(`files[${index}]`, item);
-        // console.log('TextReq.js:231 b3f667 ', {
-        //   uri: item?.uri,
-        //   name: 'image.jpg',
-        //   type: 'image/jpeg',
-        // });
-      });
-      // form.append('files', {
-      //   uri: fileToUpload[0]?.uri,
-      //   name: 'image.jpg',
-      //   type: 'image/jpeg',
-      // });
-      // form.append('files[]', fileToUpload);
-      form.append('files', filesArr);
-      // form.append('files', fileToUpload[0]);
-      // form.append('apiRoute', 'prescription');
-      form.append('userId', doc._id);
-      console.log('TextReq.js:227 9fb83f form', form);
-      await axios({
-        url: `${URL}/upload`,
-        // url: 'http://3.16.156.10:3001/api/upload',
-        //url: 'http://13.232.211.114:3000/api/upload',
-        method: 'POST',
-        data: form,
-        headers: {
-          'Content-Type': 'multipart/form-data; boundary=BOUNDARY',
-          // 'Access-Control-Allow-Origin': '*',
-          // 'Access-Control-Allow-Credentials': true,
-        },
-      })
-        .then(res => {
-          console.log('res.data >>> ' + res.data);
-          if (res.data) {
-            alert('File Upload Successfully!');
-          }
-        })
-        .catch(err => {
-          alert(err);
-          console.log('err >>> ' + err);
-        });
+      console.log('uploadFilesToAPI UPLOADS', error);
     }
   };
+  useEffect(() => {
+    if (files) {
+      uploadFilesToAPI(userId);
+    }
+  }, [files]);
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   return (
     <SafeAreaView>
@@ -430,7 +390,7 @@ function ModalTester() {
                 <Image
                   source={{
                     // uri: 'https://6.vikiplatform.com/image/f39b70cc709449058542b107d493cff7.jpg?x=b&a=0x0&s=460x268&e=t&f=t&cb=1',
-                    uri: userDetail,
+                    uri: imageUri ? imageUri : `${URL}/${userData?.profilePic}`,
                   }}
                   style={{
                     height: vh(15),
@@ -814,7 +774,8 @@ function ModalTester() {
                       style={{
                         textAlign: 'center',
                         color: '#fe5e75',
-                      }} onPress={()=>setModalVisible(false)}>
+                      }}
+                      onPress={() => setModalVisible(false)}>
                       Cancel
                     </Text>
                   </View>
@@ -836,7 +797,6 @@ function ModalTester() {
             </View>
           </Modal>
         </View>
-      
       </ScrollView>
     </SafeAreaView>
   );
@@ -868,7 +828,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   barIcon: {
-    width:vw(10),
+    width: vw(10),
     height: 5,
     backgroundColor: '#bbb',
     borderRadius: 3,
