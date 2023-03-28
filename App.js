@@ -38,6 +38,8 @@ import ChangePhone from './android/app/src/Screens/ChangePhone';
 import EditEmail from './android/app/src/Screens/EditEmail';
 import AllMatch from './android/app/src/Screens/AllMatch';
 
+import AllChats from './android/app/src/Components/AllChats';
+import Chat from './android/app/src/Components/Chat';
 
 const Stack = createStackNavigator();
 
@@ -56,7 +58,12 @@ const App = () => {
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="SetUp2" component={SetUp2} />
             <Stack.Screen name="SignIn1" component={SignIn1} />
-            <Stack.Screen name="InboxPage" component={InboxPage} />
+            {/* <Stack.Screen name="InboxPage" component={InboxPage} /> */}
+            {/* testing chat */}
+            <Stack.Screen name="AllChats" component={AllChats} />
+            <Stack.Screen name="Chat" component={Chat} />
+            {/* testing chat */}
+
             <Stack.Screen name="ForgetPassword " component={ForgetPassword} />
             <Stack.Screen name="ResetPassword" component={ResetPassword} />
             <Stack.Screen name="HomeScreens" component={HomeScreens} />
