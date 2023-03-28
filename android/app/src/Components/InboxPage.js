@@ -18,6 +18,7 @@ import {
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SearchBar} from 'react-native-elements';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Footer from './Footer';
 // import IconFa from 'react-native-vector-icons/MaterialIcons';
 
 const InboxPage = () => {
@@ -121,7 +122,7 @@ const InboxPage = () => {
                 name="heart-multiple"
                 style={{fontSize: 30, color: '#fe5e75'}}
               />
-             
+
               <View>
                 <Text style={{fontSize: 20, paddingLeft: 10, color: 'black'}}>
                   Inbox
@@ -186,6 +187,7 @@ const InboxPage = () => {
           <FlatList data={msgs} renderItem={_renderItem} />
         </View>
       </ScrollView>
+      
     </SafeAreaView>
   );
 };

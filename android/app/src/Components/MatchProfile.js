@@ -139,6 +139,7 @@ const MatchProfole = () => {
           </TouchableOpacity>
         </View>
       </View>
+      {/* <Footer/> */}
     </View>
   );
 };

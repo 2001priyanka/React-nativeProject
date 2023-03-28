@@ -30,12 +30,9 @@ const EditBiodata = () => {
   const [selectedValue, setSelectedValue] = useState('');
   const [userData, setUsersData] = useState({
     name: '',
-    email: '',
     address1: '',
-    mobile: '',
     gender: '',
     age: '',
-    intrest: '',
     about: '',
   });
   const token = useSelector(reduxState => reduxState?.login?.user?.accessToken);
@@ -73,7 +70,6 @@ const EditBiodata = () => {
           data: {
             // ...userData,
             name: userData?.name,
-            email: userData?.email,
             about: userData?.about,
             address1: userData?.address1,
             gender: userData?.gender,
@@ -297,7 +293,7 @@ const EditBiodata = () => {
                   value={userData?.address1}
                 />
               </View>
-              <View>
+              {/* <View>
                 <Text style={{color: 'black', fontSize: 15}}>Email:</Text>
 
                 <TextInput
@@ -314,7 +310,7 @@ const EditBiodata = () => {
                   }}
                   value={userData?.email}
                 />
-              </View>
+              </View> */}
             </View>
           </View>
           <TouchableOpacity onPress={updateUserData}>

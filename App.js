@@ -36,6 +36,8 @@ import MatchProfile from './android/app/src/Components/MatchProfile';
 import ChangePassword from './android/app/src/Screens/ChangePassword';
 import ChangePhone from './android/app/src/Screens/ChangePhone';
 import EditEmail from './android/app/src/Screens/EditEmail';
+import AllMatch from './android/app/src/Screens/AllMatch';
+
 
 const Stack = createStackNavigator();
 
@@ -46,7 +48,7 @@ const App = () => {
         {/* <Navigation /> */}
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="ProfilePage"
+            initialRouteName="AllMatch"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="HomePage" component={Homepage} />
             <Stack.Screen name="Home" component={Home} />
@@ -68,6 +70,7 @@ const App = () => {
             <Stack.Screen name="ChangePassword" component={ChangePassword} />
             <Stack.Screen name="ChangePhone" component={ChangePhone} />
             <Stack.Screen name="EditEmail" component={EditEmail} />
+            <Stack.Screen name="AllMatch" component={AllMatch} />
             {/* <Stack.Screen name="Footer" component={Footer}/> */}
             <Stack.Screen
               name="IndividualProfile"
@@ -85,7 +88,7 @@ const App = () => {
               component={EditContactDetails}
             />
           </Stack.Navigator>
-          <Footer/>
+          <Footer />
         </NavigationContainer>
       </PersistGate>
     </Provider>

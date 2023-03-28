@@ -19,6 +19,7 @@ import {PermissionsAndroid} from 'react-native';
 import * as RNFS from 'react-native-fs';
 import axios from 'axios';
 import MimeTypeMap from '../../../../MimeTypeMap';
+import Footer from './Footer';
 
 function ModalTester() {
   // const [userData, setUsersData] = useState({
@@ -813,7 +814,7 @@ function ModalTester() {
                       style={{
                         textAlign: 'center',
                         color: '#fe5e75',
-                      }}>
+                      }} onPress={()=>setModalVisible(false)}>
                       Cancel
                     </Text>
                   </View>
@@ -835,6 +836,7 @@ function ModalTester() {
             </View>
           </Modal>
         </View>
+      
       </ScrollView>
     </SafeAreaView>
   );
@@ -866,7 +868,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   barIcon: {
-    width: 60,
+    width:vw(10),
     height: 5,
     backgroundColor: '#bbb',
     borderRadius: 3,
@@ -886,6 +888,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 15,
     height: 50,
+    // paddingle
     width: vh(15),
     backgroundColor: '#fe5e75',
     borderRadius: 30,

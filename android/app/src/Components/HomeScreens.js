@@ -119,10 +119,10 @@ const HomeScreens = () => {
         <StatusBar />
         <View
           style={{
-            marginTop: 50,
+            marginTop: 40,
             position: 'relative',
             backgroundColor: '#fe5e75',
-            borderRadius: 20,
+            borderRadius:10,
             //  marginBottom:20,
           }}>
           <TouchableOpacity
@@ -136,11 +136,11 @@ const HomeScreens = () => {
                 uri: item.img,
               }}
               style={{
-                height: vh(55),
-                width: vh(40),
-                borderRadius: 20,
-                padding: 10,
-                marginTop: 50,
+                height: vh(50),
+                width: vh(45),
+                borderRadius:10,
+                // padding: 10,
+                marginTop:30,
                 alignSelf: 'center',
               }}
             />
@@ -225,7 +225,7 @@ const HomeScreens = () => {
   }, []);
 
   return (
-    <SafeAreaView style={{backgroundColor: 'white'}}>
+    <SafeAreaView style={{backgroundColor: 'white', height: vh(50)}}>
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <Swiper
           ref={swiperRef}
@@ -239,7 +239,7 @@ const HomeScreens = () => {
               title: 'BLEAH',
               style: {
                 label: {
-                  backgroundColor: '#fe5e75',
+                  // backgroundColor: '#fe5e75',
                   borderColor: '#fe5e75',
                   borderWidth: 1,
                   elevation: 20,
@@ -326,13 +326,6 @@ const HomeScreens = () => {
           cardIndex={0}
           backgroundColor={'#4FD0E9'}
           stackSize={3}>
-          {/* <Button
-            onPress={() => {
-              console.log('oulala');
-            }}
-            title="Press me">
-            You can press me
-          </Button> */}
         </Swiper>
       </View>
 
@@ -372,7 +365,7 @@ const HomeScreens = () => {
           </View>
         </View>
       </View>
-      <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+      <View style={{flexDirection: 'row', justifyContent: 'space-evenly',paddingBottom:60}}>
         <View
           style={{
             backgroundColor: 'white',
@@ -407,7 +400,9 @@ const HomeScreens = () => {
             <IconFa
               name="star-outline"
               style={{fontSize: vf(6), color: '#fe5e75'}}
-              onPress={()=>{swiperRef.current.swipeTop();}}
+              onPress={() => {
+                swiperRef.current.swipeTop();
+              }}
             />
           </Text>
         </View>
@@ -434,7 +429,7 @@ const HomeScreens = () => {
       </View>
 
       {/* <FlatList data={cards} renderItem={_renderUsers} /> */}
-     
+      <Footer />
     </SafeAreaView>
   );
 };
@@ -443,7 +438,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 10,
-    height: vh(83),
+    height: vh(75),
 
     // paddingLeft:20,
     // backgroundColor: 'white',
