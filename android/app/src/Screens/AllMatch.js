@@ -70,11 +70,13 @@ const AllMatch = () => {
                 width: vw(45),
                 height: vh(30),
                 margin: 10,
-                borderRadius: 40,
+                borderRadius: 15,
+                borderWidth: 2,
+                borderColor: '#fe5e75',
               }}
             />
           </View>
-          <View style={{backgroundColor:'#fe5e75'}}>
+          <View style={{backgroundColor: '#fe5e75'}}>
             <Text
               style={{
                 position: 'absolute',
@@ -112,7 +114,9 @@ const AllMatch = () => {
               width: vw(45),
               height: vh(30),
               margin: 10,
-              borderRadius: 40,
+              borderRadius: 15,
+              borderWidth: 2,
+              borderColor: '#fe5e75',
             }}
           />
           <Text
@@ -160,18 +164,21 @@ const AllMatch = () => {
           <View style={styles.uppersection}>
             <View
               style={{
+                alignItems:'center',
+                alignSelf:'center',
                 borderRadius: 50,
                 backgroundColor: '#FFDBE9',
                 height: vh(4),
                 width: vw(9),
                 borderRadius: 4,
-                margin: 5,
+                // margin: 5,
               }}>
               <IconFa1
                 name="md-search-outline"
                 style={{
                   fontSize: 20,
-                  alignSelf: 'center',
+                  marginVertical:5,
+                  // alignSelf: 'center',
                   justifyContent: 'center',
                   color: '#fe5e75',
                 }}
@@ -208,6 +215,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,
+
     // height: vh(75),
   },
 });

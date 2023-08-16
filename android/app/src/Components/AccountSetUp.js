@@ -36,7 +36,7 @@ const AccountSetUp = () => {
       id: 1,
       img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/india-flag-design-template-186e8b084e00b5e1f777ddf3f534b763_screen.jpg?ts=1625072969',
       name: 'Afghanisthan',
-      msg: 'IN',
+      msg: 'AF',
       new: 1,
     },
     {
@@ -82,7 +82,7 @@ const AccountSetUp = () => {
 
           setCountryName(item.name);
         }}>
-        <View style={{}}>
+        
           <View>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-around'}}>
@@ -91,8 +91,8 @@ const AccountSetUp = () => {
                   uri: item.img,
                 }}
                 style={{
-                  height: 70,
-                  width: 70,
+                  height:vh(7),
+                  width:vw(10),
                   borderRadius: 40,
                 }}
               />
@@ -103,7 +103,9 @@ const AccountSetUp = () => {
                   alignItems: 'center',
                 }}>
                 <Text style={{fontSize: 15, width: vw(15)}}>{item.msg}</Text>
-                <Text style={{fontSize: 18, color: 'black'}}>{item.name}</Text>
+                <Text style={{fontSize:vf(2), color: 'black', width: vw(30)}}>
+                  {item.name}
+                </Text>
               </View>
               <View style={{justifyContent: 'center', alignItems: 'center'}}>
                 <IconFa
@@ -117,7 +119,7 @@ const AccountSetUp = () => {
               </View>
             </View>
           </View>
-        </View>
+        
       </TouchableOpacity>
     );
   };
@@ -126,16 +128,12 @@ const AccountSetUp = () => {
     <SafeAreaView>
       <ScrollView>
         <View>
-          <View>
-            <Text style={styles.upperSection}>
-              <IconFa
-                name="arrow-left"
-                style={{fontSize: 25, color: '#fe5e75'}}
-              />
-              <Text style={{paddingLeft: 10, color: 'black'}}>
-                Select Your Country
-              </Text>
-            </Text>
+          <View style={styles.upperSection}>
+            <IconFa
+              name="arrow-left"
+              style={{fontSize: 25, color: '#fe5e75'}}
+            />
+            <Text style={{color: 'black',paddingLeft:20,fontSize:vf(2.3)}}>Select Your Country</Text>
           </View>
           <View style={styles.uppersection}>
             <View style={styles.uppersection}></View>
@@ -165,17 +163,20 @@ const AccountSetUp = () => {
               });
             }}
             style={{
+              flexDirection:'row',
+              justifyContent:'center',
+              alignItems:'center',
+              alignSelf:'center',
               backgroundColor: '#fe5e75',
-              height: 50,
-              margin: 20,
+              height:vh(7),
+              width:vw(80),
               borderRadius: 30,
             }}>
             <Text
               style={{
-                textAlign: 'center',
-                marginTop: 12,
                 color: 'white',
                 fontSize: 20,
+                fontWeight:'600'
               }}>
               Next
             </Text>
@@ -205,9 +206,10 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   upperSection: {
+    flexDirection: 'row',
     margin: 20,
     fontSize: 25,
-    paddingLeft: 10,
+    // paddingLeft:30,
   },
 });
 export default AccountSetUp;

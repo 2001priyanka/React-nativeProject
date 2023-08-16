@@ -106,29 +106,30 @@ const EditBiodata = () => {
                 style={{fontSize: 25, color: '#fe5e75'}}
               />
             </TouchableOpacity>
-            <Text style={styles.uppersection}>
-              <Text style={{color: 'black', fontSize: 25}}>Edit Biodata</Text>
-            </Text>
-          </View>
-          <View style={styles.input}>
-            <View>
-              <Text style={{color: 'black', fontSize: 15}}>Full Name:</Text>
-
-              <TextInput
-                style={styles.input2}
-                placeholder="Full Name"
-                editable
-                maxLength={40}
-                onChangeText={e => {
-                  console.log(e);
-                  setUsersData({
-                    ...userData,
-                    name: e,
-                  });
-                }}
-                value={userData?.name}
-              />
+            <View style={styles.uppersection}>
+              <Text style={{color: 'black', fontSize: vf(2.5)}}>
+                Edit Biodata
+              </Text>
             </View>
+          </View>
+
+          <View>
+            <Text style={{color: 'black', fontSize: 15,marginTop:40}}>Full Name:</Text>
+
+            <TextInput
+              style={styles.input2}
+              placeholder="Full Name"
+              editable
+              maxLength={40}
+              onChangeText={e => {
+                console.log(e);
+                setUsersData({
+                  ...userData,
+                  name: e,
+                });
+              }}
+              value={userData?.name}
+            />
           </View>
 
           <View>
@@ -157,12 +158,12 @@ const EditBiodata = () => {
                   value={userData?.gender}
                 />
               </View> */}
-              <View style={{}}>
-                <Text style={{color: 'black', fontSize:vf(2)}}>Gender:</Text>
+              <View>
+                <Text style={{color: 'black', fontSize: vf(2)}}>Gender:</Text>
                 <Picker
                   // ref={pickerRef}
                   selectedValue={selectedValue}
-                  placeholder="#000"
+                  placeholder="Gender"
                   onValueChange={(item, index) => setSelectedValue(item)}
                   style={{
                     width: vw(44),
@@ -170,6 +171,7 @@ const EditBiodata = () => {
                     borderWidth: 1.5,
                     borderColor: '#fe5e75',
                     borderRadius: 30,
+
                   }}>
                   <Picker.Item
                     label="Female"
@@ -235,7 +237,7 @@ const EditBiodata = () => {
                   <TextInput
                     style={styles.input1}
                     placeholder="Age"
-                    keyboardType = 'numeric'
+                    keyboardType="numeric"
                     editable
                     maxLength={40}
                     onChangeText={e => {
@@ -341,9 +343,7 @@ const styles = StyleSheet.create({
   uppersection: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // marginTop: 10,
     paddingLeft: 30,
-    padding: 5,
   },
   input2: {
     height: 50,
@@ -367,8 +367,8 @@ const styles = StyleSheet.create({
     borderColor: '#fe5e75',
     padding: 10,
     borderRadius: 30,
-    width:vw(43),
-    height:vh(7)
+    width: vw(43),
+    height: vh(7),
   },
 });
 export default EditBiodata;
