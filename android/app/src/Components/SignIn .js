@@ -10,6 +10,11 @@ import {
   View,
   Button,
 } from 'react-native';
+import {
+  responsiveHeight as vh,
+  responsiveWidth as vw,
+  responsiveFontSize as vf,
+} from 'react-native-responsive-dimensions';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
@@ -29,7 +34,7 @@ const SignIn = () => {
             <IconFa
               name="arrow-left"
               style={{
-                fontSize: 25,
+                fontSize: vf(4),
                 marginTop: 40,
                 marginLeft: 30,
                 color: '#fe5e75',
@@ -40,49 +45,66 @@ const SignIn = () => {
             <Text style={styles.header}>Let's you in</Text>
           </View>
 
-          <TouchableOpacity style={styles.body1}>
-            <IconFa
-              name="facebook"
-              style={{
-                fontSize: 30,
-                color: 'white',
+          <TouchableOpacity>
+            <View style={styles.body1}>
+              <Image
+                source={{
+                  uri: 'https://mspoweruser.com/wp-content/uploads/2022/04/logo-Meta.png',
+                }}
+                style={{height: vh(2), width: vw(7)}}
+              />
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 18,
+                  // marginTop: 12,
+                  color: '#000',
+                  marginLeft: 10,
+                  fontWeight: '600',
+                }}>
+                Meta
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.body2}>
+            {/* <IconFa name="google" color={'white'} style={{fontSize: 30}} /> */}
+            <Image
+              source={{
+                uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png',
               }}
+              style={{height: vh(3.2), width: vw(6)}}
             />
             <Text
               style={{
                 textAlign: 'center',
                 fontSize: 18,
-                // marginTop: 12,
-                color: 'white',
-                marginLeft: 10,
-              }}>
-              Facebook
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.body2}>
-            <IconFa name="google" color={'white'} style={{fontSize: 30}} />
-            <Text
-              style={{
-                textAlign: 'center',
-                fontSize: 18,
-                color: 'white',
+                fontWeight: '600',
+                color: '#000',
                 marginLeft: 10,
               }}>
               Google
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.body3}>
-            <IconFa name="apple" color={'black'} style={{fontSize: 30}} />
-            <Text
-              style={{
-                textAlign: 'center',
-                fontSize: 18,
-                color: 'black',
-                marginLeft: 10,
-                // paddingLeft:5,
-              }}>
-              Apple
-            </Text>
+          <TouchableOpacity>
+            <View style={styles.body3}>
+              <Image
+                source={{
+                  uri: 'https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png',
+                }}
+                style={{height: vh(3.5), width: vw(7)}}
+              />
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 18,
+                  fontWeight: '600',
+                  color: 'black',
+                  // marginLeft:,
+                  paddingLeft: 9,
+                }}>
+                Apple
+              </Text>
+            </View>
           </TouchableOpacity>
           <View>
             <Text
@@ -97,15 +119,19 @@ const SignIn = () => {
             <TouchableOpacity onPress={onNext1Pressed}>
               <View
                 style={{
+                  flexDirection: 'row',
                   backgroundColor: '#fe5e75',
-                  height: 50,
-                  margin: 20,
+                  height: vh(7),
+                  width: vw(90),
                   borderRadius: 30,
                   justifyContent: 'center',
                   alignItems: 'center',
+                  alignSelf: 'center',
+                  marginTop: 20,
                 }}>
                 <Text
                   style={{
+                    fontSize: vf(2.5),
                     color: 'white',
                     fontWeight: '500',
                   }}>
@@ -120,7 +146,7 @@ const SignIn = () => {
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
-              marginTop: 120,
+              marginTop: 9,
             }}>
             <View>
               <Text
@@ -157,56 +183,53 @@ const styles = StyleSheet.create({
     marginTop: 70,
     fontWeight: '500',
   },
-  body: {
-    // backgroundColor: '#D56AAC',
-    borderWidth: 1,
-    height: 50,
-    margin: 10,
-    borderRadius: 10,
-    height: 60,
-    borderColor: '#B3B0B0',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   body1: {
-    backgroundColor: '#3b5998',
+    backgroundColor: '#fff',
     borderWidth: 1,
-    height: 50,
+    height: vh(8),
+    width: vw(70),
     margin: 10,
     borderRadius: 10,
-    height: 60,
+    // height: 60,
     borderColor: '#B3B0B0',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
+    alignSelf: 'center',
     marginTop: 30,
+    paddingLeft: 90,
   },
   body2: {
-    backgroundColor: '#E24610',
+    backgroundColor: '#fff',
     borderWidth: 1,
-    height: 50,
-    margin: 10,
+    height: vh(8),
+    width: vw(70),
+    // margin: 10,
     borderRadius: 10,
-    height: 60,
+    // height: 60,
     borderColor: '#B3B0B0',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingRight: 20,
+    alignSelf: 'center',
+    // marginTop: 30,
+    paddingLeft: 90,
   },
   body3: {
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     borderWidth: 1,
-    height: 50,
-    margin: 10,
+    height: vh(8),
+    width: vw(70),
+    // margin: 10,
     borderRadius: 10,
-    height: 60,
+    // height: 60,
     borderColor: '#B3B0B0',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingRight: 30,
+    alignSelf: 'center',
+    marginTop:10,
+    paddingLeft: 90,
   },
   footer: {
     flexDirection: 'row',

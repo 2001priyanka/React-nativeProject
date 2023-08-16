@@ -149,11 +149,11 @@ const SignUp = () => {
                   flexDirection: 'row',
                   fontWeight: '500',
                 }}>
-                phoneNo:
+                Phone Number:
               </Text>
               <TextInput
                 style={styles.input2}
-                placeholder="phoneNo"
+                placeholder="Phone Number"
                 editable
                 maxLength={40}
                 onChangeText={txt => {
@@ -236,7 +236,9 @@ const SignUp = () => {
           </TouchableOpacity>
 
           <View>
-            <Text style={{textAlign: 'center'}}>or continue with</Text>
+            <Text style={{textAlign: 'center', color: '#000'}}>
+              or continue with
+            </Text>
           </View>
           <View style={styles.socialIcon}>
             <TouchableOpacity
@@ -250,12 +252,23 @@ const SignUp = () => {
                 height: vh(8),
                 width: vw(45),
                 borderRadius: 10,
+                marginTop: 9,
               }}>
-              <IconFa
-                name="facebook"
-                style={{fontSize: vf(3.5), color: 'blue'}}
+              <Image
+                source={{
+                  uri: 'https://mspoweruser.com/wp-content/uploads/2022/04/logo-Meta.png',
+                }}
+                style={{height: vh(2), width: vw(7)}}
               />
-              <Text style={{fontWeight: '500', marginLeft: 10}}>Facebook</Text>
+              <Text
+                style={{
+                  fontWeight: '500',
+                  marginLeft: 10,
+                  color: '#000',
+                  fontSize: vh(2.3),
+                }}>
+                Meta
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{
@@ -268,9 +281,15 @@ const SignUp = () => {
                 paddingHorizontal: 20,
                 height: vh(8),
                 width: vw(45),
+                marginTop: 9,
               }}>
-              <IconFa name="google" style={{fontSize: 30}} />
-              <Text style={{fontWeight: '500', marginLeft: 10}}>Google</Text>
+              <Image
+                source={{
+                  uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png',
+                }}
+                style={{height: vh(3.2), width: vw(6)}}
+              />
+              <Text style={{fontWeight: '500', marginLeft: 10,color:'#000',fontSize:vf(2.2)}}>Google</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.footer}>

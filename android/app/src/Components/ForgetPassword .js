@@ -11,7 +11,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {
+  responsiveHeight as vh,
+  responsiveWidth as vw,
+  responsiveFontSize as vf,
+} from 'react-native-responsive-dimensions';
 const ForgetPassword = () => {
   const navigation = useNavigation();
   const onNextPressed6 = () => {
@@ -22,30 +26,24 @@ const ForgetPassword = () => {
     <SafeAreaView>
       <ScrollView>
         <View>
-          <View>
-            <Text style={styles.upperSection}>
-              <IconFa
-                name="arrow-left"
-                style={{fontSize: 25, color: '#fe5e75'}}
-              />
-              <Text style={{paddingLeft: 10, color: 'black'}}>
-                Forgot Password
-              </Text>
+          <View style={styles.upperSection}>
+            <IconFa
+              name="arrow-left"
+              style={{fontSize:vf(3.4), color: '#fe5e75'}}
+            />
+            <Text style={{paddingLeft: 20, color: 'black',fontSize:vf(2.5)}}>
+              Forgot Password
             </Text>
           </View>
-          <View>
+
+          <View style={{flexDirection: 'row', justifyContent: 'center'}}>
             <Image
-              source={{
-                uri: 'https://static.vecteezy.com/system/resources/previews/004/112/255/original/forgot-password-and-account-login-for-web-page-protection-security-key-access-system-in-smartphone-or-computer-flat-illustration-vector.jpg',
-              }}
+              source={require('../Assest/Images/ForgotPassword.png')}
               style={{
-                height: 200,
-                width: 200,
-                borderRadius: 10,
-                // marginLeft: 100,
-                // marginRight: 40,
-                marginTop: 20,
-                alignSelf: 'center',
+                width: vw(45),
+                height: vh(30),
+                // margin: 10,
+                borderRadius: 40,
               }}
             />
           </View>
@@ -103,18 +101,20 @@ const ForgetPassword = () => {
           <TouchableOpacity>
             <View
               style={{
+                flexDirection:'row',
+                justifyContent:'center',
+                alignItems:'center',
+                alignSelf:'center',
                 backgroundColor: '#fe5e75',
-                height: 50,
-                margin: 20,
+                height:vh(7),
+                width:vw(70),
                 borderRadius: 30,
               }}>
               <Text
                 style={{
-                  textAlign: 'center',
-                  // height: 40,
-                  // width: 100,
-                  marginTop: 12,
-                  color: 'white',
+                  fontSize:vf(2.5),
+                  color: '#fff',
+                  fontWeight:'600'
                 }}
                 onPress={onNextPressed6}>
                 continue
@@ -128,8 +128,9 @@ const ForgetPassword = () => {
 };
 const styles = StyleSheet.create({
   upperSection: {
+    flexDirection:'row',
     margin: 20,
-    fontSize: 25,
+    // fontSize: 25,
     paddingLeft: 10,
     marginTop: 30,
   },
@@ -142,11 +143,11 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 15,
     borderColor: '#fe5e75',
-    paddingRight:100,
+    paddingRight: 100,
   },
   body1: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly', 
+    justifyContent: 'space-evenly',
     padding: 20,
     margin: 20,
     height: 100,

@@ -11,7 +11,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {
+  responsiveHeight as vh,
+  responsiveWidth as vw,
+  responsiveFontSize as vf,
+} from 'react-native-responsive-dimensions';
 const ResetPassword = () => {
   const navigation = useNavigation();
   const onNextPressed7 = () => {
@@ -22,22 +26,18 @@ const ResetPassword = () => {
     <SafeAreaView>
       <ScrollView>
         <View>
-          <View>
-            <Text style={styles.upperSection}>
-              <IconFa
-                name="arrow-left"
-                style={{fontSize: 25, color: '#fe5e75'}}
-              />
-              <Text style={{paddingLeft: 10, color: 'black'}}>
-                Reset Password
-              </Text>
+          <View style={styles.upperSection}>
+            <IconFa
+              name="arrow-left"
+              style={{fontSize: vf(3.4), color: '#fe5e75'}}
+            />
+            <Text style={{paddingLeft: 20, color: 'black', fontSize: vf(2.5)}}>
+              Reset Password
             </Text>
           </View>
           <View>
             <Image
-              source={{
-                uri: 'https://static.vecteezy.com/system/resources/thumbnails/002/047/029/small/forgot-the-password-concept-flat-illustration-vector.jpg',
-              }}
+              source={require('../Assest/Images/Resetpassword-cuate.png')}
               style={{
                 height: 200,
                 width: 200,
@@ -49,37 +49,50 @@ const ResetPassword = () => {
               }}
             />
           </View>
-          <View>
-            <Text style={{fontSize: 25, margin: 20, color: 'black'}}>
+          <View style={{alignItems: 'center'}}>
+            <Text style={{fontSize: 25, color: 'black'}}>
               Create a new password
             </Text>
-            <View style={styles.input}>
-              <View>
-                <Text style={{color: 'black', fontSize: 15}}>New Password</Text>
-                <TextInput
-                  style={styles.input2}
-                  placeholder="New Password"
-                  editable
-                  maxLength={40}
-                />
-              </View>
-
-              <View>
-                <Text style={{color: 'black', fontSize: 15}}>
-                  {' '}
-                  Confirm New Password
-                </Text>
-                <TextInput
-                  style={styles.input2}
-                  placeholder=" Confirm New Password"
-                  editable
-                  maxLength={40}
-                />
-              </View>
-            </View>
           </View>
+          <View style={{paddingHorizontal: 15, marginTop: 40}}>
+            <Text style={{color: 'black', fontSize: vf(2)}}>New Password:</Text>
+          </View>
+          <TextInput
+            placeholder="New Password"
+            label="New Password"
+            // multiline={true}
+            // numberOfLines={7}
+            style={styles.textArea}
+            // onChangeText={e => {
+            //   console.log(e);
+            //   setFeedbackData({
+            //     ...feedbackData,
+            //     message: e,
+            //   });
+            // }}
+            // value={feedbackData?.message}
+          />
+          <View style={{paddingHorizontal: 15, marginTop: 10}}>
+            <Text style={{color: 'black', fontSize: vf(2)}}>Confirm New Password:</Text>
+          </View>
+          <TextInput
+            placeholder="Confirm New Password"
+            label="Confirm New Password"
+            // multiline={true}
+            // numberOfLines={7}
+            style={styles.textArea}
+            // onChangeText={e => {
+            //   console.log(e);
+            //   setFeedbackData({
+            //     ...feedbackData,
+            //     message: e,
+            //   });
+            // }}
+            // value={feedbackData?.message}
+          />
+
           <View style={{}}>
-            <Text style={{color: 'black', fontSize: 15,marginLeft:40}}>
+            <Text style={{color: 'black', fontSize: 15, marginLeft: 40}}>
               <IconFa name="checkbox-blank-outline" style={{fontSize: 20}} />
               Remember me
             </Text>
@@ -87,19 +100,21 @@ const ResetPassword = () => {
           <TouchableOpacity>
             <View
               style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignSelf: 'center',
                 backgroundColor: '#fe5e75',
-                height: 50,
-                margin: 20,
+                height: vh(7),
+                width: vw(80),
                 borderRadius: 30,
+                marginTop: 30,
               }}>
               <Text
                 style={{
-                  textAlign: 'center',
-                  // height: 40,
-                  // width: 100,
-                  marginTop: 12,
                   color: 'white',
-                  fontSize: 20,
+                  fontSize: vf(2.3),
+                  fontWeight: '600',
                 }}
                 onPress={onNextPressed7}>
                 Save
@@ -113,22 +128,27 @@ const ResetPassword = () => {
 };
 const styles = StyleSheet.create({
   upperSection: {
-    margin: 20,
+   flexDirection:'row',
     fontSize: 25,
     paddingLeft: 10,
     marginTop: 30,
   },
-  input: {
-    display: 'flex',
-    margin: 8,
-    padding: 10,
-  },
   input2: {
-    height: 40,
+    height: 50,
     margin: 12,
-    borderWidth: 0.5,
+    borderWidth: 1,
+    paddingLeft: 30,
+    borderRadius: 30,
+    borderColor: '#B3B0B0',
+  },
+  textArea: {
+    // height: 100,
+    margin: 12,
+    borderWidth: 1,
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 30,
+    textAlignVertical: 'top',
+    borderColor: '#A09C9C',
   },
 });
 export default ResetPassword;

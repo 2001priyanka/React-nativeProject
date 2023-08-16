@@ -75,7 +75,7 @@ const SignIn1 = () => {
               uri: 'https://i.dlpng.com/static/png/6509551_preview.png',
             }}
             style={{
-              height: vh(20),
+              height: vh(10),
               width: vw(35),
               borderRadius: 10,
               alignSelf: 'center',
@@ -102,8 +102,9 @@ const SignIn1 = () => {
                   marginLeft: 25,
                   flexDirection: 'row',
                   fontWeight: '500',
+                  fontSize: vf(2.2),
                 }}>
-                username:
+                Username:
               </Text>
               <TextInput
                 style={styles.input2}
@@ -124,6 +125,7 @@ const SignIn1 = () => {
                   marginLeft: 25,
                   flexDirection: 'row',
                   fontWeight: '500',
+                  fontSize: vf(2.2),
                 }}>
                 Password:
               </Text>
@@ -177,6 +179,7 @@ const SignIn1 = () => {
                   textAlign: 'center',
                   marginTop: 12,
                   color: 'white',
+                  fontWeight:'600',
                   fontSize: vf(2.5),
                 }}>
                 Sign In
@@ -201,7 +204,7 @@ const SignIn1 = () => {
               style={{
                 textAlign: 'center',
                 color: 'black',
-                marginTop: 20,
+                marginTop: vh(3),
                 fontWeight: '500',
               }}>
               Or continue with
@@ -215,17 +218,20 @@ const SignIn1 = () => {
                 alignItems: 'center',
                 borderWidth: 1,
                 borderColor: '#B3B0B0',
-                paddingHorizontal: 10,
+                // paddingHorizontal: 10,
                 height: vh(9),
                 width: vw(45),
                 borderRadius: 10,
+                marginTop: 10,
               }}>
-              <IconFa
-                name="facebook"
-                style={{fontSize: vf(4), color: '#3b5998'}}
+              <Image
+                source={{
+                  uri: 'https://mspoweruser.com/wp-content/uploads/2022/04/logo-Meta.png',
+                }}
+                style={{height: vh(2), width: vw(7)}}
               />
               <Text style={{fontSize: vf(2.5), color: 'black', marginLeft: 10}}>
-                Facebook
+                Meta
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -239,8 +245,14 @@ const SignIn1 = () => {
                 height: vh(9),
                 width: vw(45),
                 borderRadius: 10,
+                marginTop: 10,
               }}>
-              <IconFa name="google" style={{fontSize: vf(4)}} />
+              <Image
+                source={{
+                  uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png',
+                }}
+                style={{height: vh(3.2), width: vw(6)}}
+              />
               <Text style={{color: 'black', fontSize: vf(2.5), marginLeft: 10}}>
                 Google
               </Text>

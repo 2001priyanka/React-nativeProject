@@ -50,7 +50,7 @@ const App = () => {
         {/* <Navigation /> */}
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="ProfilePage"
+            initialRouteName="SetUp2"
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="HomePage" component={Homepage} />
             <Stack.Screen name="Home" component={Home} />
@@ -64,7 +64,7 @@ const App = () => {
             <Stack.Screen name="Chat" component={Chat} />
             {/* testing chat */}
 
-            <Stack.Screen name="ForgetPassword " component={ForgetPassword} />
+            <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
             <Stack.Screen name="ResetPassword" component={ResetPassword} />
             <Stack.Screen name="HomeScreens" component={HomeScreens} />
             <Stack.Screen name="AccountSetUp" component={AccountSetUp} />
@@ -96,7 +96,7 @@ const App = () => {
               component={EditContactDetails}
             />
           </Stack.Navigator>
-          <Footer />
+          {/* <Footer /> */}
         </NavigationContainer>
       </PersistGate>
     </Provider>

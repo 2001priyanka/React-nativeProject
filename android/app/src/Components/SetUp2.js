@@ -29,22 +29,9 @@ const SetUp2 = () => {
     <SafeAreaView>
       <ScrollView>
         <View>
-          <View>
-            <Image
-              source={{
-                uri: 'https://i.dlpng.com/static/png/6509551_preview.png',
-              }}
-              style={{
-                height: vh(60),
-                width: vw(80),
-                borderRadius: 10,
-                alignSelf: 'center',
-              }}
-            />
-          </View>
-          <View>
+          <View style={{marginTop:vh(40)}}>
             <Text
-              style={{textAlign: 'center', fontSize: vf(4), color: '#fe5e75'}}>
+              style={{textAlign: 'center', fontSize: vf(4), color: '#fe5e75',fontWeight:'600'}}>
               Congratulations!
             </Text>
           </View>
@@ -62,19 +49,21 @@ const SetUp2 = () => {
           <TouchableOpacity
             onPress={onNextPressed9}
             style={{
+              flexDirection:'row',
+              justifyContent:'center',
+              alignItems:'center',
+              alignSelf:'center',
               backgroundColor: '#fe5e75',
-              height: 50,
-              margin: 20,
+              height:vh(7),
+              width:vw(80),
               borderRadius: 30,
+              marginTop:vh(5)
             }}>
             <Text
               style={{
-                textAlign: 'center',
-                // height: 40,
-                // width: 100,
-                marginTop: vf(1),
                 color: 'white',
-                fontSize: 20,
+                fontSize:vf(2.7),
+                fontWeight:'600'
               }}>
               Go to HomePage
             </Text>

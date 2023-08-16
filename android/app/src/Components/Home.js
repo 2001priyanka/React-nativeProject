@@ -1,4 +1,4 @@
-import React ,{useState}from 'react';
+import React, {useState} from 'react';
 // import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {
@@ -30,89 +30,111 @@ const Home1 = () => {
   };
 
   const [showRealApp, setShowRealApp] = useState(false);
-   const onDone = () => {
-     setShowRealApp(true);
+  const onDone = () => {
+    setShowRealApp(true);
     //  onPress = {onNext2Pressed};
-   };
-    const RenderNextButton = () => {
-      // return (
-      //   <View>
-      //     <Text style={{color: 'white', fontSize: vf(2.5)}}>
-      //       Next
-      //     </Text>
-      //   </View>
-      // );
-    };
-     const slides = [
-       {
-         key: 's1',
-         text: 'Skip',
-         title: 'Find People who match with you',
-         image: {
-           uri: 'https://www.globalgranary.life/wp-content/uploads/2019/04/KimSoHyun-e1556528908202.jpg',
-         },
-         backgroundColor: '#fe5e75',
-       },
-       {
-         key: 's2',
-         //  title: 'Set Preferences for multiple users from various resturant',
-         // text: 'Upto 25% off on Domestic Flights',
-         text: 'Skip',
-         image: {
-           uri: 'https://media.theindependent.sg/wp-content/uploads/2022/10/16111924/452126-han-so-hee-and-her-appearances-in-korean-dramas.jpg',
-         },
-         backgroundColor: '#fe5e75',
-         height: vh(100),
-       },
-       {
-         key: 's3',
-         //  title: 'Fast, rescused food at yours services',
-         text: 'Skip',
-         image: {
-           uri: 'https://images.saymedia-content.com/.image/t_share/MTc1MTE0NTkzNjkyNDkzNjM2/top-10-most-successful-beautiful-korean-drama-actresses.jpg',
-         },
-         backgroundColor: '#fe5e75',
-       },
-     ];
+  };
+  const RenderNextButton = () => {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignItems: 'center',
+          backgroundColor: '#808B96',
+          width: vw(30),
+          height: vh(6),
+          borderRadius: 10,
+        }}>
+        <Text style={{color: 'white', fontSize: vf(2.5), fontWeight: '600'}}>
+          Next
+        </Text>
+      </View>
+    );
+  };
+  const slides = [
+    {
+      key: 's1',
+      text: 'Skip',
+      title: 'Find People who match with you',
+      image: {
+        uri: 'https://www.globalgranary.life/wp-content/uploads/2019/04/KimSoHyun-e1556528908202.jpg',
+      },
+      backgroundColor: '#fe5e75',
+    },
+    {
+      key: 's2',
+      title: 'Find People who match with you',
+      // text: 'Upto 25% off on Domestic Flights',
+      text: 'Skip',
+      image: {
+        uri: 'https://media.theindependent.sg/wp-content/uploads/2022/10/16111924/452126-han-so-hee-and-her-appearances-in-korean-dramas.jpg',
+      },
+      backgroundColor: '#fe5e75',
+      height: vh(100),
+    },
+    {
+      key: 's3',
+      title: 'Find People who match with you',
+      text: 'Skip',
+      image: {
+        uri: 'https://images.saymedia-content.com/.image/t_share/MTc1MTE0NTkzNjkyNDkzNjM2/top-10-most-successful-beautiful-korean-drama-actresses.jpg',
+      },
+      backgroundColor: '#fe5e75',
+    },
+  ];
 
-      const RenderDoneButton = () => {
-        return (
+  const RenderDoneButton = () => {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignItems: 'center',
+          backgroundColor: '#808B96',
+          width: vw(30),
+          height: vh(6),
+          borderRadius: 10,
+        }}>
+        <Text
+          style={{color: 'white', fontSize: vf(2.5), fontWeight: '600'}}
+          onPress={onNextPressed1}>
+          Done
+        </Text>
+      </View>
+    );
+  };
+  const RenderItem = ({item}) => {
+    return (
+      <>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: item.backgroundColor,
+            height: item.height,
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            paddingBottom: 100,
+          }}>
+          <Text style={styles.introTitleStyle2} onPress={onNextPressed2}>
+            {item.text}
+          </Text>
           <View>
-            <Text
-              style={{color: 'white', fontSize: vf(2.5),paddingBottom:100}}
-              onPress={onNextPressed1}>
-              Done
-            </Text>
+            <Image
+              style={styles.introImageStyle1}
+              source={item.image}
+              // onPress={onNext2Pressed}
+            />
           </View>
-        );
-      };
-      const RenderItem = ({item}) => {
-        return (
-          <>
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: item.backgroundColor,
-                height: item.height,
-                alignItems: 'center',
-                justifyContent: 'space-around',
-                paddingBottom: 100,
-              }}>
-              <Text style={styles.introTitleStyle2} onPress={onNextPressed2}>
-                {item.text}
-              </Text>
-              <View>
-                <Image
-                  style={styles.introImageStyle1}
-                  source={item.image}
-                  // onPress={onNext2Pressed}
-                />
-              </View>
-              <Text style={styles.introTitleStyle}>{item.title}</Text>
-            </View>
-          </>
-        );
-      };
+          <View style={{backgroundColor: '#fff', borderRadius: 5}}>
+            <Text style={styles.introTitleStyle}>{item.title}</Text>
+          </View>
+        </View>
+      </>
+    );
+  };
   return (
     <SafeAreaView>
       <ScrollView>
@@ -154,6 +176,9 @@ const styles = StyleSheet.create({
     width: vw(70),
     height: vh(50),
     borderRadius: 30,
+    borderWidth: 3,
+    borderColor: '#fff',
+
     // marginBottom: 75,
   },
   introImageStyle: {
@@ -180,15 +205,22 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'white',
     alignSelf: 'flex-end',
-    // marginTop:20,
+    marginTop: 20,
+    width: vw(20),
+    height: vh(4),
     margin: 30,
+    backgroundColor: '#808B96',
+    borderRadius: 20,
+    textAlign: 'center',
   },
   introTitleStyle: {
     // flex: 1,
-    fontSize: 30,
+    fontSize: vf(2.5),
     color: 'black',
     textAlign: 'center',
     marginTop: 30,
+    // height:vh(5),
+    color: '#5D6D7E',
 
     margin: 30,
   },
@@ -201,5 +233,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
- 
-
