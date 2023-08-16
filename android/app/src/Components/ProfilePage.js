@@ -338,52 +338,19 @@ function ModalTester() {
         <View style={styles.flexView}>
           <StatusBar />
           <View>
-            <View style={{margin: 25}}>
-              <View style={{}}>
-                <View style={{flexDirection: 'row'}}>
-                  <IconFa
-                    name="heart-multiple"
-                    style={{fontSize: vf(4), color: '#fe5e75'}}
-                  />
-                  <Text
-                    style={{
-                      fontSize: vf(2.5),
-                      paddingLeft: 20,
-                      color: 'black',
-                    }}>
-                    Profile
-                  </Text>
-                </View>
-              </View>
-              {/* <View style={{backgroundColor: 'red'}}>
-            <View
-              style={{
-                borderRadius: 50,
-              }}>
+            <View style={{flexDirection: 'row', marginTop: 20}}>
               <IconFa
-                name="playlist-edit"
-                style={{
-                  fontSize: 30,
-                  color: '#fe5e75',
-                }}
+                name="heart-multiple"
+                style={{fontSize: vf(4), color: '#fe5e75'}}
               />
-            </View>
-            <View
-              style={{
-                height: vh(5),
-                borderRadius: 50,
-              }}>
-              <IconFa
-                name="dots-vertical"
+              <Text
                 style={{
-                  paddingLeft: 10,
-                  paddingRight: 10,
-                  fontSize: 30,
-                  color: '#fe5e75',
-                }}
-              />
-            </View>
-          </View> */}
+                  fontSize: vf(2.5),
+                  paddingLeft: 20,
+                  color: 'black',
+                }}>
+                Profile
+              </Text>
             </View>
             <View style={{alignSelf: 'center'}}>
               <View>
@@ -434,13 +401,18 @@ function ModalTester() {
                   color: 'black',
                   marginTop: 10,
                 }}>
-                {name}
+                {/* {name} */}
+                TestName
               </Text>
             </View>
-            <View style={{margin: 20}}>
+            <View>
               <View style={styles.uppersection1}>
                 <View
                   style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    alignSelf: 'center',
                     backgroundColor: '#FFDBE9',
                     width: vw(10),
                     height: vh(5),
@@ -452,32 +424,32 @@ function ModalTester() {
                     style={{
                       fontSize: vf(2.5),
                       color: '#fe5e75',
-                      marginLeft: 10,
                     }}
                   />
                 </View>
-                <View>
-                  <Text
-                    style={{
-                      paddingRight: 170,
-                      fontSize: 18,
-                      color: 'black',
-                      marginTop: 4,
-                    }}
-                    onPress={onNextPressed16}>
-                    Edit Biodata
-                  </Text>
-                </View>
-                <View>
-                  <IconFa
-                    name="chevron-right"
-                    style={{fontSize: vf(2.5), color: '#fe5e75'}}
-                  />
-                </View>
+                <Text
+                  style={{
+                    fontSize: 18,
+                    color: 'black',
+                    marginVertical: 20,
+                    marginHorizontal: 30,
+                  }}
+                  onPress={onNextPressed16}>
+                  Edit Biodata
+                </Text>
+
+                {/* <IconFa
+                  name="chevron-right"
+                  style={{fontSize: vf(2.5), color: '#fe5e75'}}
+                /> */}
               </View>
               <View style={styles.uppersection1}>
                 <View
                   style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    alignSelf: 'center',
                     backgroundColor: '#FFDBE9',
                     width: vw(10),
                     height: vh(5),
@@ -489,7 +461,6 @@ function ModalTester() {
                     style={{
                       fontSize: vf(2.5),
                       color: '#fe5e75',
-                      marginLeft: 10,
                     }}
                   />
                 </View>
@@ -501,25 +472,29 @@ function ModalTester() {
                   }}>
                   <Text
                     style={{
-                      paddingRight: 170,
                       fontSize: 18,
                       color: 'black',
-                      marginTop: 4,
+                      marginVertical: 20,
+                      marginHorizontal: 30,
                     }}>
                     Edit Interest
                   </Text>
                 </TouchableOpacity>
                 <View>
-                  <IconFa
+                  {/* <IconFa
                     name="chevron-right"
                     style={{fontSize: vf(2.5), color: '#fe5e75'}}
-                  />
+                  /> */}
                 </View>
               </View>
 
               <View style={styles.uppersection1}>
                 <View
                   style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    alignSelf: 'center',
                     backgroundColor: '#FFDBE9',
                     width: vw(10),
                     height: vh(5),
@@ -531,32 +506,35 @@ function ModalTester() {
                     style={{
                       fontSize: vf(2.5),
                       color: '#fe5e75',
-                      marginLeft: 10,
                     }}
                   />
                 </View>
                 <View>
                   <Text
                     style={{
-                      paddingRight: 145,
                       fontSize: 18,
                       color: 'black',
-                      marginTop: 4,
+                      marginVertical: 20,
+                      marginHorizontal: 30,
                     }}
                     onPress={onNextPressed19}>
                     Invite Friends
                   </Text>
                 </View>
-                <View>
+                {/* <View>
                   <IconFa
                     name="chevron-right"
                     style={{fontSize: vf(2.5), color: '#fe5e75'}}
                   />
-                </View>
+                </View> */}
               </View>
               <View style={styles.uppersection1}>
                 <View
                   style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    alignSelf: 'center',
                     backgroundColor: '#FFDBE9',
                     width: vw(10),
                     height: vh(5),
@@ -568,32 +546,35 @@ function ModalTester() {
                     style={{
                       fontSize: vf(2.5),
                       color: '#fe5e75',
-                      marginLeft: 10,
                     }}
                   />
                 </View>
                 <View>
                   <Text
                     style={{
-                      paddingRight: 150,
                       fontSize: 18,
                       color: 'black',
-                      marginTop: 4,
+                      marginVertical: 20,
+                      marginHorizontal: 30,
                     }}
                     onPress={onNextPressed24}>
                     Edit Email
                   </Text>
                 </View>
                 <View>
-                  <IconFa
+                  {/* <IconFa
                     name="chevron-right"
                     style={{fontSize: vf(2.5), color: '#fe5e75'}}
-                  />
+                  /> */}
                 </View>
               </View>
               <View style={styles.uppersection1}>
                 <View
                   style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    alignSelf: 'center',
                     backgroundColor: '#FFDBE9',
                     width: vw(10),
                     height: vh(5),
@@ -605,32 +586,35 @@ function ModalTester() {
                     style={{
                       fontSize: vf(2.5),
                       color: '#fe5e75',
-                      marginLeft: 10,
                     }}
                   />
                 </View>
                 <View>
                   <Text
                     style={{
-                      paddingRight: 50,
                       fontSize: 18,
                       color: 'black',
-                      marginTop: 4,
+                      marginVertical: 20,
+                      marginHorizontal: 30,
                     }}
                     onPress={onNextPressed23}>
                     Change Phone Number
                   </Text>
                 </View>
                 <View>
-                  <IconFa
+                  {/* <IconFa
                     name="chevron-right"
                     style={{fontSize: vf(2.5), color: '#fe5e75'}}
-                  />
+                  /> */}
                 </View>
               </View>
               <View style={styles.uppersection1}>
                 <View
                   style={{
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    alignSelf: 'center',
                     backgroundColor: '#FFDBE9',
                     width: vw(10),
                     height: vh(5),
@@ -642,39 +626,29 @@ function ModalTester() {
                     style={{
                       fontSize: vf(2.5),
                       color: '#fe5e75',
-                      marginLeft: 10,
                     }}
                   />
                 </View>
                 <View>
                   <Text
                     style={{
-                      paddingRight: 100,
                       fontSize: 18,
                       color: 'black',
-                      marginTop: 4,
+                      marginVertical: 20,
+                      marginHorizontal: 30,
                     }}
                     onPress={onNextPressed22}>
                     Change Password
                   </Text>
                 </View>
-                <View>
+                {/* <View>
                   <IconFa
                     name="chevron-right"
                     style={{fontSize: vf(2.5), color: '#fe5e75'}}
                   />
-                </View>
+                </View> */}
               </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  marginTop: 20,
-                  borderBottomWidth: 0.5,
-                  height: 50,
-                  margin: 5,
-                  marginBottom: 180,
-                }}>
+              <View style={styles.uppersection1}>
                 <View
                   style={{
                     backgroundColor: '#FFDBE9',
@@ -696,48 +670,16 @@ function ModalTester() {
                 <TouchableOpacity>
                   <Text
                     style={{
-                      paddingRight: 225,
-                      fontSize: 18,
+                      fontSize:vf(2.3),
                       color: 'black',
-                      marginTop: 8,
+                      marginVertical: 15,
+                      marginHorizontal: 30,
                     }}
                     onPress={toggleModal}>
                     Logout
                   </Text>
                 </TouchableOpacity>
               </View>
-              {/* <View style={styles.uppersection}>
-                <TouchableOpacity>
-                  <View>
-                    <IconFa
-                      name="home"
-                      style={{fontSize: 25, color: '#fe5e75'}}
-                      onPress={onNextPressed20}
-                    />
-                  </View>
-                </TouchableOpacity>
-                <View>
-                  <IconFa name="map" style={{fontSize: 25, color: '#fe5e75'}} />
-                </View>
-                <View>
-                  <IconFa
-                    name="heart"
-                    style={{fontSize: 25, color: '#fe5e75'}}
-                  />
-                </View>
-                <View>
-                  <IconFa
-                    name="message-bulleted"
-                    style={{fontSize: 25, color: '#fe5e75'}}
-                  />
-                </View>
-                <View>
-                  <IconFa
-                    name="account"
-                    style={{fontSize: 25, color: '#fe5e75'}}
-                  />
-                </View>
-              </View> */}
             </View>
           </View>
 
@@ -760,7 +702,7 @@ function ModalTester() {
                 <View>
                   <IconFa
                     name="logout"
-                    style={{fontSize: 40, marginTop: 30, color: '#fe5e75'}}
+                    style={{fontSize: 40, marginTop: 20, color: '#fe5e75'}}
                   />
                 </View>
                 <Text style={styles.text}>Are you sure want to logout</Text>
@@ -768,12 +710,15 @@ function ModalTester() {
                   style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
+                    // borderWidth: 1,
+                    width:vw(70)
                   }}>
                   <View style={styles.body1}>
                     <Text
                       style={{
-                        textAlign: 'center',
+                        // textAlign: 'center',
                         color: '#fe5e75',
+                        fontSize:vf(2.3)
                       }}
                       onPress={() => setModalVisible(false)}>
                       Cancel
@@ -785,10 +730,10 @@ function ModalTester() {
                         style={{
                           textAlign: 'center',
                           color: 'white',
-                          fontSize: 18,
+                          fontSize:vf(2.3),
                         }}
                         onPress={onNextPressed15}>
-                        Yes, Logout
+                        Logout
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -865,10 +810,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 30,
     borderColor: '#fe5e75',
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 30,
+    // borderWidth: 1,
     // paddingLeft:20,
   },
   uppersection: {
@@ -886,10 +832,11 @@ const styles = StyleSheet.create({
   },
   uppersection1: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 20,
+    justifyContent: 'flex-start',
+    // marginTop: 20,
     borderBottomWidth: 0.5,
-    height: 50,
+    height: vh(8),
     margin: 5,
+    paddingLeft: 10,
   },
 });

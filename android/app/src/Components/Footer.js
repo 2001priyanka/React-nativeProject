@@ -68,86 +68,74 @@ import IconFa from 'react-native-vector-icons/MaterialCommunityIcons';
 const Footer = () => {
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={{position: 'relative', bottom: 0}}>
-      <ScrollView>
-        <View
+    <View
+      style={{
+        position: 'relative',
+        height: vh(10),
+        borderWidth: 0,
+        width: vw(100),
+        backgroundColor: 'white',
+      }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          alignSelf: 'center',
+          width: vw(100),
+          height: vh(10),
+          alignItems: 'center',
+        }}>
+        <TouchableOpacity>
+          <IconFa
+            name="home"
+            size={28}
+            color="#fe5e75"
+            onPress={() => navigation.navigate('HomeScreens')}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <IconFa
+            name="map"
+            size={28}
+            color="#fe5e75"
+            onPress={() => navigation.navigate('walletlist')}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-evenly',
-            // paddingHorizontal: 20,
-            backgroundColor: '#fff',
-            // marginTop: 10,
+            // height: 60,
+            position: 'relative',
           }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              paddingHorizontal: 30,
-              padding: 5,
-              width: vw(100),
-            }}>
-            <TouchableOpacity>
-              <IconFa
-                name="home"
-                size={28}
-                color="#fe5e75"
-                onPress={() => navigation.navigate('HomeScreens')}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <IconFa
-                name="map"
-                size={28}
-                color="#fe5e75"
-                onPress={() => navigation.navigate('walletlist')}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                // backgroundColor: '#47e7ce',
-                // width: 60,
-                height: 60,
-                // borderRadius: 70,
-                // display: 'flex',
-                // alignItems: "center",
-                // justifycontent: 'center',
-                // marginTop:10,
-                position: 'relative',
-              }}>
-              <IconFa
-                name="heart"
-                size={30}
-                color="#fe5e75"
-                style={{alignSelf: 'center', marginTop: 15}}
-                onPress={() => navigation.navigate('wallet')}
-              />
-            </TouchableOpacity>
+          <IconFa
+            name="heart"
+            size={40}
+            color="#fe5e75"
+            style={{alignSelf: 'center'}}
+            onPress={() => navigation.navigate('wallet')}
+          />
+        </TouchableOpacity>
 
-            <TouchableOpacity>
-              <IconFa
-                name="message-bulleted"
-                size={28}
-                color="#fe5e75"
-                style={{alignSelf: 'center', marginTop: 15}}
-                onPress={() => navigation.navigate('InboxPage')}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <IconFa
-                name="account"
-                size={28}
-                color="#fe5e75"
-                style={{alignSelf: 'center', marginTop: 15}}
-                onPress={() => navigation.navigate('walletlist')}
-              />
-            </TouchableOpacity>
-          </View>
-          {/* <Image source={require("../../assets/images/add1.jpg")} resizeMode="contain" style={{borderRadius:250,width:80,height:80}} /> */}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        <TouchableOpacity>
+          <IconFa
+            name="message-bulleted"
+            size={28}
+            color="#fe5e75"
+            style={{alignSelf: 'center'}}
+            onPress={() => navigation.navigate('InboxPage')}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <IconFa
+            name="account"
+            size={28}
+            color="#fe5e75"
+            style={{alignSelf: 'center'}}
+            onPress={() => navigation.navigate('ProfilePage')}
+          />
+        </TouchableOpacity>
+      </View>
+      {/* <Image source={require("../../assets/images/add1.jpg")} resizeMode="contain" style={{borderRadius:250,width:80,height:80}} /> */}
+    </View>
   );
 };
 
