@@ -75,51 +75,56 @@ const AccountSetUp = () => {
   const _renderItem = ({item, index}) => {
     return (
       <TouchableOpacity
-        style={styles.uppersection1}
         onPress={q => {
           console.log('okaa', [item.id]);
           console.log('okaa', [item.name]);
 
           setCountryName(item.name);
         }}>
-        
-          <View>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-              <Image
-                source={{
-                  uri: item.img,
-                }}
-                style={{
-                  height:vh(7),
-                  width:vw(10),
-                  borderRadius: 40,
-                }}
-              />
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-around',
-                  alignItems: 'center',
-                }}>
-                <Text style={{fontSize: 15, width: vw(15)}}>{item.msg}</Text>
-                <Text style={{fontSize:vf(2), color: 'black', width: vw(30)}}>
-                  {item.name}
-                </Text>
-              </View>
-              <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                <IconFa
-                  name={
-                    countryName === item.name
-                      ? 'checkbox-marked-circle-outline'
-                      : 'circle-outline'
-                  }
-                  style={{fontSize: 20, color: '#fe5e75'}}
-                />
-              </View>
-            </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            alignSelf: 'center',
+            borderWidth: 0.5,
+            height: vh(10),
+            width: vw(90),
+            borderRadius: 10,
+            marginVertical: 10,
+          }}>
+          <Image
+            source={{
+              uri: item.img,
+            }}
+            style={{
+              height: vh(5),
+              width: vw(10),
+              borderRadius: 40,
+            }}
+          />
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}>
+            <Text style={{fontSize: 15, width: vw(15)}}>{item.msg}</Text>
+            <Text style={{fontSize: vf(2), color: 'black', width: vw(30)}}>
+              {item.name}
+            </Text>
           </View>
-        
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <IconFa
+              name={
+                countryName === item.name
+                  ? 'checkbox-marked-circle-outline'
+                  : 'circle-outline'
+              }
+              style={{fontSize: 20, color: '#fe5e75'}}
+            />
+          </View>
+        </View>
       </TouchableOpacity>
     );
   };
@@ -133,7 +138,9 @@ const AccountSetUp = () => {
               name="arrow-left"
               style={{fontSize: 25, color: '#fe5e75'}}
             />
-            <Text style={{color: 'black',paddingLeft:20,fontSize:vf(2.3)}}>Select Your Country</Text>
+            <Text style={{color: 'black', paddingLeft: 20, fontSize: vf(2.3)}}>
+              Select Your Country
+            </Text>
           </View>
           <View style={styles.uppersection}>
             <View style={styles.uppersection}></View>
@@ -163,20 +170,21 @@ const AccountSetUp = () => {
               });
             }}
             style={{
-              flexDirection:'row',
-              justifyContent:'center',
-              alignItems:'center',
-              alignSelf:'center',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'center',
               backgroundColor: '#fe5e75',
-              height:vh(7),
-              width:vw(80),
+              height: vh(7),
+              width: vw(80),
               borderRadius: 30,
+              marginTop:40
             }}>
             <Text
               style={{
                 color: 'white',
                 fontSize: 20,
-                fontWeight:'600'
+                fontWeight: '600',
               }}>
               Next
             </Text>
@@ -194,11 +202,11 @@ const styles = StyleSheet.create({
   uppersection1: {
     // flexDirection: 'row',
     // justifyContent: 'space-between',
-    marginTop: 10,
-    padding: 5,
-    borderWidth: 0.25,
-    borderRadius: 10,
-    margin: 15,
+    // marginTop: 10,
+    // padding: 5,
+    // borderWidth: 0.25,
+    // borderRadius: 10,
+    // margin: 15,
   },
   uppersection3: {
     flexDirection: 'row',

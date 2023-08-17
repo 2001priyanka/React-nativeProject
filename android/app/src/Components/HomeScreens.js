@@ -122,7 +122,7 @@ const HomeScreens = () => {
             marginTop: 40,
             position: 'relative',
             backgroundColor: '#fe5e75',
-            borderRadius:10,
+            borderRadius:20,
             //  marginBottom:20,
           }}>
           <TouchableOpacity
@@ -136,11 +136,11 @@ const HomeScreens = () => {
                 uri: item.img,
               }}
               style={{
-                height: vh(50),
-                width: vh(45),
-                borderRadius:10,
+                height: vh(45),
+                width: vh(40),
+                borderRadius: 5,
                 // padding: 10,
-                marginTop:30,
+                marginTop:25,
                 alignSelf: 'center',
               }}
             />
@@ -325,8 +325,7 @@ const HomeScreens = () => {
           }}
           cardIndex={0}
           backgroundColor={'#4FD0E9'}
-          stackSize={3}>
-        </Swiper>
+          stackSize={3}></Swiper>
       </View>
 
       <View style={styles.uppersection}>
@@ -365,7 +364,14 @@ const HomeScreens = () => {
           </View>
         </View>
       </View>
-      <View style={{flexDirection: 'row', justifyContent: 'space-evenly',paddingBottom:60}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          paddingBottom: 60,
+          position:'relative',
+          bottom:40
+        }}>
         <View
           style={{
             backgroundColor: 'white',
@@ -375,16 +381,15 @@ const HomeScreens = () => {
             justifyContent: 'center',
             alignItems: 'center',
             // backgroundColor:'gray',
+
           }}>
-          <Text>
-            <IconFa
-              name="close"
-              style={{fontSize: vf(5), color: '#fe5e75'}}
-              onPress={() => {
-                swiperRef.current.swipeLeft();
-              }}
-            />
-          </Text>
+          <IconFa
+            name="close"
+            style={{fontSize: vf(5), color: '#fe5e75'}}
+            onPress={() => {
+              swiperRef.current.swipeLeft();
+            }}
+          />
         </View>
 
         <View

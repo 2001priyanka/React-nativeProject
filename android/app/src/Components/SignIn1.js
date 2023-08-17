@@ -27,7 +27,7 @@ const SignIn1 = () => {
     navigation.navigate('SignUp');
   };
   const onNext3Pressed = () => {
-    navigation.navigate('ForgetPassword ');
+    navigation.navigate('ForgetPassword');
   };
   const onNextPressed8 = () => {
     navigation.navigate('HomeScreens');

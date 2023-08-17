@@ -25,28 +25,36 @@ import Modal from 'react-native-modal';
 import IconFa from 'react-native-vector-icons/Entypo';
 import IconFaa from 'react-native-vector-icons/FontAwesome';
 import IconAd from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {color} from '@rneui/base';
 import {API_URL} from '../../../../Config';
 import axios from 'axios';
 import Footer from './Footer';
 
 const IndividualProfile = () => {
-    const [users, setUsers] = useState('');
+  const [users, setUsers] = useState('');
+  const [category, setCategory] = useState([
+    {
+      hobby: 'Dancing',
+      hobby1: 'Dinging',
+      hobby2: 'Reading',
+    },
+  ]);
   const [showRealApp, setShowRealApp] = useState(false);
-    const swiperRef = useRef();
+  const swiperRef = useRef();
   const onDone = () => {
     setShowRealApp(true);
     //  onPress = {onNext2Pressed};
   };
-   const RenderNextButton = () => {
-     // return (
-     //   <View>
-     //     <Text style={{color: 'white', fontSize: vf(2.5)}}>
-     //       Next
-     //     </Text>
-     //   </View>
-     // );
-   };
+  const RenderNextButton = () => {
+    // return (
+    //   <View>
+    //     <Text style={{color: 'white', fontSize: vf(2.5)}}>
+    //       Next
+    //     </Text>
+    //   </View>
+    // );
+  };
   const slides = [
     {
       key: 's1',
@@ -78,45 +86,43 @@ const IndividualProfile = () => {
       backgroundColor: '#fe5e75',
     },
   ];
-     const RenderDoneButton = () => {
-      //  return (
-      //    <View>
-      //      <Text
-      //        style={{color: 'white', fontSize: vf(2.5)}}
-      //        >
-      //        Done
-      //      </Text>
-      //    </View>
-      //  );
-     };
-     
-   const RenderItem = ({item}) => {
-     return (
-       <>
-         <View
-           style={{
+  const RenderDoneButton = () => {
+    //  return (
+    //    <View>
+    //      <Text
+    //        style={{color: 'white', fontSize: vf(2.5)}}
+    //        >
+    //        Done
+    //      </Text>
+    //    </View>
+    //  );
+  };
+
+  const RenderItem = ({item}) => {
+    return (
+      <>
+        <View
+          style={{
             //  flex: 1,
-             backgroundColor: item.backgroundColor,
+            backgroundColor: item.backgroundColor,
             //  height: item.height,
-             alignItems: 'center',
-             justifyContent: 'space-around',
+            alignItems: 'center',
+            justifyContent: 'space-around',
             //  paddingBottom: 100,
-           }}>
-           <Text style={styles.introTitleStyle2}>
-             {item.text}
-           </Text>
-           <View>
-             <Image
-               style={styles.introImageStyle1}
-               source={item.image}
-               // onPress={onNext2Pressed}
-             />
-           </View>
-           {/* <Text style={styles.introTitleStyle}>{item.title}</Text> */}
-         </View>
-       </>
-     );
-   };
+          }}>
+          <Text style={styles.introTitleStyle2}>{item.text}</Text>
+          <View>
+            <Image
+              style={styles.introImageStyle1}
+              source={item.image}
+              // onPress={onNext2Pressed}
+            />
+          </View>
+          {/* <Text style={styles.introTitleStyle}>{item.title}</Text> */}
+        </View>
+      </>
+    );
+  };
   const route = useRoute();
 
   console.log('routee', route);
@@ -148,62 +154,115 @@ const IndividualProfile = () => {
       console.log('getUserImages error', error);
     }
   };
-const registerSwipe = async (idx, type) => {
-  try {
-    const target = users[idx];
-    console.log('target', target, idx, type);
-    const data = {
-      user1: '63bfdc9ee2b54a4b80979189',
-      user2: target?._id,
-      action1: type,
-      action2: type,
-    };
-    const res = await axios.post(API_URL + 'admin/connection', data);
-    if (res.status === 200) {
-      console.log('res', res?.data?.results);
+  const registerSwipe = async (idx, type) => {
+    try {
+      const target = users[idx];
+      console.log('target', target, idx, type);
+      const data = {
+        user1: '63bfdc9ee2b54a4b80979189',
+        user2: target?._id,
+        action1: type,
+        action2: type,
+      };
+      const res = await axios.post(API_URL + 'admin/connection', data);
+      if (res.status === 200) {
+        console.log('res', res?.data?.results);
+      }
+    } catch (error) {
+      console.log('ERROR', error);
     }
-  } catch (error) {
-    console.log('ERROR', error);
-  }
-};
- const getUsersData = async () => {
-   try {
-     const res = await axios.get(API_URL + 'admin/user');
-     if (res.status === 200) {
-       console.log('res', res?.data?.results);
-       setUsers(res?.data?.results);
-     }
-   } catch (error) {
-     console.log('ERROR', error);
-   }
- };
- useEffect(() => {
-   getUsersData();
- }, []);
+  };
+  const getUsersData = async () => {
+    try {
+      const res = await axios.get(API_URL + 'admin/user');
+      if (res.status === 200) {
+        console.log('res', res?.data?.results);
+        setUsers(res?.data?.results);
+      }
+    } catch (error) {
+      console.log('ERROR', error);
+    }
+  };
+  useEffect(() => {
+    getUsersData();
+  }, []);
   useEffect(() => {
     getUserImages();
   }, []);
   console.log('user images', userImages);
+
+  const _renderCategory = ({item, index}) => {
+    return (
+      <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+        <View
+          style={{
+            borderWidth: 1,
+            height: vh(5),
+            width:vw(24),
+            alignSelf: 'center',
+            alignItems: 'center',
+            justifyContent:'center',
+            flexDirection: 'row',
+            borderRadius:30,
+            borderColor:'#fe5e75',
+            marginTop:20
+          }}>
+          <Text style={{}}>{item.hobby1}</Text>
+        </View>
+        <View
+          style={{
+            borderWidth: 1,
+            height: vh(5),
+            width:vw(24),
+            alignSelf: 'center',
+            alignItems: 'center',
+            justifyContent:'center',
+            flexDirection: 'row',
+            borderRadius:30,
+            borderColor:'#fe5e75',
+            marginTop:20
+          }}>
+          <Text style={{}}>{item.hobby2}</Text>
+        </View>
+        <View
+          style={{
+            borderWidth: 1,
+            height: vh(5),
+            width:vw(24),
+            alignSelf: 'center',
+            alignItems: 'center',
+            justifyContent:'center',
+            flexDirection: 'row',
+            borderRadius:30,
+            borderColor:'#fe5e75',
+            marginTop:20
+          }}>
+          <Text style={{}}>{item.hobby2}</Text>
+        </View>
+        <View
+          style={{
+            borderWidth: 1,
+            height: vh(5),
+            width:vw(24),
+            alignSelf: 'center',
+            alignItems: 'center',
+            justifyContent:'center',
+            flexDirection: 'row',
+            borderRadius:30,
+            borderColor:'#fe5e75',
+            marginTop:20
+          }}>
+          <Text style={{}}>{item.hobby}</Text>
+        </View>
+        
+      </View>
+    );
+  };
   return (
     <SafeAreaView>
       <ScrollView>
         <View>
           <View>
-            {/* <ScrollView horizontal={true} className="image">
-          {[1, 2, 3, 4].map(e => {
-            return (
-              <ScrollView horizontal={true} style={{height: vh(50)}}>
-                <Image
-                  source={{
-                    //   uri: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVtYWxlJTIwbW9kZWx8ZW58MHx8MHx8&w=1000&q=80',
-                    uri: pic,
-                  }}
-                  style={{height: vh(50), width: vw(100)}}
-                />
-              </ScrollView>
-            );
-          })}
-        </ScrollView> */}
             <View>
               {showRealApp ? (
                 <SafeAreaView>
@@ -234,14 +293,22 @@ const registerSwipe = async (idx, type) => {
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
+                  marginLeft: 17,
+                }}>
+                <MaterialCommunityIcons name='account' size={30}/>
+                <Text>Female</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
                   marginLeft: 15,
                 }}>
                 <IconFa name="location-pin" size={30} />
-
                 <Text>15 km away</Text>
               </View>
 
-              <View style={{paddingHorizontal: 10, marginTop: 20}}>
+              {/* <View style={{paddingHorizontal: 10, marginTop: 20}}>
                 <Text>
                   type and scrambled it to make a type specimen book. It has
                   survived not only five centuries, but also the leap into
@@ -251,7 +318,7 @@ const registerSwipe = async (idx, type) => {
                   desktop publishing software like Aldus PageMaker including
                   versions of Lorem Ipsum.
                 </Text>
-              </View>
+              </View> */}
             </View>
 
             <View
@@ -259,7 +326,7 @@ const registerSwipe = async (idx, type) => {
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-around',
-                marginTop: 30,
+                // marginTop: 30,
               }}>
               <TouchableOpacity
                 onPress={() => {
@@ -307,6 +374,14 @@ const registerSwipe = async (idx, type) => {
                 <IconAd name="heart" size={30} color={'white'} />
               </TouchableOpacity>
             </View>
+            <FlatList
+              data={category}
+              renderItem={_renderCategory}
+              // numColumns={2}
+              //  contentContainerStyle={{
+              //     justifyContent: 'space-around',
+              //   }}
+            />
           </View>
         </View>
       </ScrollView>
@@ -327,10 +402,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   introImageStyle1: {
-    width: vw(80),
-    height: vh(55),
-    borderRadius:20,
-    // marginBottom: 75,
+    width: vw(90),
+    height: vh(50),
+    borderRadius: 20,
+    marginBottom: 70,
   },
   introTextStyle: {
     fontSize: 18,

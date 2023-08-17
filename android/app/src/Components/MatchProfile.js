@@ -48,9 +48,9 @@ const MatchProfole = () => {
         <Text
           style={{
             fontStyle: 'italic',
-
-            fontSize: vf(5),
+            fontSize: vf(7),
             color: 'white',
+            fontWeight: '600',
           }}>
           Its a Match !
         </Text>
@@ -102,20 +102,23 @@ const MatchProfole = () => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              backgroundColor: 'white',
+              backgroundColor: '#fe5e75',
               width: vw(70),
-              justifyContent: 'center',
+              // height:vh(5),
+              justifyContent: 'flex-start',
               alignItems: 'center',
               marginVertical: 20,
-              height: vw(10),
+              height: vw(15),
               borderRadius: 10,
+              paddingLeft: 55,
             }}>
-            <IconFa name="message" size={25} />
+            <IconFa style={{color: '#fff'}} name="message" size={25} />
             <Text
               style={{
-                marginLeft: 20,
+                marginLeft: 10,
                 fontWeight: '600',
                 fontSize: vf(2),
+                color: '#fff',
               }}>
               Send A Message
             </Text>
@@ -125,15 +128,22 @@ const MatchProfole = () => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              backgroundColor: 'white',
+              backgroundColor: '#fe5e75',
               width: vw(70),
-              justifyContent: 'center',
+              justifyContent: 'flex-start',
               alignItems: 'center',
-              height: vw(10),
+              height: vw(15),
               borderRadius: 10,
+              paddingLeft: 53,
             }}>
-            <IconFaa name="user" size={25} />
-            <Text style={{marginLeft: 20, fontWeight: '600', fontSize: vf(2)}}>
+            <IconFaa style={{color: '#fff'}} name="user" size={25} />
+            <Text
+              style={{
+                marginLeft: 20,
+                fontWeight: '600',
+                fontSize: vf(2),
+                color: '#fff',
+              }}>
               Keep Swiping
             </Text>
           </TouchableOpacity>

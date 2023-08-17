@@ -73,7 +73,9 @@ const ResetPassword = () => {
             // value={feedbackData?.message}
           />
           <View style={{paddingHorizontal: 15, marginTop: 10}}>
-            <Text style={{color: 'black', fontSize: vf(2)}}>Confirm New Password:</Text>
+            <Text style={{color: 'black', fontSize: vf(2)}}>
+              Confirm New Password:
+            </Text>
           </View>
           <TextInput
             placeholder="Confirm New Password"
@@ -97,7 +99,7 @@ const ResetPassword = () => {
               Remember me
             </Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('SetUp2')}>
             <View
               style={{
                 flexDirection: 'row',
@@ -115,8 +117,7 @@ const ResetPassword = () => {
                   color: 'white',
                   fontSize: vf(2.3),
                   fontWeight: '600',
-                }}
-                onPress={onNextPressed7}>
+                }}>
                 Save
               </Text>
             </View>
